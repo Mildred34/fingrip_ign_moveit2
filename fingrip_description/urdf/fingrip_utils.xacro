@@ -5,14 +5,14 @@
   <!--                   -->
   <!-- Imported elements -->
   <!--                   -->
-  <xacro:include filename="$(find panda_description)/urdf/panda_inertial.xacro"/>
+  <xacro:include filename="$(find fingrip_description)/urdf/fingrip_inertial.xacro"/>
 
 
   <!--       -->
   <!-- Macro -->
   <!--       -->
   <xacro:property name="mesh_offset_rpy" value="0 0 0"/>
-  <xacro:macro name="panda_link" params="
+  <xacro:macro name="fingrip_link" params="
     link_name
     mesh
     collision:=true
@@ -24,7 +24,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="${mesh_offset_rpy}"/>
         <geometry>
-          <mesh filename="package://panda_description/meshes/visual/${mesh}.dae"/>
+          <mesh filename="package://fingrip_description/meshes/visual/${mesh}.dae"/>
         </geometry>
       </visual>
 
@@ -32,12 +32,12 @@
         <collision>
           <origin xyz="0 0 0" rpy="${mesh_offset_rpy}"/>
           <geometry>
-            <mesh filename="package://panda_description/meshes/collision/${mesh}.stl"/>
+            <mesh filename="package://fingrip_description/meshes/collision/${mesh}.stl"/>
           </geometry>
         </collision>
       </xacro:if>
 
-      <xacro:panda_inertial mesh="${mesh}" mesh_offset_rpy="${mesh_offset_rpy}"/>
+      <xacro:fingrip_inertial mesh="${mesh}" mesh_offset_rpy="${mesh_offset_rpy}"/>
     </link>
 
     <gazebo reference="${link_name}">
@@ -53,7 +53,7 @@
   <!--       -->
   <!-- Macro -->
   <!--       -->
-  <xacro:macro name="panda_joint" params="
+  <xacro:macro name="fingrip_joint" params="
     parent
     child
     joint_name
@@ -151,14 +151,14 @@
   <!--       -->
   <!-- Macro -->
   <!--       -->
-  <xacro:macro name="panda_virtual_link" params="
+  <xacro:macro name="fingrip_virtual_link" params="
     parent
     link_name
     joint_origin_xyz
     joint_origin_rpy
     gazebo_preserve_fixed_joint:=false
   ">
-    <xacro:panda_dummy_link
+    <xacro:fingrip_dummy_link
       link_name="${link_name}"
       gazebo_preserve_fixed_joint="${gazebo_preserve_fixed_joint}"
     />
@@ -174,7 +174,7 @@
   <!--       -->
   <!-- Macro -->
   <!--       -->
-  <xacro:macro name="panda_dummy_link" params="
+  <xacro:macro name="fingrip_dummy_link" params="
     link_name
     gazebo_preserve_fixed_joint:=false
   ">

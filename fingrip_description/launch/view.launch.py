@@ -1,5 +1,5 @@
 #!/usr/bin/env -S ros2 launch
-"""Visualisation of URDF model for panda in RViz2"""
+"""Visualisation of URDF model for fingrip in RViz2"""
 
 from os import path
 from typing import List
@@ -141,23 +141,23 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
         # Location of xacro/URDF to visualise
         DeclareLaunchArgument(
             "description_package",
-            default_value="panda_description",
+            default_value="fingrip_description",
             description="Custom package with robot description.",
         ),
         DeclareLaunchArgument(
             "description_filepath",
-            default_value=path.join("urdf", "panda.urdf.xacro"),
+            default_value=path.join("urdf", "fingrip.urdf.xacro"),
             description="Path to xacro or URDF description of the robot, relative to share of `description_package`.",
         ),
         # Naming of the robot
         DeclareLaunchArgument(
             "name",
-            default_value="panda",
+            default_value="fingrip",
             description="Name of the robot.",
         ),
         DeclareLaunchArgument(
             "prefix",
-            default_value="panda_",
+            default_value="fingrip_",
             description="Prefix for all robot entities. If modified, then joint names in the configuration of controllers must also be updated.",
         ),
         # Gripper
@@ -224,7 +224,7 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
         DeclareLaunchArgument(
             "rviz_config",
             default_value=path.join(
-                get_package_share_directory("panda_description"),
+                get_package_share_directory("fingrip_description"),
                 "rviz",
                 "view.rviz",
             ),

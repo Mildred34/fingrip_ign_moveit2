@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
-<!-- Xacro for Franka Emika Panda gripper -->
+<!-- Xacro for Franka Emika fingrip gripper -->
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <!--                   -->
   <!-- Imported elements -->
   <!--                   -->
-  <xacro:include filename="$(find panda_description)/urdf/panda_utils.xacro"/>
-  <xacro:include filename="$(find panda_description)/urdf/panda.ros2_control"/>
+  <xacro:include filename="$(find fingrip_description)/urdf/fingrip_utils.xacro"/>
+  <xacro:include filename="$(find fingrip_description)/urdf/fingrip.ros2_control"/>
 
 
   <!--            -->
@@ -57,9 +57,9 @@
   <!--       -->
   <xacro:property name="default_origin_xyz" value="0 0 0"/>
   <xacro:property name="default_origin_rpy" value="0 0 0"/>
-  <xacro:macro name="panda_gripper" params="
+  <xacro:macro name="fingrip_gripper" params="
     wrist_flange
-    prefix:=panda_
+    prefix:=fingrip_
     origin_xyz:=${default_origin_xyz}
     origin_rpy:=${default_origin_rpy}
     collision:=true
@@ -69,7 +69,7 @@
     gazebo_preserve_fixed_joint:=false
   ">
     <!-- Wrist -->
-    <xacro:panda_joint
+    <xacro:fingrip_joint
     parent="${wrist_flange}"
     child="${prefix}${hand_name}"
     joint_name="${prefix}${joint_wrist_name}"
@@ -78,7 +78,7 @@
     joint_origin_rpy="${origin_rpy}"
     gazebo_preserve_fixed_joint="${gazebo_preserve_fixed_joint}"
     />
-    <xacro:panda_link
+    <xacro:fingrip_link
     link_name="${prefix}${hand_name}"
     mesh="${hand_mesh}"
     collision="${collision}"
@@ -86,7 +86,7 @@
     />
 
     <!-- Finger 1 -->
-    <xacro:panda_joint
+    <xacro:fingrip_joint
     parent="${prefix}${hand_name}"
     child="${prefix}${link_finger1_name}"
     joint_name="${prefix}${joint_finger1_name}"
@@ -102,7 +102,7 @@
     joint_friction="${joint_finger1_friction}"
     gazebo_preserve_fixed_joint="${gazebo_preserve_fixed_joint}"
     />
-    <xacro:panda_link
+    <xacro:fingrip_link
     link_name="${prefix}${link_finger1_name}"
     mesh="${finger_mesh}"
     collision="${collision}"
@@ -111,7 +111,7 @@
     />
 
     <!-- Finger 2 -->
-    <xacro:panda_joint
+    <xacro:fingrip_joint
     parent="${prefix}${hand_name}"
     child="${prefix}${link_finger2_name}"
     joint_name="${prefix}${joint_finger2_name}"
@@ -127,7 +127,7 @@
     joint_friction="${joint_finger2_friction}"
     gazebo_preserve_fixed_joint="${gazebo_preserve_fixed_joint}"
     />
-    <xacro:panda_link
+    <xacro:fingrip_link
     link_name="${prefix}${link_finger2_name}"
     mesh="${finger_mesh}"
     collision="${collision}"
@@ -136,7 +136,7 @@
     />
 
     <!-- End effector -->
-    <xacro:panda_virtual_link
+    <xacro:fingrip_virtual_link
     parent="${prefix}${hand_name}"
     link_name="${prefix}${ee_name}"
     joint_origin_xyz="${ee_origin_xyz}"
@@ -146,7 +146,7 @@
 
     <!-- ROS 2 control -->
     <xacro:if value="${ros2_control}">
-      <xacro:ros2_control_panda_gripper prefix="${prefix}" plugin="${ros2_control_plugin}" command_interface="${ros2_control_command_interface}"/>
+      <xacro:ros2_control_fingrip_gripper prefix="${prefix}" plugin="${ros2_control_plugin}" command_interface="${ros2_control_command_interface}"/>
     </xacro:if>
   </xacro:macro>
 

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<!-- SRDF for Franka Emika Panda -->
+<!-- SRDF for Franka Emika fingrip -->
 <robot xmlns:xacro="http://wiki.ros.org/xacro" name="$(arg name)">
 
   <!--                   -->

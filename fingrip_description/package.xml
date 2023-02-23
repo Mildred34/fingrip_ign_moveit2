@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="3">
-  <name>panda_description</name>
+  <name>fingrip_description</name>
   <version>3.0.0</version>
-  <description>URDF and SDF description of Franka Emika Panda</description>
+  <description>URDF and SDF description of Franka Emika fingrip</description>
   <maintainer email="orsula.andrej@gmail.com">Andrej Orsula</maintainer>
   <author>Andrej Orsula</author>
   <license>BSD</license>

@@ -29,7 +29,7 @@ def generate_launch_description() -> LaunchDescription:
             PythonLaunchDescriptionSource(
                 PathJoinSubstitution(
                     [
-                        FindPackageShare("panda_moveit_config"),
+                        FindPackageShare("fingrip_moveit_config"),
                         "launch",
                         "move_group.launch.py",
                     ]
@@ -58,7 +58,7 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
         DeclareLaunchArgument(
             "rviz_config",
             default_value=path.join(
-                get_package_share_directory("panda_moveit_config"),
+                get_package_share_directory("fingrip_moveit_config"),
                 "rviz",
                 "moveit.rviz",
             ),

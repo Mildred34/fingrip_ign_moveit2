@@ -41,12 +41,13 @@ def generate_launch_description() -> LaunchDescription:
             ),
             launch_arguments=[("gz_args", [world, " -r -v ", ign_verbosity])],
         ),
-        # Launch move_group of MoveIt 2
+
+        #Launch move_group of MoveIt 2
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(
                 PathJoinSubstitution(
                     [
-                        FindPackageShare("panda_moveit_config"),
+                        FindPackageShare("fingrip_moveit_config"),
                         "launch",
                         "move_group.launch.py",
                     ]
@@ -66,7 +67,7 @@ def generate_launch_description() -> LaunchDescription:
 
     # List of nodes to be launched
     nodes = [
-        # ros_ign_gazebo_create
+        # ros_gz_gazebo_create
         Node(
             package="ros_gz_sim",
             executable="create",
@@ -74,9 +75,9 @@ def generate_launch_description() -> LaunchDescription:
             arguments=["-file", model, "--ros-args", "--log-level", log_level],
             parameters=[{"use_sim_time": use_sim_time}],
         ),
-        # ros_ign_bridge (clock -> ROS 2)
+        # ros_gz_bridge (clock -> ROS 2)
         Node(
-            package="ros_ign_bridge",
+            package="ros_gz_bridge",
             executable="parameter_bridge",
             output="log",
             arguments=[
@@ -106,14 +107,14 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
         ),
         DeclareLaunchArgument(
             "model",
-            default_value="panda",
+            default_value="fingrip",
             description="Name or filepath of model to load.",
         ),
         # Miscellaneous
         DeclareLaunchArgument(
             "rviz_config",
             default_value=path.join(
-                get_package_share_directory("panda_moveit_config"),
+                get_package_share_directory("fingrip_moveit_config"),
                 "rviz",
                 "moveit.rviz",
             ),

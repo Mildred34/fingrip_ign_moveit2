@@ -1,24 +1,24 @@
 <?xml version="1.0"?>
-<!-- Macros that add ros2 control for Franka Emika Panda -->
+<!-- Macros that add ros2 control for Franka Emika fingrip -->
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <!--            -->
   <!-- Properties -->
   <!--            -->
-  <xacro:property name="default_initial_positions_file" value="$(find panda_description)/config/initial_joint_positions.yaml"/>
+  <xacro:property name="default_initial_positions_file" value="$(find fingrip_description)/config/initial_joint_positions.yaml"/>
 
 
   <!--       -->
   <!-- Macro -->
   <!--       -->
-  <xacro:macro name="ros2_control_panda_arm" params="
-   name:=panda_arm_system
-   prefix:=panda_
+  <xacro:macro name="ros2_control_fingrip_arm" params="
+   name:=fingrip_arm_system
+   prefix:=fingrip_
    plugin:=fake
    command_interface:=effort
    initial_positions_file:=${default_initial_positions_file}
   ">
-    <xacro:property name="initial_positions" value="${xacro.load_yaml(initial_positions_file)['initial_joint_positions']['panda_arm']}"/>
+    <xacro:property name="initial_positions" value="${xacro.load_yaml(initial_positions_file)['initial_joint_positions']['fingrip_arm']}"/>
 
     <ros2_control name="${name}" type="system">
       <hardware>
@@ -147,15 +147,15 @@
   <!--       -->
   <!-- Macro -->
   <!--       -->
-  <xacro:macro name="ros2_control_panda_gripper" params="
-   name:=panda_gripper_system
-   prefix:=panda_
+  <xacro:macro name="ros2_control_fingrip_gripper" params="
+   name:=fingrip_gripper_system
+   prefix:=fingrip_
    plugin:=fake
    command_interface:=effort
    initial_positions_file:=${default_initial_positions_file}
    mimic_joints:=false
   ">
-    <xacro:property name="initial_positions" value="${xacro.load_yaml(initial_positions_file)['initial_joint_positions']['panda_gripper']}"/>
+    <xacro:property name="initial_positions" value="${xacro.load_yaml(initial_positions_file)['initial_joint_positions']['fingrip_gripper']}"/>
 
     <ros2_control name="${name}" type="system">
       <hardware>

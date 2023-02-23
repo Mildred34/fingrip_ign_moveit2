@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- Macro for SRDF of Franka Emika Panda arm -->
+<!-- Macro for SRDF of Franka Emika fingrip arm -->
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
 
   <!--       -->

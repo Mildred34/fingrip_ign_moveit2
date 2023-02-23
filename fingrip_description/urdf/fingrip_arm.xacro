@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
-<!-- Xacro for Franka Emika Panda arm -->
+<!-- Xacro for Franka Emika fingrip arm -->
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <!--                   -->
   <!-- Imported elements -->
   <!--                   -->
-  <xacro:include filename="$(find panda_description)/urdf/panda_utils.xacro"/>
-  <xacro:include filename="$(find panda_description)/urdf/panda.ros2_control"/>
+  <xacro:include filename="$(find fingrip_description)/urdf/fingrip_utils.xacro"/>
+  <xacro:include filename="$(find fingrip_description)/urdf/fingrip.ros2_control"/>
 
 
   <!--            -->
@@ -125,9 +125,9 @@
   <!--       -->
   <xacro:property name="default_origin_xyz" value="0 0 0"/>
   <xacro:property name="default_origin_rpy" value="0 0 0"/>
-  <xacro:macro name="panda_arm" params="
+  <xacro:macro name="fingrip_arm" params="
     base_parent
-    prefix:=panda_
+    prefix:=fingrip_
     origin_xyz:=${default_origin_xyz}
     origin_rpy:=${default_origin_rpy}
     collision:=true
@@ -141,7 +141,7 @@
     gazebo_preserve_fixed_joint:=false
   ">
     <!-- Base -->
-    <xacro:panda_joint
+    <xacro:fingrip_joint
     parent="${base_parent}"
     child="${prefix}${link0_name}"
     joint_name="${prefix}${joint_base_name}"
@@ -150,7 +150,7 @@
     joint_origin_rpy="${origin_rpy}"
     gazebo_preserve_fixed_joint="${gazebo_preserve_fixed_joint}"
     />
-    <xacro:panda_link
+    <xacro:fingrip_link
     link_name="${prefix}${link0_name}"
     mesh="${link0_mesh}"
     collision="${collision}"
@@ -158,7 +158,7 @@
     />
 
     <!-- 1 -->
-    <xacro:panda_joint
+    <xacro:fingrip_joint
     parent="${prefix}${link0_name}"
     child="${prefix}${link1_name}"
     joint_name="${prefix}${joint1_name}"
@@ -178,7 +178,7 @@
     safety_k_velocity="${safety_k_velocity}"
     gazebo_preserve_fixed_joint="${gazebo_preserve_fixed_joint}"
     />
-    <xacro:panda_link
+    <xacro:fingrip_link
     link_name="${prefix}${link1_name}"
     mesh="${link1_mesh}"
     collision="${collision}"
@@ -186,7 +186,7 @@
     />
 
     <!-- 2 -->
-    <xacro:panda_joint
+    <xacro:fingrip_joint
     parent="${prefix}${link1_name}"
     child="${prefix}${link2_name}"
     joint_name="${prefix}${joint2_name}"
@@ -206,7 +206,7 @@
     safety_k_velocity="${safety_k_velocity}"
     gazebo_preserve_fixed_joint="${gazebo_preserve_fixed_joint}"
     />
-    <xacro:panda_link
+    <xacro:fingrip_link
     link_name="${prefix}${link2_name}"
     mesh="${link2_mesh}"
     collision="${collision}"
@@ -214,7 +214,7 @@
     />
 
     <!-- 3 -->
-    <xacro:panda_joint
+    <xacro:fingrip_joint
     parent="${prefix}${link2_name}"
     child="${prefix}${link3_name}"
     joint_name="${prefix}${joint3_name}"
@@ -234,7 +234,7 @@
     safety_k_velocity="${safety_k_velocity}"
     gazebo_preserve_fixed_joint="${gazebo_preserve_fixed_joint}"
     />
-    <xacro:panda_link
+    <xacro:fingrip_link
     link_name="${prefix}${link3_name}"
     mesh="${link3_mesh}"
     collision="${collision}"
@@ -242,7 +242,7 @@
     />
 
     <!-- 4 -->
-    <xacro:panda_joint
+    <xacro:fingrip_joint
     parent="${prefix}${link3_name}"
     child="${prefix}${link4_name}"
     joint_name="${prefix}${joint4_name}"
@@ -262,7 +262,7 @@
     safety_k_velocity="${safety_k_velocity}"
     gazebo_preserve_fixed_joint="${gazebo_preserve_fixed_joint}"
     />
-    <xacro:panda_link
+    <xacro:fingrip_link
     link_name="${prefix}${link4_name}"
     mesh="${link4_mesh}"
     collision="${collision}"
@@ -270,7 +270,7 @@
     />
 
     <!-- 5 -->
-    <xacro:panda_joint
+    <xacro:fingrip_joint
     parent="${prefix}${link4_name}"
     child="${prefix}${link5_name}"
     joint_name="${prefix}${joint5_name}"
@@ -290,7 +290,7 @@
     safety_k_velocity="${safety_k_velocity}"
     gazebo_preserve_fixed_joint="${gazebo_preserve_fixed_joint}"
     />
-    <xacro:panda_link
+    <xacro:fingrip_link
     link_name="${prefix}${link5_name}"
     mesh="${link5_mesh}"
     collision="${collision}"
@@ -298,7 +298,7 @@
     />
 
     <!-- 6 -->
-    <xacro:panda_joint
+    <xacro:fingrip_joint
     parent="${prefix}${link5_name}"
     child="${prefix}${link6_name}"
     joint_name="${prefix}${joint6_name}"
@@ -318,7 +318,7 @@
     safety_k_velocity="${safety_k_velocity}"
     gazebo_preserve_fixed_joint="${gazebo_preserve_fixed_joint}"
     />
-    <xacro:panda_link
+    <xacro:fingrip_link
     link_name="${prefix}${link6_name}"
     mesh="${link6_mesh}"
     collision="${collision}"
@@ -326,7 +326,7 @@
     />
 
     <!-- 7 -->
-    <xacro:panda_joint
+    <xacro:fingrip_joint
     parent="${prefix}${link6_name}"
     child="${prefix}${link7_name}"
     joint_name="${prefix}${joint7_name}"
@@ -346,7 +346,7 @@
     safety_k_velocity="${safety_k_velocity}"
     gazebo_preserve_fixed_joint="${gazebo_preserve_fixed_joint}"
     />
-    <xacro:panda_link
+    <xacro:fingrip_link
     link_name="${prefix}${link7_name}"
     mesh="${link7_mesh}"
     collision="${collision}"
@@ -354,7 +354,7 @@
     />
 
     <!-- Wrist flange -->
-    <xacro:panda_virtual_link
+    <xacro:fingrip_virtual_link
     parent="${prefix}${link7_name}"
     link_name="${prefix}${wrist_flange_name}"
     joint_origin_xyz="${wrist_flange_origin_xyz}"
@@ -364,7 +364,7 @@
 
     <!-- ROS 2 control -->
     <xacro:if value="${ros2_control}">
-      <xacro:ros2_control_panda_arm prefix="${prefix}" plugin="${ros2_control_plugin}" command_interface="${ros2_control_command_interface}"/>
+      <xacro:ros2_control_fingrip_arm prefix="${prefix}" plugin="${ros2_control_plugin}" command_interface="${ros2_control_command_interface}"/>
     </xacro:if>
   </xacro:macro>
 

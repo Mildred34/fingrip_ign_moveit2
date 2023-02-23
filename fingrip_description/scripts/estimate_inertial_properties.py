@@ -14,13 +14,13 @@ from pcg_gazebo.parsers.sdf import SDF, create_sdf_element
 def main():
 
     # Total mass taken from datasheet (given as ~18.0kg)
-    # You can also use your own estimate of total mass if you managed to weigh Panda yourself :)
+    # You can also use your own estimate of total mass if you managed to weigh fingrip yourself :)
     total_mass = 18.0
     if len(sys.argv) > 1:
         if float(sys.argv[1]) > 0.0:
             total_mass = float(sys.argv[1])
         else:
-            print("Error: Total mass of Panda (first argument) must be positive.")
+            print("Error: Total mass of fingrip (first argument) must be positive.")
             exit(1)
     print(
         "Estimating inertial properties for each link to add up to %f kg" % total_mass
@@ -40,7 +40,7 @@ def main():
 
     # Get path to all visual meshes
     visual_mesh_dir = path.join(
-        path.dirname(path.dirname(path.realpath(__file__))), "panda", "meshes", "visual"
+        path.dirname(path.dirname(path.realpath(__file__))), "fingrip", "meshes", "visual"
     )
     visual_mesh_basenames = listdir(visual_mesh_dir)
     visual_mesh_basenames.sort()
@@ -102,7 +102,7 @@ def main():
 
     # Create a new SDF with one model
     sdf = SDF()
-    sdf.add_model(name="panda")
+    sdf.add_model(name="fingrip")
     model = sdf.models[0]
 
     # Set inertial properties for each link into the SDF
@@ -126,7 +126,7 @@ def main():
         model.add_link(link_name, link)
 
     # Write into output file
-    output_file = "panda_inertial_out.sdf"
+    output_file = "fingrip_inertial_out.sdf"
     sdf.export_xml(output_file)
     print('Results written into "%s"' % output_file)
 

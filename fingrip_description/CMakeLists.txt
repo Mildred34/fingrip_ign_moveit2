@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(panda_description)
+project(fingrip_description)
 
 # Find dependencies
 find_package(ament_cmake REQUIRED)
@@ -11,7 +11,7 @@ ament_environment_hooks(
 )
 
 # Install directories
-install(DIRECTORY config launch panda panda/meshes rviz urdf DESTINATION share/${PROJECT_NAME})
+install(DIRECTORY config launch fingrip fingrip/meshes rviz urdf DESTINATION share/${PROJECT_NAME})
 
 # Setup the project
 ament_package()

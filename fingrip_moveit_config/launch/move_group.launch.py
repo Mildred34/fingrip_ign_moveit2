@@ -28,7 +28,7 @@ def generate_launch_description():
     # Get substitution for all arguments
     description_package = LaunchConfiguration("description_package")
     description_filepath = LaunchConfiguration("description_filepath")
-    moveit_config_package = "panda_moveit_config"
+    moveit_config_package = "fingrip_moveit_config"
     name = LaunchConfiguration("name")
     prefix = LaunchConfiguration("prefix")
     gripper = LaunchConfiguration("gripper")
@@ -51,6 +51,7 @@ def generate_launch_description():
     log_level = LaunchConfiguration("log_level")
 
     # URDF
+    # Turn fingrip.urdf.xacro into an urdf with all the parameters described as below
     _robot_description_xml = Command(
         [
             PathJoinSubstitution([FindExecutable(name="xacro")]),
@@ -99,9 +100,12 @@ def generate_launch_description():
             gazebo_preserve_fixed_joint,
         ]
     )
+
     robot_description = {"robot_description": _robot_description_xml}
 
     # SRDF
+    # Turn fingrip.srdf.xacro into an srdf file with the parameters
+    # described as below
     _robot_description_semantic_xml = Command(
         [
             PathJoinSubstitution([FindExecutable(name="xacro")]),
@@ -110,7 +114,7 @@ def generate_launch_description():
                 [
                     FindPackageShare(moveit_config_package),
                     "srdf",
-                    "panda.srdf.xacro",
+                    "fingrip.srdf.xacro",
                 ]
             ),
             " ",
@@ -121,10 +125,12 @@ def generate_launch_description():
             prefix,
         ]
     )
+
     robot_description_semantic = {
         "robot_description_semantic": _robot_description_semantic_xml
     }
 
+    ## Load every config files from the config folder within fingrip_moveit_config
     # Kinematics
     kinematics = load_yaml(
         moveit_config_package, path.join("config", "kinematics.yaml")
@@ -160,6 +166,7 @@ def generate_launch_description():
     _ompl_yaml = load_yaml(
         moveit_config_package, path.join("config", "ompl_planning.yaml")
     )
+    # On ajoute la config de ompl_planning.yaml après charchement dans le dico planning_pipeline
     planning_pipeline["ompl"].update(_ompl_yaml)
 
     # Planning scene
@@ -195,6 +202,7 @@ def generate_launch_description():
             default_value=["controllers_", ros2_control_command_interface, ".yaml"],
         )
     )
+    
     controller_parameters = PathJoinSubstitution(
         [
             FindPackageShare(moveit_config_package),
@@ -228,7 +236,7 @@ def generate_launch_description():
             arguments=["--ros-args", "--log-level", log_level],
             parameters=[
                 robot_description,
-                controller_parameters,
+                controller_parameters, # ros2 controller path
                 {"use_sim_time": use_sim_time},
             ],
             condition=(
@@ -245,24 +253,26 @@ def generate_launch_description():
                 )
             ),
         ),
-        # move_group (with execution)
+
+         # Start the actual move_group node/action server
         Node(
             package="moveit_ros_move_group",
             executable="move_group",
             output="log",
             arguments=["--ros-args", "--log-level", log_level],
             parameters=[
-                robot_description,
-                robot_description_semantic,
+                robot_description, # urdf.xacro
+                robot_description_semantic, #.srdf
                 kinematics,
                 joint_limits,
                 planning_pipeline,
-                trajectory_execution,
+                trajectory_execution, #.yaml
                 planning_scene_monitor_parameters,
                 moveit_controller_manager,
                 {"use_sim_time": use_sim_time},
             ],
         ),
+
         # move_servo
         Node(
             package="moveit_servo",
@@ -355,23 +365,23 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
         # Locations of robot resources
         DeclareLaunchArgument(
             "description_package",
-            default_value="panda_description",
+            default_value="fingrip_description",
             description="Custom package with robot description.",
         ),
         DeclareLaunchArgument(
             "description_filepath",
-            default_value=path.join("urdf", "panda.urdf.xacro"),
+            default_value=path.join("urdf", "fingrip.urdf.xacro"),
             description="Path to xacro or URDF description of the robot, relative to share of `description_package`.",
         ),
         # Naming of the robot
         DeclareLaunchArgument(
             "name",
-            default_value="panda",
+            default_value="fingrip",
             description="Name of the robot.",
         ),
         DeclareLaunchArgument(
             "prefix",
-            default_value="panda_",
+            default_value="fingrip_",
             description="Prefix for all robot entities. If modified, then joint names in the configuration of controllers must also be updated.",
         ),
         # Gripper
@@ -447,7 +457,7 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
         DeclareLaunchArgument(
             "rviz_config",
             default_value=path.join(
-                get_package_share_directory("panda_moveit_config"),
+                get_package_share_directory("fingrip_moveit_config"),
                 "rviz",
                 "moveit.rviz",
             ),

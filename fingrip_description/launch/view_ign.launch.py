@@ -1,5 +1,5 @@
 #!/usr/bin/env -S ros2 launch
-"""Visualisation of SDF model for panda in Ignition Gazebo. Note that the generated model://panda/model.sdf descriptor is used."""
+"""Visualisation of SDF model for fingrip in Ignition Gazebo. Note that the generated model://fingrip/model.sdf descriptor is used."""
 
 from os import path
 from typing import List
@@ -102,12 +102,12 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
         # Locations of robot resources
         DeclareLaunchArgument(
             "description_package",
-            default_value="panda_description",
+            default_value="fingrip_description",
             description="Custom package with robot description.",
         ),
         DeclareLaunchArgument(
             "description_filepath",
-            default_value=path.join("urdf", "panda.urdf.xacro"),
+            default_value=path.join("urdf", "fingrip.urdf.xacro"),
             description="Path to xacro or URDF description of the robot, relative to share of `description_package`.",
         ),
         # World and model for Ignition Gazebo
@@ -118,7 +118,7 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
         ),
         DeclareLaunchArgument(
             "model",
-            default_value="panda",
+            default_value="fingrip",
             description="Name or filepath of model to load.",
         ),
         # Miscellaneous

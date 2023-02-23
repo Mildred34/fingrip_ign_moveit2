@@ -14,9 +14,9 @@ This branch targets ROS 2 `humble` and Gazebo `fortress`.
 
 Below is an overview of the included packages, with a short description of their purpose. For more information, please see README.md of each individual package.
 
-- [**fingrip**](./panda) – Metapackage
-- [**fingrip_description**](./panda_description) – URDF and SDF description of the robot
-- [**fingrip_moveit_config**](./panda_moveit_config) – MoveIt 2 configuration for the robot
+- [**fingrip**](./fingrip) – Metapackage
+- [**fingrip_description**](./fingrip_description) – URDF and SDF description of the robot
+- [**fingrip_moveit_config**](./fingrip_moveit_config) – MoveIt 2 configuration for the robot
 
 ## Instructions
 
