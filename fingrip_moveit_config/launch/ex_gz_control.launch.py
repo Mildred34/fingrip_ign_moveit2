@@ -55,7 +55,7 @@ def generate_launch_description() -> LaunchDescription:
             ),
             launch_arguments=[
                 ("ros2_control_plugin", "ign"),
-                ("ros2_control_command_interface", "effort"),
+                ("ros2_control_command_interface", "effort"), # before was effort
                 # TODO: Re-enable colligion geometry for manipulator arm once spawning with specific joint configuration is enabled
                 ("collision_arm", "false"),
                 ("rviz_config", rviz_config),
@@ -81,7 +81,7 @@ def generate_launch_description() -> LaunchDescription:
             executable="parameter_bridge",
             output="log",
             arguments=[
-                "/clock@rosgraph_msgs/msg/Clock[ignition.msgs.Clock",
+                "/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock",
                 "--ros-args",
                 "--log-level",
                 log_level,

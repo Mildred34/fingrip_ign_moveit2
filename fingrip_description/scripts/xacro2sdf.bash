@@ -23,7 +23,7 @@ rm "${SDF_PATH}" 2>/dev/null
 
 # Process xacro into URDF, then convert URDF to SDF and edit the SDF to use relative paths for meshes
 xacro "${XACRO_PATH}" "${XACRO_ARGS[@]}" -o "${TMP_URDF_PATH}" &&
-ign sdf -p "${TMP_URDF_PATH}" | sed "s/model:\/\/fingrip_description\///g" >"${SDF_PATH}" &&
+gz sdf -p "${TMP_URDF_PATH}" | sed "s/model:\/\/fingrip_description\///g" >"${SDF_PATH}" &&
 echo "Created new ${SDF_PATH}"
 
 # Remove temporary URDF file

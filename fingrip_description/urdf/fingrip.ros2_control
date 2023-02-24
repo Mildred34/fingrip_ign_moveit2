@@ -14,10 +14,10 @@
   <xacro:macro name="ros2_control_fingrip_arm" params="
    name:=fingrip_arm_system
    prefix:=fingrip_
-   plugin:=fake
-   command_interface:=effort
+   plugin:=ign
+   command_interface:=effort 
    initial_positions_file:=${default_initial_positions_file}
-  ">
+  "> <!-- command_interface:=effort  -->
     <xacro:property name="initial_positions" value="${xacro.load_yaml(initial_positions_file)['initial_joint_positions']['fingrip_arm']}"/>
 
     <ros2_control name="${name}" type="system">
@@ -36,7 +36,6 @@
         </xacro:unless>
       </hardware>
       <joint name="${prefix}joint1">
-        <param name="initial_position">${initial_positions['joint1']}</param>
         <xacro:if value="${'position' in command_interface}">
           <command_interface name="position"/>
         </xacro:if>
@@ -46,7 +45,9 @@
         <xacro:if value="${'effort' in command_interface}">
           <command_interface name="effort"/>
         </xacro:if>
-        <state_interface name="position"/>
+        <state_interface name="position">
+          <param name="initial_position">${initial_positions['joint1']}</param>
+        </state_interface>
         <state_interface name="velocity"/>
         <state_interface name="effort"/>
       </joint>
@@ -61,7 +62,9 @@
         <xacro:if value="${'effort' in command_interface}">
           <command_interface name="effort"/>
         </xacro:if>
-        <state_interface name="position"/>
+        <state_interface name="position">
+          <param name="initial_position">${initial_positions['joint2']}</param>
+        </state_interface>
         <state_interface name="velocity"/>
         <state_interface name="effort"/>
       </joint>
@@ -150,7 +153,7 @@
   <xacro:macro name="ros2_control_fingrip_gripper" params="
    name:=fingrip_gripper_system
    prefix:=fingrip_
-   plugin:=fake
+   plugin:=ign
    command_interface:=effort
    initial_positions_file:=${default_initial_positions_file}
    mimic_joints:=false
