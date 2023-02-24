@@ -5,9 +5,6 @@
 <!-- =================================================================================== -->
 <!-- URDF for Franka Emika fingrip -->
 <robot name="fingrip">
-  <!--
-<xacro:ign_ros2_control controller_parameters="/home/alex/additive_manufacturing/grasps_planner/install/fingrip_moveit_config/share/fingrip_moveit_config/config/controllers_effort.yaml" />
--->
   <link name="world">
   </link>
   <joint name="fingrip_joint_base" type="fixed">
@@ -355,7 +352,7 @@
   </joint>
   <ros2_control name="fingrip_arm_system" type="system">
     <hardware>
-      <plugin>ign_ros2_control/IgnitionSystem</plugin>
+      <plugin>gz_ros2_control/GazeboSimSystem</plugin>
     </hardware>
     <joint name="fingrip_joint1">
       <param name="initial_position">0.0</param>
@@ -532,7 +529,7 @@
   </joint>
   <ros2_control name="fingrip_gripper_system" type="system">
     <hardware>
-      <plugin>ign_ros2_control/IgnitionSystem</plugin>
+      <plugin>gz_ros2_control/GazeboSimSystem</plugin>
     </hardware>
     <joint name="fingrip_finger_joint1">
       <param name="initial_position">0.0</param>
@@ -550,7 +547,7 @@
     </joint>
   </ros2_control>
   <gazebo>
-    <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
+    <plugin filename="libgz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
       <parameters>/home/alex/additive_manufacturing/Planner4grasping/install/share/fingrip_moveit_config/config/controllers_effort.yaml</parameters>
     </plugin>
   </gazebo>

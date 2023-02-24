@@ -7,6 +7,7 @@ from typing import List
 import yaml
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
+from launch.actions import TimerAction
 from launch.actions import DeclareLaunchArgument
 from launch.conditions import IfCondition
 from launch.substitutions import (
@@ -317,9 +318,24 @@ def generate_launch_description():
     ]
 
     # Add nodes for loading controllers
+    # delayed_controller_manager_spawner = []
+
     for controller in moveit_controller_manager_yaml["controller_names"] + [
         "joint_state_broadcaster"
     ]:
+
+        # delayed_controller_manager_spawner.append(TimerAction(
+        #     period=10.0,
+        #     actions=[
+        #         Node(
+        #             package="controller_manager",
+        #             executable="spawner",
+        #             arguments=[controller, "--ros-args", "--log-level", log_level],
+        #             parameters=[{"use_sim_time": use_sim_time}],
+        #             ),
+        #     ],
+        # ))
+
         nodes.append(
             # controller_manager_spawner
             Node(
@@ -331,7 +347,7 @@ def generate_launch_description():
             ),
         )
 
-    return LaunchDescription(declared_arguments + nodes)
+    return LaunchDescription(declared_arguments + nodes )#+ delayed_controller_manager_spawner)
 
 
 def load_yaml(package_name: str, file_path: str):
@@ -435,7 +451,7 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
         ),
         DeclareLaunchArgument(
             "ros2_control_command_interface",
-            default_value="effort",
+            default_value="effort", # before was effort
             description="The output control command interface provided by ros2_control ('position', 'velocity', 'effort' or certain combinations 'position,velocity').",
         ),
         # Gazebo

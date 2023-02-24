@@ -5,16 +5,12 @@
   <!--       -->
   <!-- Macro -->
   <!--       -->
-  <xacro:macro name="ign_ros2_control" params="controller_parameters">
+  <xacro:macro name="gz_ros2_control" params="controller_parameters">
     <gazebo>
-      <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
+      <plugin filename="libgz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
         <parameters>${controller_parameters}</parameters>
       </plugin>
     </gazebo>
   </xacro:macro>
-
-<!--
-<xacro:ign_ros2_control controller_parameters="/home/alex/additive_manufacturing/grasps_planner/install/fingrip_moveit_config/share/fingrip_moveit_config/config/controllers_effort.yaml" />
--->
 
 </robot>

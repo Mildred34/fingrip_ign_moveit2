@@ -3,13 +3,13 @@ controller_manager:
     update_rate: 250
 
     joint_state_broadcaster:
-      type: joint_state_broadcaster/JointStateBroadcaster
+      type: "joint_state_broadcaster/JointStateBroadcaster"
 
     joint_trajectory_controller:
-      type: joint_trajectory_controller/JointTrajectoryController
+      type: "joint_trajectory_controller/JointTrajectoryController"
 
     gripper_trajectory_controller:
-      type: joint_trajectory_controller/JointTrajectoryController
+      type: "joint_trajectory_controller/JointTrajectoryController"
 
 joint_trajectory_controller:
   ros__parameters:
@@ -21,6 +21,7 @@ joint_trajectory_controller:
       - fingrip_joint5
       - fingrip_joint6
       - fingrip_joint7
+
     command_interfaces:
       - effort
     state_interfaces:
