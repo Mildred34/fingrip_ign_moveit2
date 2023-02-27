@@ -124,6 +124,7 @@ planner_configs:
     type: geometric::TrajOpt
 
 arm:
+  default_planner_config: RRTConnectkConfigDefault
   planner_configs:
     - SBLkConfigDefault
     - ESTkConfigDefault
@@ -150,3 +151,5 @@ arm:
     - SPARStwokConfigDefault
     - TrajOptDefault
   longest_valid_segment_fraction: 0.005
+
+  # Rajouter main ici si besoin
