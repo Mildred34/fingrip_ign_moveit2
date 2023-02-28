@@ -19,13 +19,15 @@
     mu:=1.0
     mesh_offset_rpy:=${mesh_offset_rpy}
     gazebo_self_collide:=false
+    color:=Grey
   ">
     <link name="${link_name}">
       <visual>
         <origin xyz="0 0 0" rpy="${mesh_offset_rpy}"/>
         <geometry>
-          <mesh filename="package://fingrip_description/meshes/visual/${mesh}.dae"/>
+          <mesh filename="package://fingrip_description/meshes/visual/${mesh}.stl"/>
         </geometry>
+        <material name="${color}"/>
       </visual>
 
       <xacro:if value="${collision}">

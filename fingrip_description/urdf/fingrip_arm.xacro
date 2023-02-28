@@ -16,104 +16,112 @@
   <xacro:property name="joint_base_type" value="fixed"/>
   <xacro:property name="link0_name" value="link0"/>
   <xacro:property name="link0_mu" value="0.85"/>
+  <xacro:property name="link0_color" value="Grey"/>
 
   <xacro:property name="joint1_name" value="joint1"/>
   <xacro:property name="joint1_type" value="revolute"/>
-  <xacro:property name="joint1_origin_xyz" value="0 0 0.333"/>
+  <xacro:property name="joint1_origin_xyz" value="0 0 0.1575"/>
   <xacro:property name="joint1_origin_rpy" value="0 0 0"/>
   <xacro:property name="joint1_axis_xyz" value="0 0 1"/>
-  <xacro:property name="joint1_lower_limit" value="${-166*pi/180}"/>
-  <xacro:property name="joint1_upper_limit" value="${166*pi/180}"/>
-  <xacro:property name="joint1_velocity_limit" value="${150*pi/180}"/>
+  <xacro:property name="joint1_lower_limit" value="${-170*pi/180}"/>
+  <xacro:property name="joint1_upper_limit" value="${170*pi/180}"/>
+  <xacro:property name="joint1_velocity_limit" value="${85*pi/180}"/>
   <xacro:property name="joint1_torque_limit" value="87"/>
   <xacro:property name="joint1_damping" value="21.75"/>
   <xacro:property name="joint1_friction" value="3.48"/>
   <xacro:property name="link1_name" value="link1"/>
   <xacro:property name="link1_mu" value="0.85"/>
+  <xacro:property name="link1_color" value="Blue"/>
 
   <xacro:property name="joint2_name" value="joint2"/>
   <xacro:property name="joint2_type" value="revolute"/>
-  <xacro:property name="joint2_origin_xyz" value="0 0 0"/>
-  <xacro:property name="joint2_origin_rpy" value="${-pi/2} 0 0"/>
+  <xacro:property name="joint2_origin_xyz" value="0 0 0.2025"/>
+  <xacro:property name="joint2_origin_rpy" value="${pi/2} 0 ${-pi}"/>
   <xacro:property name="joint2_axis_xyz" value="0 0 1"/>
-  <xacro:property name="joint2_lower_limit" value="${-101*pi/180}"/>
-  <xacro:property name="joint2_upper_limit" value="${101*pi/180}"/>
-  <xacro:property name="joint2_velocity_limit" value="${150*pi/180}"/>
+  <xacro:property name="joint2_lower_limit" value="${-120*pi/180}"/>
+  <xacro:property name="joint2_upper_limit" value="${120*pi/180}"/>
+  <xacro:property name="joint2_velocity_limit" value="${85*pi/180}"/>
   <xacro:property name="joint2_torque_limit" value="87"/>
   <xacro:property name="joint2_damping" value="21.75"/>
   <xacro:property name="joint2_friction" value="3.48"/>
   <xacro:property name="link2_name" value="link2"/>
   <xacro:property name="link2_mu" value="0.85"/>
+  <xacro:property name="link2_color" value="Blue"/>
 
   <xacro:property name="joint3_name" value="joint3"/>
   <xacro:property name="joint3_type" value="revolute"/>
-  <xacro:property name="joint3_origin_xyz" value="0 -0.316 0"/>
-  <xacro:property name="joint3_origin_rpy" value="${pi/2} 0 0"/>
+  <xacro:property name="joint3_origin_xyz" value="0 0.2045 0"/>
+  <xacro:property name="joint3_origin_rpy" value="${pi/2} 0 ${-pi}"/>
   <xacro:property name="joint3_axis_xyz" value="0 0 1"/>
-  <xacro:property name="joint3_lower_limit" value="${-166*pi/180}"/>
-  <xacro:property name="joint3_upper_limit" value="${166*pi/180}"/>
-  <xacro:property name="joint3_velocity_limit" value="${150*pi/180}"/>
+  <xacro:property name="joint3_lower_limit" value="${-170*pi/180}"/>
+  <xacro:property name="joint3_upper_limit" value="${170*pi/180}"/>
+  <xacro:property name="joint3_velocity_limit" value="${100*pi/180}"/>
   <xacro:property name="joint3_torque_limit" value="87"/>
   <xacro:property name="joint3_damping" value="21.75"/>
   <xacro:property name="joint3_friction" value="3.48"/>
   <xacro:property name="link3_name" value="link3"/>
   <xacro:property name="link3_mu" value="0.85"/>
+  <xacro:property name="link3_color" value="Orange"/>
 
   <xacro:property name="joint4_name" value="joint4"/>
   <xacro:property name="joint4_type" value="revolute"/>
-  <xacro:property name="joint4_origin_xyz" value="0.0825 0 0"/>
+  <xacro:property name="joint4_origin_xyz" value="0.0 0.0 0.2155"/>
   <xacro:property name="joint4_origin_rpy" value="${pi/2} 0 0"/>
   <xacro:property name="joint4_axis_xyz" value="0 0 1"/>
-  <xacro:property name="joint4_lower_limit" value="${-176/180*pi}"/>
-  <xacro:property name="joint4_upper_limit" value="${-4/180*pi}"/>
-  <xacro:property name="joint4_velocity_limit" value="${150*pi/180}"/>
+  <xacro:property name="joint4_lower_limit" value="${-120/180*pi}"/>
+  <xacro:property name="joint4_upper_limit" value="${120/180*pi}"/>
+  <xacro:property name="joint4_velocity_limit" value="${75*pi/180}"/>
   <xacro:property name="joint4_torque_limit" value="87"/>
   <xacro:property name="joint4_damping" value="21.75"/>
   <xacro:property name="joint4_friction" value="3.48"/>
   <xacro:property name="link4_name" value="link4"/>
   <xacro:property name="link4_mu" value="0.85"/>
+  <xacro:property name="link4_color" value="Blue"/>
 
   <xacro:property name="joint5_name" value="joint5"/>
   <xacro:property name="joint5_type" value="revolute"/>
-  <xacro:property name="joint5_origin_xyz" value="-0.0825 0.384 0"/>
-  <xacro:property name="joint5_origin_rpy" value="${-pi/2} 0 0"/>
+  <xacro:property name="joint5_origin_xyz" value="0.0 0.1845 0.0"/>
+  <xacro:property name="joint5_origin_rpy" value="${pi/2} 0 ${pi}"/>
   <xacro:property name="joint5_axis_xyz" value="0 0 1"/>
-  <xacro:property name="joint5_lower_limit" value="${-166*pi/180}"/>
-  <xacro:property name="joint5_upper_limit" value="${166*pi/180}"/>
-  <xacro:property name="joint5_velocity_limit" value="${pi}"/>
+  <xacro:property name="joint5_lower_limit" value="${-170*pi/180}"/>
+  <xacro:property name="joint5_upper_limit" value="${170*pi/180}"/>
+  <xacro:property name="joint5_velocity_limit" value="${130*pi/180}"/>
   <xacro:property name="joint5_torque_limit" value="12"/>
   <xacro:property name="joint5_damping" value="3.0"/>
   <xacro:property name="joint5_friction" value="0.48"/>
   <xacro:property name="link5_name" value="link5"/>
   <xacro:property name="link5_mu" value="0.85"/>
+  <xacro:property name="link5_color" value="Blue"/>
 
   <xacro:property name="joint6_name" value="joint6"/>
   <xacro:property name="joint6_type" value="revolute"/>
-  <xacro:property name="joint6_origin_xyz" value="0 0 0"/>
+  <xacro:property name="joint6_origin_xyz" value="0.0 0.0 0.2155"/>
   <xacro:property name="joint6_origin_rpy" value="${pi/2} 0 0"/>
   <xacro:property name="joint6_axis_xyz" value="0 0 1"/>
-  <xacro:property name="joint6_lower_limit" value="${-1/180*pi}"/>
-  <xacro:property name="joint6_upper_limit" value="${215/180*pi}"/>
-  <xacro:property name="joint6_velocity_limit" value="${pi}"/>
+  <xacro:property name="joint6_lower_limit" value="${-120/180*pi}"/>
+  <xacro:property name="joint6_upper_limit" value="${120/180*pi}"/>
+  <xacro:property name="joint6_velocity_limit" value="${135*pi/180}"/>
   <xacro:property name="joint6_torque_limit" value="12"/>
   <xacro:property name="joint6_damping" value="3.0"/>
   <xacro:property name="joint6_friction" value="0.48"/>
   <xacro:property name="link6_name" value="link6"/>
   <xacro:property name="link6_mu" value="0.85"/>
+  <xacro:property name="link6_color" value="Orange"/>
 
   <xacro:property name="joint7_name" value="joint7"/>
   <xacro:property name="joint7_type" value="revolute"/>
-  <xacro:property name="joint7_origin_xyz" value="0.088 0 0"/>
-  <xacro:property name="joint7_origin_rpy" value="${pi/2} 0 0"/>
+  <xacro:property name="joint7_origin_xyz" value="0.0 0.081 0.0"/>
+  <xacro:property name="joint7_origin_rpy" value="${pi/2} 0 ${-pi}"/>
   <xacro:property name="joint7_axis_xyz" value="0 0 1"/>
-  <xacro:property name="joint7_lower_limit" value="${-166*pi/180}"/>
-  <xacro:property name="joint7_upper_limit" value="${166*pi/180}"/>
-  <xacro:property name="joint7_velocity_limit" value="${pi}"/>
+  <xacro:property name="joint7_lower_limit" value="${-175*pi/180}"/>
+  <xacro:property name="joint7_upper_limit" value="${175*pi/180}"/>
+  <xacro:property name="joint7_velocity_limit" value="${135*pi/180}"/>
   <xacro:property name="joint7_torque_limit" value="12"/>
   <xacro:property name="joint7_damping" value="3.0"/>
   <xacro:property name="joint7_friction" value="0.48"/>
   <xacro:property name="link7_name" value="link7"/>
   <xacro:property name="link7_mu" value="0.85"/>
+  <xacro:property name="link7_color" value="Grey"/>
 
   <xacro:property name="wrist_flange_name" value="link8"/>
   <xacro:property name="wrist_flange_origin_xyz" value="0 0 0.107"/>
@@ -155,6 +163,7 @@
     mesh="${link0_mesh}"
     collision="${collision}"
     mu="${link0_mu}"
+    color="${link0_color}"
     />
 
     <!-- 1 -->
@@ -183,6 +192,7 @@
     mesh="${link1_mesh}"
     collision="${collision}"
     mu="${link1_mu}"
+    color="${link1_color}"
     />
 
     <!-- 2 -->
@@ -211,6 +221,7 @@
     mesh="${link2_mesh}"
     collision="${collision}"
     mu="${link2_mu}"
+    color="${link2_color}"
     />
 
     <!-- 3 -->
@@ -239,6 +250,7 @@
     mesh="${link3_mesh}"
     collision="${collision}"
     mu="${link3_mu}"
+    color="${link3_color}"
     />
 
     <!-- 4 -->
@@ -267,6 +279,7 @@
     mesh="${link4_mesh}"
     collision="${collision}"
     mu="${link4_mu}"
+    color="${link4_color}"
     />
 
     <!-- 5 -->
@@ -295,6 +308,7 @@
     mesh="${link5_mesh}"
     collision="${collision}"
     mu="${link5_mu}"
+    color="${link5_color}"
     />
 
     <!-- 6 -->
@@ -323,6 +337,7 @@
     mesh="${link6_mesh}"
     collision="${collision}"
     mu="${link6_mu}"
+    color="${link6_color}"
     />
 
     <!-- 7 -->
@@ -346,11 +361,13 @@
     safety_k_velocity="${safety_k_velocity}"
     gazebo_preserve_fixed_joint="${gazebo_preserve_fixed_joint}"
     />
+
     <xacro:fingrip_link
     link_name="${prefix}${link7_name}"
     mesh="${link7_mesh}"
     collision="${collision}"
     mu="${link7_mu}"
+    color="${link7_color}"
     />
 
     <!-- Wrist flange -->

@@ -5,7 +5,6 @@
 <!-- =================================================================================== -->
 <!-- SRDF for Franka Emika fingrip -->
 <robot name="fingrip">
-  
   <group name="arm">
     <chain base_link="fingrip_link0" tip_link="fingrip_hand_tcp"/>
   </group>
@@ -55,7 +54,6 @@
   <disable_collisions link1="fingrip_link4" link2="fingrip_link7" reason="Never"/>
   <disable_collisions link1="fingrip_link5" link2="fingrip_link6" reason="Adjacent"/>
   <disable_collisions link1="fingrip_link6" link2="fingrip_link7" reason="Adjacent"/>
-
   <group name="gripper">
     <link name="fingrip_hand"/>
     <link name="fingrip_leftfinger"/>
@@ -74,16 +72,16 @@
   <disable_collisions link1="fingrip_hand" link2="fingrip_leftfinger" reason="Adjacent"/>
   <disable_collisions link1="fingrip_hand" link2="fingrip_rightfinger" reason="Adjacent"/>
   <disable_collisions link1="fingrip_leftfinger" link2="fingrip_rightfinger" reason="Default"/>
-
   <end_effector group="gripper" name="gripper" parent_group="arm" parent_link="fingrip_hand_tcp"/>
   <disable_collisions link1="fingrip_hand" link2="fingrip_link3" reason="Never"/>
   <disable_collisions link1="fingrip_hand" link2="fingrip_link4" reason="Never"/>
   <disable_collisions link1="fingrip_hand" link2="fingrip_link6" reason="Never"/>
   <disable_collisions link1="fingrip_hand" link2="fingrip_link7" reason="Adjacent"/>
-  <disable_collisions link1="fingrip_leftfinger" link2="fingrip_link3" reason="Never"/>
-  <disable_collisions link1="fingrip_leftfinger" link2="fingrip_link4" reason="Never"/>
-  <disable_collisions link1="fingrip_leftfinger" link2="fingrip_link6" reason="Never"/>
-  <disable_collisions link1="fingrip_leftfinger" link2="fingrip_link7" reason="Never"/>
+  <!--
+  <disable_collisions link1="${prefix_gripper}leftfinger" link2="${prefix_arm}link3" reason="Never"/>
+  <disable_collisions link1="${prefix_gripper}leftfinger" link2="${prefix_arm}link4" reason="Never"/>
+  <disable_collisions link1="${prefix_gripper}leftfinger" link2="${prefix_arm}link6" reason="Never"/>
+  <disable_collisions link1="${prefix_gripper}leftfinger" link2="${prefix_arm}link7" reason="Never"/>-->
   <disable_collisions link1="fingrip_link3" link2="fingrip_rightfinger" reason="Never"/>
   <disable_collisions link1="fingrip_link4" link2="fingrip_rightfinger" reason="Never"/>
   <disable_collisions link1="fingrip_link6" link2="fingrip_rightfinger" reason="Never"/>

@@ -39,6 +39,7 @@ def main():
             exit(1)
 
     # Get path to all visual meshes
+    # TODO to take into account arm/gripper folder
     visual_mesh_dir = path.join(
         path.dirname(path.dirname(path.realpath(__file__))), "fingrip", "meshes", "visual"
     )

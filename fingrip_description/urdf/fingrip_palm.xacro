@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<!-- Xacro for Franka Emika fingrip gripper -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!--                   -->
+  <!-- Imported elements -->
+  <!--                   -->
+  <xacro:include filename="$(find fingrip_description)/urdf/fingrip_utils.xacro"/>
+
+  <!--            -->
+  <!-- Properties -->
+  <!--            -->
+  <xacro:property name="palm_name" value="palm"/>
+  <xacro:property name="joint_palm_name" value="joint_palm"/>
+  <xacro:property name="joint_palm_type" value="fixed"/>
+  <xacro:property name="palm_origin_xyz" value="0 0 0"/>
+  <xacro:property name="palm_origin_rpy" value="0 0 0"/>
+
+
+  <!--       -->
+  <!-- Macro -->
+  <!--       -->
+  <xacro:property name="default_origin_xyz" value="0 0 0"/>
+  <xacro:property name="default_origin_rpy" value="0 0 0"/>
+
+
+
+  <xacro:macro name="fingrip_palm" params="
+    parent
+    prefix
+    hand_name
+    joint_name
+    joint_type
+    joint_origin_xyz
+    joint_origin_rpy
+    gazebo_preserve_fixed_joint:=false
+    collision:=true
+    mu:=1.0
+    nbFingers:=3
+    handtype:=1
+  ">
+
+    <!-- Wrist / Base Palm -->
+    <xacro:if value="${handtype == 1}">
+        <xacro:fingrip_joint
+        parent="${parent}"
+        child="${prefix}${hand_name}"
+        joint_name="${joint_name}"
+        joint_type="${joint_type}"
+        joint_origin_xyz="${joint_origin_xyz}"
+        joint_origin_rpy="${joint_origin_rpy}"
+        gazebo_preserve_fixed_joint="${gazebo_preserve_fixed_joint}"
+        />
+        <xacro:fingrip_link
+        link_name="${prefix}${hand_name}"
+        mesh="${palm_base_mesh_path}1"
+        collision="${collision}"
+        mu="${mu}"
+        />
+    </xacro:if>
+
+    <xacro:unless value="${handtype == 1}">
+        <xacro:fingrip_joint
+        parent="${parent}"
+        child="${prefix}${hand_name}"
+        joint_name="${joint_name}"
+        joint_type="${joint_type}"
+        joint_origin_xyz="${joint_origin_xyz}"
+        joint_origin_rpy="${joint_origin_rpy}"
+        gazebo_preserve_fixed_joint="${gazebo_preserve_fixed_joint}"
+        />
+        <xacro:fingrip_link
+        link_name="${prefix}${hand_name}"
+        mesh="${palm_base_mesh_path}2"
+        collision="${collision}"
+        mu="${mu}"
+        />
+    </xacro:unless>
+
+    <!-- Palm Case -->
+    <xacro:if value="${nbFingers == 3}">
+        <xacro:fingrip_joint
+        parent="${prefix}${hand_name}"
+        child="${prefix}${palm_name}"
+        joint_name="${prefix}${joint_palm_name}"
+        joint_type="${joint_palm_type}"
+        joint_origin_xyz="${palm_origin_xyz}"
+        joint_origin_rpy="${palm_origin_rpy}"
+        gazebo_preserve_fixed_joint="${gazebo_preserve_fixed_joint}"
+        />
+        <xacro:fingrip_link
+        link_name="${prefix}${palm_name}"
+        mesh="${case_mesh_path}3D"
+        collision="${collision}"
+        mu="${mu}"
+        />
+    </xacro:if>
+
+    <xacro:unless value="${nbFingers == 3}">
+        <xacro:fingrip_joint
+        parent="${wrist_flange}"
+        child="${prefix}${palm_name}"
+        joint_name="${prefix}${joint_palm_name}"
+        joint_type="${joint_palm_type}"
+        joint_origin_xyz="${palm_origin_xyz}"
+        joint_origin_rpy="${palm_origin_rpy}"
+        gazebo_preserve_fixed_joint="${gazebo_preserve_fixed_joint}"
+        />
+        <xacro:fingrip_link
+        link_name="${prefix}${palm_name}"
+        mesh="${case_mesh_path}4D"
+        collision="${collision}"
+        mu="${mu}"
+        />
+    </xacro:unless>
+
+    </xacro:macro>
+</robot>
