@@ -21,8 +21,8 @@ gripper_trajectory_controller:
   type: FollowJointTrajectory
   default: true
   joints:
-    - fingrip_finger_joint1
-    - fingrip_finger_joint2
+    - fingrip_finger1_base_joint
+    - fingrip_finger2_base_joint
 
 # ----- Gripper action controller (not yet functional)
 # gripper_action_controller:

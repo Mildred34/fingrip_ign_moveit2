@@ -12,36 +12,44 @@
   <!--            -->
   <!-- Properties -->
   <!--            -->
+  <!-- ROS CONTROL -->
+  <xacro:property name="ros2control_name" value="fingrip_gripper_system"/>
 
-  <!-- WRIST -->
+
+  <!--    WRIST   -->
   <xacro:property name="joint_wrist_name" value="joint_wrist"/>
   <xacro:property name="joint_wrist_type" value="fixed"/>
   <xacro:property name="hand_name" value="hand"/>
   <xacro:property name="hand_mu" value="0.85"/>
 
+  <!-- End-Effector -->
+  <xacro:property name="ee_name" value="hand_tcp"/>
+  <xacro:property name="ee_origin_xyz" value="0 0 0.12"/>
+  <xacro:property name="ee_origin_rpy" value="0 0 0"/>
+
   <!-- Finger dependent properties -->
   <!-- FINGER 1 -->
   <xacro:property name="finger1_name" value="finger1"/>
   <xacro:property name="joint_finger1_base_type" value="revolute"/>
-  <xacro:property name="joint_finger1_base_origin_xyz" value="0 0 0.0584"/>
-  <xacro:property name="joint_finger1_base_origin_rpy" value="0 0 0"/>
-  <xacro:property name="joint_finger1_base_axis_xyz" value="0 1 0"/>
+  <xacro:property name="joint_finger1_base_origin_xyz" value="0.054 0.054 0.09885097"/>
+  <xacro:property name="joint_finger1_base_origin_rpy" value="0 ${-pi/2} ${-pi}"/>
+  <xacro:property name="joint_finger1_base_axis_xyz" value="1 0 0"/>
   <xacro:property name="link_finger1_mesh_offset" value="0 0 0"/>
 
   <!-- FINGER 2 -->
   <xacro:property name="finger2_name" value="finger2"/>
   <xacro:property name="joint_finger2_base_type" value="revolute"/>
-  <xacro:property name="joint_finger2_base_origin_xyz" value="0 0 0.0584"/>
-  <xacro:property name="joint_finger2_base_origin_rpy" value="0 0 0"/>
-  <xacro:property name="joint_finger2_base_axis_xyz" value="0 1 0"/>
+  <xacro:property name="joint_finger2_base_origin_xyz" value="0.054 -0.054 0.09885097"/>
+  <xacro:property name="joint_finger2_base_origin_rpy" value="${pi} ${-pi/2} ${pi}"/>
+  <xacro:property name="joint_finger2_base_axis_xyz" value="1 0 0"/>
   <xacro:property name="link_finger2_mesh_offset" value="0 0 0"/>
 
   <!-- FINGER 3 -->
   <xacro:property name="finger3_name" value="finger3"/>
   <xacro:property name="joint_finger3_base_type" value="fixed"/>
-  <xacro:property name="joint_finger3_base_origin_xyz" value="0 0 0.0584"/>
-  <xacro:property name="joint_finger3_base_origin_rpy" value="0 0 0"/>
-  <xacro:property name="joint_finger3_base_axis_xyz" value="0 1 0"/>
+  <xacro:property name="joint_finger3_base_origin_xyz" value="-0.04398 0 0.09885097"/>
+  <xacro:property name="joint_finger3_base_origin_rpy" value="${-pi/2} ${-pi/2} 0"/>
+  <xacro:property name="joint_finger3_base_axis_xyz" value="0 0 0"/>
   <xacro:property name="link_finger3_mesh_offset" value="0 0 0"/>
 
   <!-- FINGER 4 -->
@@ -49,7 +57,7 @@
   <xacro:property name="joint_finger4_base_type" value="fixed"/>
   <xacro:property name="joint_finger4_base_origin_xyz" value="0 0 0.0584"/>
   <xacro:property name="joint_finger4_base_origin_rpy" value="0 0 0"/>
-  <xacro:property name="joint_finger4_base_axis_xyz" value="0 1 0"/>
+  <xacro:property name="joint_finger4_base_axis_xyz" value="0 0 0"/>
   <xacro:property name="link_finger4_mesh_offset" value="0 0 0"/>
 
 
@@ -102,6 +110,8 @@
         joint_origin_xyz="${joint_finger1_base_origin_xyz}"
         joint_origin_rpy="${joint_finger1_base_origin_rpy}"
         joint_axis_xyz="${joint_finger1_base_axis_xyz}"
+        joint_lower_limit="${-joint_base_upper_limit}"
+        joint_upper_limit="${-joint_base_lower_limit}"
         gazebo_preserve_fixed_joint="${gazebo_preserve_fixed_joint}"
         />
 
@@ -160,8 +170,34 @@
 
     <!-- ROS 2 control -->
     <xacro:if value="${ros2_control}">
-      <xacro:ros2_control_fingrip_gripper prefix="${prefix}" plugin="${ros2_control_plugin}" command_interface="${ros2_control_command_interface}"/>
+      <ros2_control name="${ros2control_name}" type="system">
+        <xacro:ros2_control_fingrip_gripper 
+        prefix="${prefix}" 
+        plugin="${ros2_control_plugin}" 
+        command_interface="${ros2_control_command_interface}"
+        finger_name="${finger1_name}"/>
+        <xacro:ros2_control_fingrip_gripper 
+        prefix="${prefix}" 
+        plugin="${ros2_control_plugin}" 
+        command_interface="${ros2_control_command_interface}"
+        finger_name="${finger2_name}"/>
+        <!--
+        <xacro:ros2_control_fingrip_gripper 
+        prefix="${prefix}" 
+        plugin="${ros2_control_plugin}" 
+        command_interface="${ros2_control_command_interface}"
+        finger_name="${finger3_name}"/>
+        -->
+        <xacro:unless value="${nbFingers == 3}">
+          <xacro:ros2_control_fingrip_gripper 
+          prefix="${prefix}" 
+          plugin="${ros2_control_plugin}" 
+          command_interface="${ros2_control_command_interface}"
+          finger_name="${finger4_name}"/>
+        </xacro:unless>
+      </ros2_control>
     </xacro:if>
+
   </xacro:macro>
   
 </robot>

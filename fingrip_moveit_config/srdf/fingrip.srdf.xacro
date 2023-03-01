@@ -44,13 +44,20 @@
   <disable_collisions link1="${prefix_gripper}hand" link2="${prefix_arm}link4" reason="Never"/>
   <disable_collisions link1="${prefix_gripper}hand" link2="${prefix_arm}link6" reason="Never"/>
   <disable_collisions link1="${prefix_gripper}hand" link2="${prefix_arm}link7" reason="Adjacent"/>
-  <disable_collisions link1="${prefix_gripper}leftfinger" link2="${prefix_arm}link3" reason="Never"/>
-  <disable_collisions link1="${prefix_gripper}leftfinger" link2="${prefix_arm}link4" reason="Never"/>
-  <disable_collisions link1="${prefix_gripper}leftfinger" link2="${prefix_arm}link6" reason="Never"/>
-  <disable_collisions link1="${prefix_gripper}leftfinger" link2="${prefix_arm}link7" reason="Never"/>
-  <disable_collisions link1="${prefix_arm}link3" link2="${prefix_gripper}rightfinger" reason="Never"/>
-  <disable_collisions link1="${prefix_arm}link4" link2="${prefix_gripper}rightfinger" reason="Never"/>
-  <disable_collisions link1="${prefix_arm}link6" link2="${prefix_gripper}rightfinger" reason="Never"/>
-  <disable_collisions link1="${prefix_arm}link7" link2="${prefix_gripper}rightfinger" reason="Never"/>
-
+  <disable_collisions link1="${prefix_gripper}palm" link2="${prefix_arm}link3" reason="Never"/>
+  <disable_collisions link1="${prefix_gripper}palm" link2="${prefix_arm}link4" reason="Never"/>
+  <disable_collisions link1="${prefix_gripper}palm" link2="${prefix_arm}link6" reason="Never"/>
+  <disable_collisions link1="${prefix_gripper}palm" link2="${prefix_arm}link7" reason="Never"/>
+  <disable_collisions link1="${prefix_gripper}finger1_base_link" link2="${prefix_arm}link3" reason="Never"/>
+  <disable_collisions link1="${prefix_gripper}finger1_base_link" link2="${prefix_arm}link4" reason="Never"/>
+  <disable_collisions link1="${prefix_gripper}finger1_base_link" link2="${prefix_arm}link6" reason="Never"/>
+  <disable_collisions link1="${prefix_gripper}finger1_base_link" link2="${prefix_arm}link7" reason="Never"/>
+  <disable_collisions link1="${prefix_gripper}finger2_base_link" link2="${prefix_arm}link3" reason="Never"/>
+  <disable_collisions link1="${prefix_gripper}finger2_base_link" link2="${prefix_arm}link4" reason="Never"/>
+  <disable_collisions link1="${prefix_gripper}finger2_base_link" link2="${prefix_arm}link6" reason="Never"/>
+  <disable_collisions link1="${prefix_gripper}finger2_base_link" link2="${prefix_arm}link7" reason="Never"/>
+  <disable_collisions link1="${prefix_gripper}finger3_base_link" link2="${prefix_arm}link3" reason="Never"/>
+  <disable_collisions link1="${prefix_gripper}finger3_base_link" link2="${prefix_arm}link4" reason="Never"/>
+  <disable_collisions link1="${prefix_gripper}finger3_base_link" link2="${prefix_arm}link6" reason="Never"/>
+  <disable_collisions link1="${prefix_gripper}finger3_base_link" link2="${prefix_arm}link7" reason="Never"/>
 </robot>

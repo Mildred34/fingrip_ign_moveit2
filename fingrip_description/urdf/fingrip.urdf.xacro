@@ -48,13 +48,13 @@
   <!-- Flag to preserve fixed joints and prevent lumping when generating SDF for Gazebo -->
   <xacro:arg name="gazebo_preserve_fixed_joint" default="false"/>
 
-  <!-- Flag to use 3 or 4 fingers model  -->
+  <!-- Flag to use underactuation model --> 
   <xacro:arg name="underactuation" default="true"/>
 
-  <!-- Flag to use underactuation model -->
+  <!-- Flag to use long or short fingers model  -->
   <xacro:arg name="longFingertip" default="false"/>
 
-  <!-- Flag to use long or short fingers model  -->
+  <!-- Flag to use 3 or 4 fingers model  -->
   <xacro:arg name="nbFingers" default="3"/>
 
   <!-- Flag to use small or bigger palm size  -->
@@ -73,7 +73,7 @@
   <xacro:property name="origin_rpy" value="0 0 0"/>
 
   <!-- Offset of gripper with respect to wrist flange -->
-  <xacro:property name="gripper_offset_xyz" value="0 0 0"/>
+  <xacro:property name="gripper_offset_xyz" value="0 0 0.0"/>
   <xacro:property name="gripper_offset_rpy" value="0 0 0"/>
 
   <!-- Import Rviz colors -->

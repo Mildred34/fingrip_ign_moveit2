@@ -32,9 +32,9 @@
 
   <!-- Model changes -->
   <!-- 3 fingers -->
-  <xacro:property name="f3_suffix" value="3D"/>
+  <xacro:property name="f3_suffix" value="3d"/>
   <!-- 4 fingers -->
-  <xacro:property name="f4_suffix" value="4D"/>
+  <xacro:property name="f4_suffix" value="4d"/>
 
   <!-- Model 1 -->
   <xacro:property name="model1_suffix" value="1"/>
@@ -117,7 +117,7 @@
     <!-- PALM BASE -->
     <xacro:if value="${mesh == palm_base_mesh_path+'1'}">
       <inertial>
-        <origin xyz="-6.7624e-06 0.00152435 0.0275912" rpy="${mesh_offset_rpy}"/>
+        <origin xyz="0.00 0.0 -0.04835" rpy="${mesh_offset_rpy}"/>
         <mass value="0.14060765127978503"/>
         <inertia ixx="0.0005365450414352072" iyy="7.70511954783727e-05" izz="0.0004938176882694914" ixy="1.7911952957732454e-08" ixz="-2.320071910601251e-08" iyz="4.681149945315967e-08"/>
       </inertial>
@@ -132,7 +132,7 @@
     </xacro:if>
 
     <!-- PALM CASE -->
-    <xacro:if value="${mesh == case_mesh_path+'3D'}">
+    <xacro:if value="${mesh == case_mesh_path+'3d'}">
       <inertial>
         <origin xyz="-6.7624e-06 0.00152435 0.0275912" rpy="${mesh_offset_rpy}"/>
         <mass value="0.14060765127978503"/>
@@ -140,7 +140,7 @@
       </inertial>
     </xacro:if>
 
-    <xacro:if value="${mesh == case_mesh_path+'4D'}">
+    <xacro:if value="${mesh == case_mesh_path+'4d'}">
       <inertial>
         <origin xyz="-6.7624e-06 0.00152435 0.0275912" rpy="${mesh_offset_rpy}"/>
         <mass value="0.14060765127978503"/>

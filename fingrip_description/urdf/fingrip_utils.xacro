@@ -132,7 +132,7 @@
       </transmission>
     </xacro:unless>
 
-    <!-- Spring stiffness and reference for non-fifex joint -->
+    <!-- Spring stiffness and reference for non-fifed joint -->
     <xacro:unless value="${joint_type == 'fixed'}">
       <gazebo reference="${joint_name}">
         <springStiffness value="${gazebo_spring_stiffness}"/>

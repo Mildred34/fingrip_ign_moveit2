@@ -10,24 +10,31 @@
   ">
     <group name="gripper">
       <link name="${prefix}hand"/>
-      <link name="${prefix}leftfinger"/>
-      <link name="${prefix}rightfinger"/>
-      <joint name="${prefix}finger_joint1"/>
-      <joint name="${prefix}finger_joint2"/>
+      <link name="${prefix}palm"/>
+      <link name="${prefix}finger1_base_link"/>
+      <link name="${prefix}finger2_base_link"/>
+      <link name="${prefix}finger3_base_link"/>
+      <joint name="${prefix}finger1_base_joint"/>
+      <joint name="${prefix}finger2_base_joint"/>
     </group>
 
     <group_state name="open" group="gripper">
-      <joint name="${prefix}finger_joint1" value="0.04"/>
-      <joint name="${prefix}finger_joint2" value="0.04"/>
+      <joint name="${prefix}finger1_base_joint" value="-${pi/2}"/>
+      <joint name="${prefix}finger2_base_joint" value="${pi/2}"/>
     </group_state>
     <group_state name="close" group="gripper">
-      <joint name="${prefix}finger_joint1" value="0.0"/>
-      <joint name="${prefix}finger_joint2" value="0.0"/>
+      <joint name="${prefix}finger1_base_joint" value="0.0"/>
+      <joint name="${prefix}finger2_base_joint" value="0.0"/>
     </group_state>
 
-    <disable_collisions link1="${prefix}hand" link2="${prefix}leftfinger" reason="Adjacent"/>
-    <disable_collisions link1="${prefix}hand" link2="${prefix}rightfinger" reason="Adjacent"/>
-    <disable_collisions link1="${prefix}leftfinger" link2="${prefix}rightfinger" reason="Default"/>
+    <disable_collisions link1="${prefix}hand" link2="${prefix}palm" reason="Adjacent"/>
+    <disable_collisions link1="${prefix}hand" link2="${prefix}finger1_base_link" reason="Adjacent"/>
+    <disable_collisions link1="${prefix}palm" link2="${prefix}finger1_base_link" reason="Adjacent"/>
+    <disable_collisions link1="${prefix}hand" link2="${prefix}finger2_base_link" reason="Adjacent"/>
+    <disable_collisions link1="${prefix}palm" link2="${prefix}finger2_base_link" reason="Adjacent"/>
+    <disable_collisions link1="${prefix}hand" link2="${prefix}finger3_base_link" reason="Adjacent"/>
+    <disable_collisions link1="${prefix}palm" link2="${prefix}finger3_base_link" reason="Adjacent"/>
+    <!-- <disable_collisions link1="${prefix}leftfinger" link2="${prefix}rightfinger" reason="Default"/> -->
   </xacro:macro>
 
 </robot>

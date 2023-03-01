@@ -8,6 +8,7 @@
   <group name="arm">
     <chain base_link="fingrip_link0" tip_link="fingrip_hand_tcp"/>
   </group>
+  <!-- Can configurate pos -->
   <group_state group="arm" name="ready">
     <joint name="fingrip_joint1" value="0"/>
     <joint name="fingrip_joint2" value="-0.7853981633974483"/>
@@ -23,8 +24,8 @@
     <joint name="fingrip_joint3" value="0"/>
     <joint name="fingrip_joint4" value="0"/>
     <joint name="fingrip_joint5" value="0"/>
-    <joint name="fingrip_joint6" value="1.5707963267948966"/>
-    <joint name="fingrip_joint7" value="0.7853981633974483"/>
+    <joint name="fingrip_joint6" value="0"/>
+    <joint name="fingrip_joint7" value="0"/>
   </group_state>
   <group_state group="arm" name="transport">
     <joint name="fingrip_joint1" value="0"/>
@@ -56,34 +57,48 @@
   <disable_collisions link1="fingrip_link6" link2="fingrip_link7" reason="Adjacent"/>
   <group name="gripper">
     <link name="fingrip_hand"/>
-    <link name="fingrip_leftfinger"/>
-    <link name="fingrip_rightfinger"/>
-    <joint name="fingrip_finger_joint1"/>
-    <joint name="fingrip_finger_joint2"/>
+    <link name="fingrip_palm"/>
+    <link name="fingrip_finger1_base_link"/>
+    <link name="fingrip_finger2_base_link"/>
+    <link name="fingrip_finger3_base_link"/>
+    <joint name="fingrip_finger1_base_joint"/>
+    <joint name="fingrip_finger2_base_joint"/>
   </group>
   <group_state group="gripper" name="open">
-    <joint name="fingrip_finger_joint1" value="0.04"/>
-    <joint name="fingrip_finger_joint2" value="0.04"/>
+    <joint name="fingrip_finger1_base_joint" value="-1.5707963267948966"/>
+    <joint name="fingrip_finger2_base_joint" value="1.5707963267948966"/>
   </group_state>
   <group_state group="gripper" name="close">
-    <joint name="fingrip_finger_joint1" value="0.0"/>
-    <joint name="fingrip_finger_joint2" value="0.0"/>
+    <joint name="fingrip_finger1_base_joint" value="0.0"/>
+    <joint name="fingrip_finger2_base_joint" value="0.0"/>
   </group_state>
-  <disable_collisions link1="fingrip_hand" link2="fingrip_leftfinger" reason="Adjacent"/>
-  <disable_collisions link1="fingrip_hand" link2="fingrip_rightfinger" reason="Adjacent"/>
-  <disable_collisions link1="fingrip_leftfinger" link2="fingrip_rightfinger" reason="Default"/>
+  <disable_collisions link1="fingrip_hand" link2="fingrip_palm" reason="Adjacent"/>
+  <disable_collisions link1="fingrip_hand" link2="fingrip_finger1_base_link" reason="Adjacent"/>
+  <disable_collisions link1="fingrip_palm" link2="fingrip_finger1_base_link" reason="Adjacent"/>
+  <disable_collisions link1="fingrip_hand" link2="fingrip_finger2_base_link" reason="Adjacent"/>
+  <disable_collisions link1="fingrip_palm" link2="fingrip_finger2_base_link" reason="Adjacent"/>
+  <disable_collisions link1="fingrip_hand" link2="fingrip_finger3_base_link" reason="Adjacent"/>
+  <disable_collisions link1="fingrip_palm" link2="fingrip_finger3_base_link" reason="Adjacent"/>
+  <!-- <disable_collisions link1="${prefix}leftfinger" link2="${prefix}rightfinger" reason="Default"/> -->
   <end_effector group="gripper" name="gripper" parent_group="arm" parent_link="fingrip_hand_tcp"/>
   <disable_collisions link1="fingrip_hand" link2="fingrip_link3" reason="Never"/>
   <disable_collisions link1="fingrip_hand" link2="fingrip_link4" reason="Never"/>
   <disable_collisions link1="fingrip_hand" link2="fingrip_link6" reason="Never"/>
   <disable_collisions link1="fingrip_hand" link2="fingrip_link7" reason="Adjacent"/>
-  <!--
-  <disable_collisions link1="${prefix_gripper}leftfinger" link2="${prefix_arm}link3" reason="Never"/>
-  <disable_collisions link1="${prefix_gripper}leftfinger" link2="${prefix_arm}link4" reason="Never"/>
-  <disable_collisions link1="${prefix_gripper}leftfinger" link2="${prefix_arm}link6" reason="Never"/>
-  <disable_collisions link1="${prefix_gripper}leftfinger" link2="${prefix_arm}link7" reason="Never"/>-->
-  <disable_collisions link1="fingrip_link3" link2="fingrip_rightfinger" reason="Never"/>
-  <disable_collisions link1="fingrip_link4" link2="fingrip_rightfinger" reason="Never"/>
-  <disable_collisions link1="fingrip_link6" link2="fingrip_rightfinger" reason="Never"/>
-  <disable_collisions link1="fingrip_link7" link2="fingrip_rightfinger" reason="Never"/>
+  <disable_collisions link1="fingrip_palm" link2="fingrip_link3" reason="Never"/>
+  <disable_collisions link1="fingrip_palm" link2="fingrip_link4" reason="Never"/>
+  <disable_collisions link1="fingrip_palm" link2="fingrip_link6" reason="Never"/>
+  <disable_collisions link1="fingrip_palm" link2="fingrip_link7" reason="Never"/>
+  <disable_collisions link1="fingrip_finger1_base_link" link2="fingrip_link3" reason="Never"/>
+  <disable_collisions link1="fingrip_finger1_base_link" link2="fingrip_link4" reason="Never"/>
+  <disable_collisions link1="fingrip_finger1_base_link" link2="fingrip_link6" reason="Never"/>
+  <disable_collisions link1="fingrip_finger1_base_link" link2="fingrip_link7" reason="Never"/>
+  <disable_collisions link1="fingrip_finger2_base_link" link2="fingrip_link3" reason="Never"/>
+  <disable_collisions link1="fingrip_finger2_base_link" link2="fingrip_link4" reason="Never"/>
+  <disable_collisions link1="fingrip_finger2_base_link" link2="fingrip_link6" reason="Never"/>
+  <disable_collisions link1="fingrip_finger2_base_link" link2="fingrip_link7" reason="Never"/>
+  <disable_collisions link1="fingrip_finger3_base_link" link2="fingrip_link3" reason="Never"/>
+  <disable_collisions link1="fingrip_finger3_base_link" link2="fingrip_link4" reason="Never"/>
+  <disable_collisions link1="fingrip_finger3_base_link" link2="fingrip_link6" reason="Never"/>
+  <disable_collisions link1="fingrip_finger3_base_link" link2="fingrip_link7" reason="Never"/>
 </robot>

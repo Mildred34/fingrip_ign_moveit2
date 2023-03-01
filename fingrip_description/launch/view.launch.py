@@ -40,6 +40,10 @@ def generate_launch_description() -> LaunchDescription:
         "ros2_control_command_interface"
     )
     gazebo_preserve_fixed_joint = LaunchConfiguration("gazebo_preserve_fixed_joint")
+    underactuation = LaunchConfiguration("underactuation")
+    longFingertip = LaunchConfiguration("longFingertip")
+    nbFingers = LaunchConfiguration("nbFingers")
+    hand_type = LaunchConfiguration("hand_type")
     rviz_config = LaunchConfiguration("rviz_config")
     use_sim_time = LaunchConfiguration("use_sim_time")
     log_level = LaunchConfiguration("log_level")
@@ -91,6 +95,18 @@ def generate_launch_description() -> LaunchDescription:
             " ",
             "gazebo_preserve_fixed_joint:=",
             gazebo_preserve_fixed_joint,
+            " ",
+            "underactuation:=",
+            underactuation,
+            " ",
+            "longFingertip:=",
+            longFingertip,
+            " ",
+            "nbFingers:=",
+            nbFingers,
+            " ",
+            "hand_type:=",
+            hand_type,
         ]
     )
     robot_description = {"robot_description": robot_description_content}
@@ -220,6 +236,32 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
             default_value="false",
             description="Flag to preserve fixed joints and prevent lumping when generating SDF for Gazebo.",
         ),
+
+        # Gripper Parameters
+        DeclareLaunchArgument(
+            "underactuation",
+            default_value="true",
+            description="Flag to preserve underactuated gripper",
+        ),
+
+        DeclareLaunchArgument(
+            "longFingertip",
+            default_value="false",
+            description="If you wanna long fingers or short ones",
+        ),
+
+        DeclareLaunchArgument(
+            "nbFingers",
+            default_value="3",
+            description="Flag to use 3 or 4 fingers model",
+        ),
+
+        DeclareLaunchArgument(
+            "hand_type",
+            default_value="1",
+            description="Flag to use small or bigger palm size",
+        ),
+
         # Miscellaneous
         DeclareLaunchArgument(
             "rviz_config",

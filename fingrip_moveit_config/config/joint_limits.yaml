@@ -43,12 +43,12 @@ joint_limits:
     max_velocity: 2.61
     has_acceleration_limits: true
     max_acceleration: 5.0
-  fingrip_finger_joint1:
+  fingrip_finger1_base_joint:
     has_velocity_limits: true
     max_velocity: 0.1
     has_acceleration_limits: false
     max_acceleration: 0.0
-  fingrip_finger_joint2:
+  fingrip_finger2_base_joint:
     has_velocity_limits: true
     max_velocity: 0.1
     has_acceleration_limits: false

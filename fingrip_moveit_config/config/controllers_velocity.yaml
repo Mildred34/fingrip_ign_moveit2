@@ -66,8 +66,8 @@ joint_trajectory_controller:
 gripper_trajectory_controller:
   ros__parameters:
     joints:
-      - fingrip_finger_joint1
-      - fingrip_finger_joint2
+      - fingrip_finger1_base_joint
+      - fingrip_finger2_base_joint
     command_interfaces:
       - velocity
     state_interfaces:

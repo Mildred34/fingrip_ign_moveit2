@@ -12,6 +12,7 @@
       <chain base_link="${prefix}link0" tip_link="${prefix}hand_tcp"/>
     </group>
 
+    <!-- Can configurate pos -->
     <group_state group="arm" name="ready">
       <joint name="${prefix}joint1" value="0"/>
       <joint name="${prefix}joint2" value="${-pi/4}"/>
@@ -28,8 +29,8 @@
       <joint name="${prefix}joint3" value="0"/>
       <joint name="${prefix}joint4" value="0"/>
       <joint name="${prefix}joint5" value="0"/>
-      <joint name="${prefix}joint6" value="${pi/2}"/>
-      <joint name="${prefix}joint7" value="${pi/4}"/>
+      <joint name="${prefix}joint6" value="0"/>
+      <joint name="${prefix}joint7" value="0"/>
     </group_state>
     
     <group_state group="arm" name="transport">

@@ -13,9 +13,8 @@
   <xacro:property name="palm_name" value="palm"/>
   <xacro:property name="joint_palm_name" value="joint_palm"/>
   <xacro:property name="joint_palm_type" value="fixed"/>
-  <xacro:property name="palm_origin_xyz" value="0 0 0"/>
+  <xacro:property name="palm_origin_xyz" value="0 0 0.013"/>
   <xacro:property name="palm_origin_rpy" value="0 0 0"/>
-
 
   <!--       -->
   <!-- Macro -->
@@ -53,7 +52,7 @@
         />
         <xacro:fingrip_link
         link_name="${prefix}${hand_name}"
-        mesh="${palm_base_mesh_path}1"
+        mesh="${palm_base_mesh_path}${model1_suffix}"
         collision="${collision}"
         mu="${mu}"
         />
@@ -71,7 +70,7 @@
         />
         <xacro:fingrip_link
         link_name="${prefix}${hand_name}"
-        mesh="${palm_base_mesh_path}2"
+        mesh="${palm_base_mesh_path}${model2_suffix}"
         collision="${collision}"
         mu="${mu}"
         />
@@ -90,7 +89,7 @@
         />
         <xacro:fingrip_link
         link_name="${prefix}${palm_name}"
-        mesh="${case_mesh_path}3D"
+        mesh="${case_mesh_path}${f3_suffix}"
         collision="${collision}"
         mu="${mu}"
         />
@@ -108,7 +107,7 @@
         />
         <xacro:fingrip_link
         link_name="${prefix}${palm_name}"
-        mesh="${case_mesh_path}4D"
+        mesh="${case_mesh_path}${f4_suffix}"
         collision="${collision}"
         mu="${mu}"
         />

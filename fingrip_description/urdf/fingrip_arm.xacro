@@ -124,8 +124,8 @@
   <xacro:property name="link7_color" value="Grey"/>
 
   <xacro:property name="wrist_flange_name" value="link8"/>
-  <xacro:property name="wrist_flange_origin_xyz" value="0 0 0.107"/>
-  <xacro:property name="wrist_flange_origin_rpy" value="0 0 ${-pi/4}"/>
+  <xacro:property name="wrist_flange_origin_xyz" value="0 0 0.132936"/>
+  <xacro:property name="wrist_flange_origin_rpy" value="0 0 0"/>
 
 
   <!--       -->
