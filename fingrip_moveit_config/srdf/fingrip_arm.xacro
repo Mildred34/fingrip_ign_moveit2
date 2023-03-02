@@ -7,6 +7,7 @@
   <!--       -->
   <xacro:macro name="fingrip_arm" params="
     prefix:=fingrip_
+    nbArmjoints:=7
   ">
     <group name="arm">
       <chain base_link="${prefix}link0" tip_link="${prefix}hand_tcp"/>

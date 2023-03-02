@@ -5,35 +5,67 @@
   <!--       -->
   <!-- Macro -->
   <!--       -->
+  <xacro:macro name="noabductionjointtozero" params="
+    prefix:=fingrip_
+    nb_abduction_finger:=2
+    nbFingers:=3
+  ">
+
+    <xacro:if value="${nbFingers > nb_abduction_finger}">
+        <joint name="${prefix}finger${nbFingers}_proximal_joint" value="0"/> 
+        <xacro:noabductionjointtozero 
+          prefix="${prefix}"
+          nb_abduction_finger="${nb_abduction_finger}"
+          nbFingers="${nbFingers-1}" 
+          />
+    </xacro:if>
+
+  </xacro:macro>
+
   <xacro:macro name="fingrip_gripper" params="
     prefix:=fingrip_
+    nbFingers:=3
+    nb_abduction_finger:=2
   ">
     <group name="gripper">
       <link name="${prefix}hand"/>
       <link name="${prefix}palm"/>
-      <link name="${prefix}finger1_base_link"/>
-      <link name="${prefix}finger2_base_link"/>
-      <link name="${prefix}finger3_base_link"/>
-      <joint name="${prefix}finger1_base_joint"/>
-      <joint name="${prefix}finger2_base_joint"/>
+      <xacro:fingrip_gripper_group
+        prefix="${prefix}"
+        nbFingers="$(arg nbFingers)"
+      />
     </group>
 
-    <group_state name="open" group="gripper">
+    <!-- TODO Depends if abduction there is. -->
+    <group_state name="open_abduction" group="gripper">
       <joint name="${prefix}finger1_base_joint" value="-${pi/2}"/>
       <joint name="${prefix}finger2_base_joint" value="${pi/2}"/>
+      <joint name="${prefix}finger1_proximal_joint" value="0"/>
+      <joint name="${prefix}finger2_proximal_joint" value="0"/>
+      <xacro:noabductionjointtozero
+        prefix="${prefix}"
+        nbFingers="${nbFingers}"
+        nb_abduction_finger="${nb_abduction_finger}"
+      />
     </group_state>
-    <group_state name="close" group="gripper">
+
+    <group_state name="close_abduction" group="gripper">
       <joint name="${prefix}finger1_base_joint" value="0.0"/>
       <joint name="${prefix}finger2_base_joint" value="0.0"/>
+      <joint name="${prefix}finger1_proximal_joint" value="0"/>
+      <joint name="${prefix}finger2_proximal_joint" value="0"/>
+      <xacro:noabductionjointtozero
+        prefix="${prefix}"
+        nbFingers="${nbFingers}"
+        nb_abduction_finger="${nb_abduction_finger}"
+      />
     </group_state>
 
     <disable_collisions link1="${prefix}hand" link2="${prefix}palm" reason="Adjacent"/>
-    <disable_collisions link1="${prefix}hand" link2="${prefix}finger1_base_link" reason="Adjacent"/>
-    <disable_collisions link1="${prefix}palm" link2="${prefix}finger1_base_link" reason="Adjacent"/>
-    <disable_collisions link1="${prefix}hand" link2="${prefix}finger2_base_link" reason="Adjacent"/>
-    <disable_collisions link1="${prefix}palm" link2="${prefix}finger2_base_link" reason="Adjacent"/>
-    <disable_collisions link1="${prefix}hand" link2="${prefix}finger3_base_link" reason="Adjacent"/>
-    <disable_collisions link1="${prefix}palm" link2="${prefix}finger3_base_link" reason="Adjacent"/>
+    <xacro:fingrip_gripper_gripper_collision
+        prefix="${prefix}"
+        nbFingers="$(arg nbFingers)"
+    />
     <!-- <disable_collisions link1="${prefix}leftfinger" link2="${prefix}rightfinger" reason="Default"/> -->
   </xacro:macro>
 

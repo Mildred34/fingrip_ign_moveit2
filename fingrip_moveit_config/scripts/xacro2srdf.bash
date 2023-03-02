@@ -8,6 +8,9 @@ SRDF_PATH="$(dirname "${SCRIPT_DIR}")/srdf/fingrip.srdf"
 # Arguments for xacro
 XACRO_ARGS=(
     name:=fingrip
+    nbFingers:=3
+    nbArmjoints:=7
+    nb_abduction_finger:=2
 )
 
 # Remove old SRDF file

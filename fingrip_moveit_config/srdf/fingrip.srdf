@@ -58,29 +58,44 @@
   <group name="gripper">
     <link name="fingrip_hand"/>
     <link name="fingrip_palm"/>
-    <link name="fingrip_finger1_base_link"/>
-    <link name="fingrip_finger2_base_link"/>
     <link name="fingrip_finger3_base_link"/>
-    <joint name="fingrip_finger1_base_joint"/>
+    <link name="fingrip_finger3_proximal_link"/>
+    <joint name="fingrip_finger3_base_joint"/>
+    <joint name="fingrip_finger3_proximal_joint"/>
+    <link name="fingrip_finger2_base_link"/>
+    <link name="fingrip_finger2_proximal_link"/>
     <joint name="fingrip_finger2_base_joint"/>
+    <joint name="fingrip_finger2_proximal_joint"/>
+    <link name="fingrip_finger1_base_link"/>
+    <link name="fingrip_finger1_proximal_link"/>
+    <joint name="fingrip_finger1_base_joint"/>
+    <joint name="fingrip_finger1_proximal_joint"/>
   </group>
-  <group_state group="gripper" name="open">
+  <!-- TODO Depends if abduction there is. -->
+  <group_state group="gripper" name="open_abduction">
     <joint name="fingrip_finger1_base_joint" value="-1.5707963267948966"/>
     <joint name="fingrip_finger2_base_joint" value="1.5707963267948966"/>
+    <joint name="fingrip_finger1_proximal_joint" value="0"/>
+    <joint name="fingrip_finger2_proximal_joint" value="0"/>
+    <joint name="fingrip_finger3_proximal_joint" value="0"/>
   </group_state>
-  <group_state group="gripper" name="close">
+  <group_state group="gripper" name="close_abduction">
     <joint name="fingrip_finger1_base_joint" value="0.0"/>
     <joint name="fingrip_finger2_base_joint" value="0.0"/>
+    <joint name="fingrip_finger1_proximal_joint" value="0"/>
+    <joint name="fingrip_finger2_proximal_joint" value="0"/>
+    <joint name="fingrip_finger3_proximal_joint" value="0"/>
   </group_state>
   <disable_collisions link1="fingrip_hand" link2="fingrip_palm" reason="Adjacent"/>
-  <disable_collisions link1="fingrip_hand" link2="fingrip_finger1_base_link" reason="Adjacent"/>
-  <disable_collisions link1="fingrip_palm" link2="fingrip_finger1_base_link" reason="Adjacent"/>
-  <disable_collisions link1="fingrip_hand" link2="fingrip_finger2_base_link" reason="Adjacent"/>
-  <disable_collisions link1="fingrip_palm" link2="fingrip_finger2_base_link" reason="Adjacent"/>
   <disable_collisions link1="fingrip_hand" link2="fingrip_finger3_base_link" reason="Adjacent"/>
   <disable_collisions link1="fingrip_palm" link2="fingrip_finger3_base_link" reason="Adjacent"/>
+  <disable_collisions link1="fingrip_hand" link2="fingrip_finger2_base_link" reason="Adjacent"/>
+  <disable_collisions link1="fingrip_palm" link2="fingrip_finger2_base_link" reason="Adjacent"/>
+  <disable_collisions link1="fingrip_hand" link2="fingrip_finger1_base_link" reason="Adjacent"/>
+  <disable_collisions link1="fingrip_palm" link2="fingrip_finger1_base_link" reason="Adjacent"/>
   <!-- <disable_collisions link1="${prefix}leftfinger" link2="${prefix}rightfinger" reason="Default"/> -->
   <end_effector group="gripper" name="gripper" parent_group="arm" parent_link="fingrip_hand_tcp"/>
+  <!-- Palm And Hand -->
   <disable_collisions link1="fingrip_hand" link2="fingrip_link3" reason="Never"/>
   <disable_collisions link1="fingrip_hand" link2="fingrip_link4" reason="Never"/>
   <disable_collisions link1="fingrip_hand" link2="fingrip_link6" reason="Never"/>
@@ -89,16 +104,13 @@
   <disable_collisions link1="fingrip_palm" link2="fingrip_link4" reason="Never"/>
   <disable_collisions link1="fingrip_palm" link2="fingrip_link6" reason="Never"/>
   <disable_collisions link1="fingrip_palm" link2="fingrip_link7" reason="Never"/>
-  <disable_collisions link1="fingrip_finger1_base_link" link2="fingrip_link3" reason="Never"/>
-  <disable_collisions link1="fingrip_finger1_base_link" link2="fingrip_link4" reason="Never"/>
-  <disable_collisions link1="fingrip_finger1_base_link" link2="fingrip_link6" reason="Never"/>
-  <disable_collisions link1="fingrip_finger1_base_link" link2="fingrip_link7" reason="Never"/>
-  <disable_collisions link1="fingrip_finger2_base_link" link2="fingrip_link3" reason="Never"/>
-  <disable_collisions link1="fingrip_finger2_base_link" link2="fingrip_link4" reason="Never"/>
-  <disable_collisions link1="fingrip_finger2_base_link" link2="fingrip_link6" reason="Never"/>
-  <disable_collisions link1="fingrip_finger2_base_link" link2="fingrip_link7" reason="Never"/>
   <disable_collisions link1="fingrip_finger3_base_link" link2="fingrip_link3" reason="Never"/>
   <disable_collisions link1="fingrip_finger3_base_link" link2="fingrip_link4" reason="Never"/>
   <disable_collisions link1="fingrip_finger3_base_link" link2="fingrip_link6" reason="Never"/>
-  <disable_collisions link1="fingrip_finger3_base_link" link2="fingrip_link7" reason="Never"/>
+  <disable_collisions link1="fingrip_finger2_base_link" link2="fingrip_link3" reason="Never"/>
+  <disable_collisions link1="fingrip_finger2_base_link" link2="fingrip_link4" reason="Never"/>
+  <disable_collisions link1="fingrip_finger2_base_link" link2="fingrip_link6" reason="Never"/>
+  <disable_collisions link1="fingrip_finger1_base_link" link2="fingrip_link3" reason="Never"/>
+  <disable_collisions link1="fingrip_finger1_base_link" link2="fingrip_link4" reason="Never"/>
+  <disable_collisions link1="fingrip_finger1_base_link" link2="fingrip_link6" reason="Never"/>
 </robot>

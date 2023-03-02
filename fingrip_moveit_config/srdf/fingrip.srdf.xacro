@@ -8,6 +8,7 @@
   <!--                   -->
   <xacro:include filename="$(find fingrip_moveit_config)/srdf/fingrip_arm.xacro"/>
   <xacro:include filename="$(find fingrip_moveit_config)/srdf/fingrip_gripper.xacro"/>
+  <xacro:include filename="$(find fingrip_moveit_config)/srdf/fingrip_utils.xacro"/>
 
 
   <!--            -->
@@ -15,6 +16,10 @@
   <!--            -->
   <!-- Name of the robot (mandatory) -->
   <xacro:arg name="name" default="fingrip"/>
+  <xacro:arg name="nbFingers" default="3"/>
+  <xacro:arg name="nbArmjoints" default="7"/>
+  <xacro:arg name="nb_abduction_finger" default="2"/>
+
 
   <!-- Prefix for all entities -->
   <xacro:arg name="prefix" default="$(arg name)_"/>
@@ -33,13 +38,17 @@
   <!--       -->
   <xacro:fingrip_arm
     prefix="${prefix_arm}"
+    nbArmjoints="$(arg nbArmjoints)"
   />
   <xacro:fingrip_gripper
     prefix="${prefix_gripper}"
+    nbFingers="$(arg nbFingers)"
+    nb_abduction_finger="$(arg nb_abduction_finger)"
   />
 
   <end_effector group="gripper" name="gripper" parent_group="arm" parent_link="${prefix_arm}hand_tcp"/>
 
+  <!-- Palm And Hand -->
   <disable_collisions link1="${prefix_gripper}hand" link2="${prefix_arm}link3" reason="Never"/>
   <disable_collisions link1="${prefix_gripper}hand" link2="${prefix_arm}link4" reason="Never"/>
   <disable_collisions link1="${prefix_gripper}hand" link2="${prefix_arm}link6" reason="Never"/>
@@ -48,16 +57,12 @@
   <disable_collisions link1="${prefix_gripper}palm" link2="${prefix_arm}link4" reason="Never"/>
   <disable_collisions link1="${prefix_gripper}palm" link2="${prefix_arm}link6" reason="Never"/>
   <disable_collisions link1="${prefix_gripper}palm" link2="${prefix_arm}link7" reason="Never"/>
-  <disable_collisions link1="${prefix_gripper}finger1_base_link" link2="${prefix_arm}link3" reason="Never"/>
-  <disable_collisions link1="${prefix_gripper}finger1_base_link" link2="${prefix_arm}link4" reason="Never"/>
-  <disable_collisions link1="${prefix_gripper}finger1_base_link" link2="${prefix_arm}link6" reason="Never"/>
-  <disable_collisions link1="${prefix_gripper}finger1_base_link" link2="${prefix_arm}link7" reason="Never"/>
-  <disable_collisions link1="${prefix_gripper}finger2_base_link" link2="${prefix_arm}link3" reason="Never"/>
-  <disable_collisions link1="${prefix_gripper}finger2_base_link" link2="${prefix_arm}link4" reason="Never"/>
-  <disable_collisions link1="${prefix_gripper}finger2_base_link" link2="${prefix_arm}link6" reason="Never"/>
-  <disable_collisions link1="${prefix_gripper}finger2_base_link" link2="${prefix_arm}link7" reason="Never"/>
-  <disable_collisions link1="${prefix_gripper}finger3_base_link" link2="${prefix_arm}link3" reason="Never"/>
-  <disable_collisions link1="${prefix_gripper}finger3_base_link" link2="${prefix_arm}link4" reason="Never"/>
-  <disable_collisions link1="${prefix_gripper}finger3_base_link" link2="${prefix_arm}link6" reason="Never"/>
-  <disable_collisions link1="${prefix_gripper}finger3_base_link" link2="${prefix_arm}link7" reason="Never"/>
+
+  <!-- Fingers -->
+  <xacro:fingrip_gripper_arm_collision
+    prefix_gripper="${prefix_gripper}"
+    prefix_arm="${prefix_arm}"
+    nbFingers="$(arg nbFingers)"
+  />
+
 </robot>

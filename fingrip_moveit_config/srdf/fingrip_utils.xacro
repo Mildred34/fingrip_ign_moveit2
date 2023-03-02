@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!-- Macro for SRDF of Franka Emika fingrip arm -->
+<robot xmlns:xacro="http://wiki.ros.org/xacro">
+
+  <!--       -->
+  <!-- Macro -->
+  <!--       -->
+  <xacro:macro name="fingrip_gripper_arm_collision" params="
+    prefix_gripper:=fingrip_
+    prefix_arm:=fingrip_
+    nbFingers:=3
+  ">
+
+    <xacro:if value="${nbFingers}">
+        <disable_collisions link1="${prefix_gripper}finger${nbFingers}_base_link" link2="${prefix_arm}link3" reason="Never"/>
+        <disable_collisions link1="${prefix_gripper}finger${nbFingers}_base_link" link2="${prefix_arm}link4" reason="Never"/>
+        <disable_collisions link1="${prefix_gripper}finger${nbFingers}_base_link" link2="${prefix_arm}link6" reason="Never"/>
+        <xacro:fingrip_gripper_arm_collision nbFingers="${nbFingers-1}" />
+    </xacro:if>
+
+  </xacro:macro>
+
+
+  <xacro:macro name="fingrip_gripper_group" params="
+    prefix:=fingrip_
+    nbFingers:=3
+  ">
+
+    <xacro:if value="${nbFingers}">
+      <link name="${prefix}finger${nbFingers}_base_link"/>
+      <link name="${prefix}finger${nbFingers}_proximal_link"/>
+      <joint name="${prefix}finger${nbFingers}_base_joint"/>
+      <joint name="${prefix}finger${nbFingers}_proximal_joint"/>
+      <xacro:fingrip_gripper_group nbFingers="${nbFingers-1}" />
+    </xacro:if>
+
+  </xacro:macro>
+
+
+  <xacro:macro name="fingrip_gripper_gripper_collision" params="
+    prefix:=fingrip_
+    nbFingers:=3
+  ">
+
+    <xacro:if value="${nbFingers}">
+        <disable_collisions link1="${prefix}hand" link2="${prefix}finger${nbFingers}_base_link" reason="Adjacent"/>
+        <disable_collisions link1="${prefix}palm" link2="${prefix}finger${nbFingers}_base_link" reason="Adjacent"/>
+        <xacro:fingrip_gripper_gripper_collision nbFingers="${nbFingers-1}" />
+    </xacro:if>
+
+  </xacro:macro>
+
+</robot>

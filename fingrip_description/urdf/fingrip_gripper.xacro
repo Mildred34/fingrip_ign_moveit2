@@ -112,7 +112,7 @@
         joint_axis_xyz="${joint_finger1_base_axis_xyz}"
         joint_lower_limit="${-joint_base_upper_limit}"
         joint_upper_limit="${-joint_base_lower_limit}"
-        gazebo_preserve_fixed_joint="${gazebo_preserve_fixed_joint}"
+        gazebo_preserve_fixed_joint="true"
         />
 
         <!-- FINGER 2 -->
@@ -126,7 +126,7 @@
         joint_origin_xyz="${joint_finger2_base_origin_xyz}"
         joint_origin_rpy="${joint_finger2_base_origin_rpy}"
         joint_axis_xyz="${joint_finger2_base_axis_xyz}"
-        gazebo_preserve_fixed_joint="${gazebo_preserve_fixed_joint}"
+        gazebo_preserve_fixed_joint="true"
         />
 
         <!-- FINGER 3 -->
@@ -140,7 +140,7 @@
         joint_origin_xyz="${joint_finger3_base_origin_xyz}"
         joint_origin_rpy="${joint_finger3_base_origin_rpy}"
         joint_axis_xyz="${joint_finger3_base_axis_xyz}"
-        gazebo_preserve_fixed_joint="${gazebo_preserve_fixed_joint}"
+        gazebo_preserve_fixed_joint="true"
         />
 
         <!-- FINGER 4 -->
@@ -155,7 +155,7 @@
             joint_origin_xyz="${joint_finger4_base_origin_xyz}"
             joint_origin_rpy="${joint_finger4_base_origin_rpy}"
             joint_axis_xyz="${joint_finger4_base_axis_xyz}"
-            gazebo_preserve_fixed_joint="${gazebo_preserve_fixed_joint}"
+            gazebo_preserve_fixed_joint="true"
             />
         </xacro:unless>
 
@@ -175,19 +175,22 @@
         prefix="${prefix}" 
         plugin="${ros2_control_plugin}" 
         command_interface="${ros2_control_command_interface}"
-        finger_name="${finger1_name}"/>
+        finger_name="${finger1_name}"
+        abduction="true"
+        />
         <xacro:ros2_control_fingrip_gripper 
         prefix="${prefix}" 
         plugin="${ros2_control_plugin}" 
         command_interface="${ros2_control_command_interface}"
-        finger_name="${finger2_name}"/>
-        <!--
+        finger_name="${finger2_name}"
+        abduction="true"
+        />
         <xacro:ros2_control_fingrip_gripper 
         prefix="${prefix}" 
         plugin="${ros2_control_plugin}" 
         command_interface="${ros2_control_command_interface}"
         finger_name="${finger3_name}"/>
-        -->
+
         <xacro:unless value="${nbFingers == 3}">
           <xacro:ros2_control_fingrip_gripper 
           prefix="${prefix}" 
