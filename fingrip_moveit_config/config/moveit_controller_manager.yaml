@@ -22,7 +22,10 @@ gripper_trajectory_controller:
   default: true
   joints:
     - fingrip_finger1_base_joint
+    - fingrip_finger1_proximal_joint
     - fingrip_finger2_base_joint
+    - fingrip_finger2_proximal_joint
+    - fingrip_finger3_proximal_joint
 
 # ----- Gripper action controller (not yet functional)
 # gripper_action_controller:

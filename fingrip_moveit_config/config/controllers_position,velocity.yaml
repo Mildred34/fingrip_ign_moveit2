@@ -32,7 +32,10 @@ gripper_trajectory_controller:
   ros__parameters:
     joints:
       - fingrip_finger1_base_joint
+      - fingrip_finger1_proximal_joint
       - fingrip_finger2_base_joint
+      - fingrip_finger2_proximal_joint
+      - fingrip_finger3_proximal_joint
     command_interfaces:
       - position
       - velocity
