@@ -10,13 +10,13 @@
   </group>
   <!-- Can configurate pos -->
   <group_state group="arm" name="ready">
-    <joint name="fingrip_joint1" value="0"/>
-    <joint name="fingrip_joint2" value="-0.7853981633974483"/>
-    <joint name="fingrip_joint3" value="0"/>
-    <joint name="fingrip_joint4" value="-2.356194490192345"/>
-    <joint name="fingrip_joint5" value="0"/>
-    <joint name="fingrip_joint6" value="1.5707963267948966"/>
-    <joint name="fingrip_joint7" value="0.7853981633974483"/>
+    <joint name="fingrip_joint1" value="1.8849555921538759"/>
+    <joint name="fingrip_joint2" value="-0.6108652381980153"/>
+    <joint name="fingrip_joint3" value="2.6878070480712677"/>
+    <joint name="fingrip_joint4" value="1.53588974175501"/>
+    <joint name="fingrip_joint5" value="-1.2566370614359172"/>
+    <joint name="fingrip_joint6" value="-1.7453292519943295"/>
+    <joint name="fingrip_joint7" value="-2.1816615649929116"/>
   </group_state>
   <group_state group="arm" name="extended">
     <joint name="fingrip_joint1" value="0"/>
@@ -27,15 +27,15 @@
     <joint name="fingrip_joint6" value="0"/>
     <joint name="fingrip_joint7" value="0"/>
   </group_state>
-  <group_state group="arm" name="transport">
-    <joint name="fingrip_joint1" value="0"/>
-    <joint name="fingrip_joint2" value="-0.5599016240397809"/>
-    <joint name="fingrip_joint3" value="0"/>
-    <joint name="fingrip_joint4" value="-2.9700267881187505"/>
-    <joint name="fingrip_joint5" value="0"/>
-    <joint name="fingrip_joint6" value="0"/>
-    <joint name="fingrip_joint7" value="0.7853981633974483"/>
-  </group_state>
+  <!-- <group_state group="arm" name="transport">
+      <joint name="${prefix}joint1" value="0"/>
+      <joint name="${prefix}joint2" value="${-32.08*pi/180}"/>
+      <joint name="${prefix}joint3" value="0"/>
+      <joint name="${prefix}joint4" value="${-170.17*pi/180}"/>
+      <joint name="${prefix}joint5" value="0"/>
+      <joint name="${prefix}joint6" value="0"/>
+      <joint name="${prefix}joint7" value="${pi/4}"/>
+    </group_state> -->
   <disable_collisions link1="fingrip_link0" link2="fingrip_link1" reason="Adjacent"/>
   <disable_collisions link1="fingrip_link0" link2="fingrip_link2" reason="Never"/>
   <disable_collisions link1="fingrip_link0" link2="fingrip_link3" reason="Never"/>
