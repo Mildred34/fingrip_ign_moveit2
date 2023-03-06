@@ -2,7 +2,7 @@
 <sdf version="1.5">
   <model name="coude">
     <frame name="coude">
-      <pose>0 0 0 0 0 0</pose>
+      <pose>1.0 0.2 0.4 0 0 0</pose>
     </frame>
     <link name="link">
       <inertial>
@@ -27,7 +27,7 @@
         </inertia>
       </inertial>
       <collision name="collision">
-<!--        <pose frame="coude">-0.003107 -0.018054 -0.001301 -0.00016728638376083937 -0.008735581142596698 -0.050116288013064544</pose> &lt;!&ndash; erreur mais coup e chance ca marche &ndash;&gt;-->
+        <!-- <pose frame="coude">-0.003107 -0.018054 -0.001301 -0.00016728638376083937 -0.008735581142596698 -0.050116288013064544</pose> &lt;!&ndash; erreur mais coup e chance ca marche &ndash;&gt;-->
         <pose frame="coude">-0.003996 -0.01787591 -0.00133297 0.00027054006212198913 -0.00873299329306388 -0.05011673865631564</pose> <!-- vraie valeur -->
         <geometry>
         <mesh>
@@ -52,7 +52,7 @@
         </surface>
       </collision>
       <visual name="visual">
-<!--        <pose frame="coude">-0.003107 -0.018054 -0.001301 -0.00016728638376083937 -0.008735581142596698 -0.050116288013064544</pose> &lt;!&ndash; erreur mais coup e chance ca marche &ndash;&gt;-->
+        <!-- <pose frame="coude">-0.003107 -0.018054 -0.001301 -0.00016728638376083937 -0.008735581142596698 -0.050116288013064544</pose> &lt;!&ndash; erreur mais coup e chance ca marche &ndash;&gt;-->
         <pose frame="coude">-0.003996 -0.01787591 -0.00133297 0.00027054006212198913 -0.00873299329306388 -0.05011673865631564</pose> <!-- vraie valeur -->
         <geometry>
         <mesh>
@@ -67,17 +67,19 @@
             </script>
         </material>
       </visual>
+
       <sensor name='contact_sensor' type='contact'>
-        <plugin name="gazebo_ros_contact" filename="libgazebo_ros_bumper.so">
+        <!-- <plugin name="gazebo_ros_contact" filename="libgazebo_ros_bumper.so">
           <alwaysOn>true</alwaysOn>
           <updateRate>50</updateRate>
           <bumperTopicName>contact</bumperTopicName>
           <frameName>coude</frameName>
-        </plugin>
+        </plugin> -->
         <contact>
           <collision>collision</collision>
         </contact>
       </sensor>
+      
     </link>
   </model>
 </sdf>
