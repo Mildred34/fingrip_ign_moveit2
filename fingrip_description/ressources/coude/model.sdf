@@ -1,14 +1,15 @@
-<?xml version='1.0'?>
 <sdf version="1.5">
   <model name="coude">
-    <frame name="coude">
-      <pose>1.0 0.2 0.4 0 0 0</pose>
+    <frame name="frame_coude">
+      <pose>0 0 0 0 0 0</pose>
     </frame>
+
     <link name="link">
+      <!--<pose relative_to="frame_coude">0 0 0 0 0 0</pose>-->
+
       <inertial>
-        <pose frame="coude">0 0 0 0 0 0</pose>
+        <pose relative_to="frame_coude">0 0 0 0 0 0</pose>
         <!--<pose frame="coude">0.003107 0.018054 0.001301 0.00016728638376083937 0.008735581142596698 0.050116288013064544</pose>-->
-        <mass>0.4</mass>
         <!--<inertia>
           <ixx>0.001035</ixx>
           <ixy>0.000041</ixy>
@@ -25,10 +26,11 @@
           <iyz>0.0</iyz>
           <izz>0.00187957</izz>
         </inertia>
+        <mass>0.4</mass>
       </inertial>
-      <collision name="collision">
+      <collision name="coude_collision">
         <!-- <pose frame="coude">-0.003107 -0.018054 -0.001301 -0.00016728638376083937 -0.008735581142596698 -0.050116288013064544</pose> &lt;!&ndash; erreur mais coup e chance ca marche &ndash;&gt;-->
-        <pose frame="coude">-0.003996 -0.01787591 -0.00133297 0.00027054006212198913 -0.00873299329306388 -0.05011673865631564</pose> <!-- vraie valeur -->
+        <pose relative_to="frame_coude">-0.003996 -0.01787591 -0.00133297 0.00027054006212198913 -0.00873299329306388 -0.05011673865631564</pose> <!-- vraie valeur -->
         <geometry>
         <mesh>
           <uri>model://coude/coude100_rototrans_singleface_simplified.stl</uri>
@@ -53,7 +55,7 @@
       </collision>
       <visual name="visual">
         <!-- <pose frame="coude">-0.003107 -0.018054 -0.001301 -0.00016728638376083937 -0.008735581142596698 -0.050116288013064544</pose> &lt;!&ndash; erreur mais coup e chance ca marche &ndash;&gt;-->
-        <pose frame="coude">-0.003996 -0.01787591 -0.00133297 0.00027054006212198913 -0.00873299329306388 -0.05011673865631564</pose> <!-- vraie valeur -->
+        <pose relative_to="frame_coude">-0.003996 -0.01787591 -0.00133297 0.00027054006212198913 -0.00873299329306388 -0.05011673865631564</pose> <!-- vraie valeur -->
         <geometry>
         <mesh>
           <uri>model://coude/coude100_rototrans_singleface.stl</uri>
@@ -68,7 +70,7 @@
         </material>
       </visual>
 
-      <sensor name='contact_sensor' type='contact'>
+      <sensor name='object_contact_sensor' type='contact'>
         <!-- <plugin name="gazebo_ros_contact" filename="libgazebo_ros_bumper.so">
           <alwaysOn>true</alwaysOn>
           <updateRate>50</updateRate>

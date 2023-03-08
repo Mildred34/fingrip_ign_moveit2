@@ -87,3 +87,18 @@ gripper_trajectory_controller:
         d: 0.001
         i: 0.4
         i_clamp: 4.0
+      fingrip_finger1_proximal_joint:
+        p: 225.0
+        d: 0.001
+        i: 0.4
+        i_clamp: 4.0
+      fingrip_finger2_proximal_joint:
+        p: 225.0
+        d: 0.001
+        i: 0.4
+        i_clamp: 4.0
+      fingrip_finger3_proximal_joint:
+        p: 225.0
+        d: 0.001
+        i: 0.4
+        i_clamp: 4.0
