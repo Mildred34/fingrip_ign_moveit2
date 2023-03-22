@@ -446,8 +446,8 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
         ),
         DeclareLaunchArgument(
             "ros2_control_plugin",
-            default_value="ign",
-            description="The ros2_control plugin that should be loaded for the manipulator ('fake', 'ign', 'real' or custom).",
+            default_value="gazebo",
+            description="The ros2_control plugin that should be loaded for the manipulator ('fake', 'gazebo', 'real' or custom).",
         ),
         DeclareLaunchArgument(
             "ros2_control_command_interface",

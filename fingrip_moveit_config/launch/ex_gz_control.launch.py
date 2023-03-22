@@ -23,23 +23,23 @@ def generate_launch_description() -> LaunchDescription:
     model = LaunchConfiguration("model")
     rviz_config = LaunchConfiguration("rviz_config")
     use_sim_time = LaunchConfiguration("use_sim_time")
-    ign_verbosity = LaunchConfiguration("ign_verbosity")
+    gazebo_verbosity = LaunchConfiguration("gazebo_verbosity")
     log_level = LaunchConfiguration("log_level")
 
     # List of included launch descriptions
     launch_descriptions = [
-        # Launch Ignition Gazebo
+        # Launch Gazebo Classic
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(
                 PathJoinSubstitution(
                     [
-                        FindPackageShare("ros_gz_sim"),
+                        FindPackageShare("gazebo_ros"),
                         "launch",
-                        "gz_sim.launch.py",
+                        "gazebo.launch.py",
                     ]
                 )
             ),
-            launch_arguments=[("gz_args", [world, " -r -v ", ign_verbosity])],
+            launch_arguments=[([world, " -r -v ", gazebo_verbosity])],
         ),
 
         #Launch move_group of MoveIt 2
@@ -54,7 +54,7 @@ def generate_launch_description() -> LaunchDescription:
                 )
             ),
             launch_arguments=[
-                ("ros2_control_plugin", "ign"),
+                ("ros2_control_plugin", "gazebo"),
                 ("ros2_control_command_interface", "effort"), # before was effort
                 # TODO: Re-enable colligion geometry for manipulator arm once spawning with specific joint configuration is enabled
                 ("collision_arm", "false"),
@@ -66,31 +66,31 @@ def generate_launch_description() -> LaunchDescription:
     ]
 
     # List of nodes to be launched
-    nodes = [
-        # ros_gz_gazebo_create
-        Node(
-            package="ros_gz_sim",
-            executable="create",
-            output="log",
-            arguments=["-file", model, "--ros-args", "--log-level", log_level],
-            parameters=[{"use_sim_time": use_sim_time}],
-        ),
-        # ros_gz_bridge (clock -> ROS 2)
-        Node(
-            package="ros_gz_bridge",
-            executable="parameter_bridge",
-            output="log",
-            arguments=[
-                "/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock",
-                "--ros-args",
-                "--log-level",
-                log_level,
-            ],
-            parameters=[{"use_sim_time": use_sim_time}],
-        ),
-    ]
+    # nodes = [
+    #     # ros_gz_gazebo_create
+    #     Node(
+    #         package="ros_gz_sim",
+    #         executable="create",
+    #         output="log",
+    #         arguments=["-file", model, "--ros-args", "--log-level", log_level],
+    #         parameters=[{"use_sim_time": use_sim_time}],
+    #     ),
+    #     # ros_gz_bridge (clock -> ROS 2)
+    #     Node(
+    #         package="ros_gz_bridge",
+    #         executable="parameter_bridge",
+    #         output="log",
+    #         arguments=[
+    #             "/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock",
+    #             "--ros-args",
+    #             "--log-level",
+    #             log_level,
+    #         ],
+    #         parameters=[{"use_sim_time": use_sim_time}],
+    #     ),
+    # ]
 
-    return LaunchDescription(declared_arguments + launch_descriptions + nodes)
+    return LaunchDescription(declared_arguments + launch_descriptions )#+ nodes)
 
 
 def generate_declared_arguments() -> List[DeclareLaunchArgument]:
@@ -99,7 +99,7 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
     """
 
     return [
-        # World and model for Ignition Gazebo
+        # World and model for Gazebo Classic
         DeclareLaunchArgument(
             "world",
             default_value="default.sdf",
@@ -126,9 +126,9 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
             description="If true, use simulated clock.",
         ),
         DeclareLaunchArgument(
-            "ign_verbosity",
+            "gazebo_verbosity",
             default_value="3",
-            description="Verbosity level for Ignition Gazebo (0~4).",
+            description="Verbosity level for Gazebo Classic (0~4).",
         ),
         DeclareLaunchArgument(
             "log_level",

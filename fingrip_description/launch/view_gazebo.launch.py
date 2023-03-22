@@ -1,5 +1,5 @@
 #!/usr/bin/env -S ros2 launch
-"""Visualisation of SDF model for fingrip in Ignition Gazebo. Note that the generated model://fingrip/model.sdf descriptor is used."""
+"""Visualisation of SDF model for fingrip in gazeboition Gazebo. Note that the generated model://fingrip/model.sdf descriptor is used."""
 
 from os import path
 from typing import List
@@ -28,7 +28,7 @@ def generate_launch_description() -> LaunchDescription:
     world = LaunchConfiguration("world")
     model = LaunchConfiguration("model")
     use_sim_time = LaunchConfiguration("use_sim_time")
-    ign_verbosity = LaunchConfiguration("ign_verbosity")
+    gazebo_verbosity = LaunchConfiguration("gazebo_verbosity")
     log_level = LaunchConfiguration("log_level")
 
     # URDF
@@ -48,18 +48,18 @@ def generate_launch_description() -> LaunchDescription:
 
     # List of included launch descriptions
     launch_descriptions = [
-        # Launch Ignition Gazebo
+        # Launch Gazebo Classic
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(
                 PathJoinSubstitution(
                     [
-                        FindPackageShare("ros_gz_sim"),
+                        FindPackageShare("gazebo_ros"),
                         "launch",
-                        "gz_sim.launch.py",
+                        "gazebo.launch.py",
                     ]
                 )
             ),
-            launch_arguments=[("gz_args", [world, " -v ", ign_verbosity])],
+            launch_arguments=[("worlds",[world, " -v ", gazebo_verbosity])],
         ),
     ]
 
@@ -80,12 +80,13 @@ def generate_launch_description() -> LaunchDescription:
                 },
             ],
         ),
-        # ros_ign_gazebo_create
+        # ros_gazebo_gazebo_create
         Node(
-            package="ros_gz_sim",
-            executable="create",
-            output="log",
-            arguments=["-file", model, "--ros-args", "--log-level", log_level],
+            package="gazebo_ros",
+            executable="spawn_entity.py",
+            output="screen",
+            arguments=['-topic', 'robot_description',
+                                   '-entity', 'gripper'],
             parameters=[{"use_sim_time": use_sim_time}],
         ),
     ]
@@ -110,7 +111,7 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
             default_value=path.join("urdf", "fingrip.urdf.xacro"),
             description="Path to xacro or URDF description of the robot, relative to share of `description_package`.",
         ),
-        # World and model for Ignition Gazebo
+        # World and model for Gazebo Classic
         DeclareLaunchArgument(
             "world",
             default_value="default.sdf",
@@ -128,9 +129,9 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
             description="If true, use simulated clock.",
         ),
         DeclareLaunchArgument(
-            "ign_verbosity",
+            "gazebo_verbosity",
             default_value="3",
-            description="Verbosity level for Ignition Gazebo (0~4).",
+            description="Verbosity level for Gazebo classic (0~4).",
         ),
         DeclareLaunchArgument(
             "log_level",

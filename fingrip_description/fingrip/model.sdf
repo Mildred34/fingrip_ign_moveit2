@@ -1,26 +1,26 @@
-<sdf version='1.10'>
+<sdf version='1.7'>
   <model name='fingrip'>
     <joint name='fingrip_joint_base' type='fixed'>
-      <pose relative_to='__model__'>0 0 0 0 0 0</pose>
+      <pose relative_to='__model__'>0 0 0 0 -0 0</pose>
       <parent>world</parent>
       <child>fingrip_link0</child>
     </joint>
     <link name='fingrip_link0'>
-      <pose relative_to='fingrip_joint_base'>0 0 0 0 0 0</pose>
+      <pose relative_to='fingrip_joint_base'>0 0 0 0 -0 0</pose>
       <inertial>
-        <pose>-0.10000000000000001 0 0.070000000000000007 0 0 0</pose>
-        <mass>2.8142713001040618</mass>
+        <pose>-0.1 0 0.07 0 -0 0</pose>
+        <mass>2.81427</mass>
         <inertia>
-          <ixx>0.0075390636364814686</ixx>
-          <ixy>-1.505312457478333e-05</ixy>
-          <ixz>-0.0012144328835738971</ixz>
-          <iyy>0.01050801742738296</iyy>
-          <iyz>1.043480350103298e-05</iyz>
-          <izz>0.0098649336387082748</izz>
+          <ixx>0.00753906</ixx>
+          <ixy>-1.50531e-05</ixy>
+          <ixz>-0.00121443</ixz>
+          <iyy>0.010508</iyy>
+          <iyz>1.04348e-05</iyz>
+          <izz>0.00986493</izz>
         </inertia>
       </inertial>
       <collision name='fingrip_link0_collision'>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
@@ -33,37 +33,33 @@
           </contact>
           <friction>
             <ode>
-              <mu>0.84999999999999998</mu>
-              <mu2>0.84999999999999998</mu2>
+              <mu>0.85</mu>
+              <mu2>0.85</mu2>
             </ode>
           </friction>
         </surface>
       </collision>
       <visual name='fingrip_link0_visual'>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
             <uri>meshes/visual/arm/link0.stl</uri>
           </mesh>
         </geometry>
-        <material>
-          <diffuse>0.25 0.25 0.25 1</diffuse>
-          <ambient>0.25 0.25 0.25 1</ambient>
-        </material>
       </visual>
     </link>
     <joint name='fingrip_joint1' type='revolute'>
-      <pose relative_to='fingrip_link0'>0 0 0.1575 0 0 0</pose>
+      <pose relative_to='fingrip_link0'>0 0 0.1575 0 -0 0</pose>
       <parent>fingrip_link0</parent>
       <child>fingrip_link1</child>
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
-          <lower>-2.9670597283903599</lower>
-          <upper>2.9670597283903599</upper>
+          <lower>-2.96706</lower>
+          <upper>2.96706</upper>
           <effort>87</effort>
-          <velocity>1.48352986419518</velocity>
+          <velocity>1.48353</velocity>
         </limit>
         <dynamics>
           <damping>21.75</damping>
@@ -76,27 +72,27 @@
         <ode>
           <limit>
             <cfm>0</cfm>
-            <erp>0.20000000000000001</erp>
+            <erp>0.2</erp>
           </limit>
         </ode>
       </physics>
     </joint>
     <link name='fingrip_link1'>
-      <pose relative_to='fingrip_joint1'>0 0 0 0 0 0</pose>
+      <pose relative_to='fingrip_joint1'>0 0 0 0 -0 0</pose>
       <inertial>
-        <pose>0 -0.029999999999999999 0.12 0 0 0</pose>
-        <mass>2.6433170427227211</mass>
+        <pose>0 -0.03 0.12 0 -0 0</pose>
+        <mass>2.64332</mass>
         <inertia>
-          <ixx>0.017405076982879721</ixx>
-          <ixy>-8.6879863696210777e-09</ixy>
-          <ixz>-1.627781906292042e-08</ixz>
-          <iyy>0.01535207793578173</iyy>
-          <iyz>0.0045108559591022449</iyz>
-          <izz>0.0059878916630738566</izz>
+          <ixx>0.0174051</ixx>
+          <ixy>-8.68799e-09</ixy>
+          <ixz>-1.62778e-08</ixz>
+          <iyy>0.0153521</iyy>
+          <iyz>0.00451086</iyz>
+          <izz>0.00598789</izz>
         </inertia>
       </inertial>
       <collision name='fingrip_link1_collision'>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
@@ -109,37 +105,33 @@
           </contact>
           <friction>
             <ode>
-              <mu>0.84999999999999998</mu>
-              <mu2>0.84999999999999998</mu2>
+              <mu>0.85</mu>
+              <mu2>0.85</mu2>
             </ode>
           </friction>
         </surface>
       </collision>
       <visual name='fingrip_link1_visual'>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
             <uri>meshes/visual/arm/link1.stl</uri>
           </mesh>
         </geometry>
-        <material>
-          <diffuse>0.625 0.875 1 1</diffuse>
-          <ambient>0.625 0.875 1 1</ambient>
-        </material>
       </visual>
     </link>
     <joint name='fingrip_joint2' type='revolute'>
-      <pose relative_to='fingrip_link1'>0 0 0.20250000000000001 1.5707963267948959 0 -3.1415926535897931</pose>
+      <pose relative_to='fingrip_link1'>0 0 0.2025 1.5708 -0 -3.14159</pose>
       <parent>fingrip_link1</parent>
       <child>fingrip_link2</child>
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
-          <lower>-2.0943951023931948</lower>
-          <upper>2.0943951023931948</upper>
+          <lower>-2.0944</lower>
+          <upper>2.0944</upper>
           <effort>87</effort>
-          <velocity>1.48352986419518</velocity>
+          <velocity>1.48353</velocity>
         </limit>
         <dynamics>
           <damping>21.75</damping>
@@ -152,27 +144,27 @@
         <ode>
           <limit>
             <cfm>0</cfm>
-            <erp>0.20000000000000001</erp>
+            <erp>0.2</erp>
           </limit>
         </ode>
       </physics>
     </joint>
     <link name='fingrip_link2'>
-      <pose relative_to='fingrip_joint2'>0 0 0 0 0 0</pose>
+      <pose relative_to='fingrip_joint2'>0 0 0 0 -0 0</pose>
       <inertial>
-        <pose>0.00029 0.058999999999999997 0.042000000000000003 0 0 0</pose>
-        <mass>2.6652755331661191</mass>
+        <pose>0.00029 0.059 0.042 0 -0 0</pose>
+        <mass>2.66528</mass>
         <inertia>
-          <ixx>0.017786940056353829</ixx>
-          <ixy>8.7063562587911901e-08</ixy>
-          <ixz>3.7520720583940079e-08</ixz>
-          <iyy>0.0060441338679528443</iyy>
-          <iyz>-0.0045994902954903756</iyz>
-          <izz>0.015710955004556951</izz>
+          <ixx>0.0177869</ixx>
+          <ixy>8.70636e-08</ixy>
+          <ixz>3.75207e-08</ixz>
+          <iyy>0.00604413</iyy>
+          <iyz>-0.00459949</iyz>
+          <izz>0.015711</izz>
         </inertia>
       </inertial>
       <collision name='fingrip_link2_collision'>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
@@ -185,37 +177,33 @@
           </contact>
           <friction>
             <ode>
-              <mu>0.84999999999999998</mu>
-              <mu2>0.84999999999999998</mu2>
+              <mu>0.85</mu>
+              <mu2>0.85</mu2>
             </ode>
           </friction>
         </surface>
       </collision>
       <visual name='fingrip_link2_visual'>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
             <uri>meshes/visual/arm/link2.stl</uri>
           </mesh>
         </geometry>
-        <material>
-          <diffuse>0.625 0.875 1 1</diffuse>
-          <ambient>0.625 0.875 1 1</ambient>
-        </material>
       </visual>
     </link>
     <joint name='fingrip_joint3' type='revolute'>
-      <pose relative_to='fingrip_link2'>0 0.20449999999999999 0 1.5707963267948959 0 -3.1415926535897931</pose>
+      <pose relative_to='fingrip_link2'>0 0.2045 0 1.5708 -0 -3.14159</pose>
       <parent>fingrip_link2</parent>
       <child>fingrip_link3</child>
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
-          <lower>-2.9670597283903599</lower>
-          <upper>2.9670597283903599</upper>
+          <lower>-2.96706</lower>
+          <upper>2.96706</upper>
           <effort>87</effort>
-          <velocity>1.74532925199433</velocity>
+          <velocity>1.74533</velocity>
         </limit>
         <dynamics>
           <damping>21.75</damping>
@@ -228,27 +216,27 @@
         <ode>
           <limit>
             <cfm>0</cfm>
-            <erp>0.20000000000000001</erp>
+            <erp>0.2</erp>
           </limit>
         </ode>
       </physics>
     </joint>
     <link name='fingrip_link3'>
-      <pose relative_to='fingrip_joint3'>0 0 0 0 0 0</pose>
+      <pose relative_to='fingrip_joint3'>0 0 0 0 -0 0</pose>
       <inertial>
-        <pose>0 0.029999999999999999 0.13 0 0 0</pose>
-        <mass>2.3293714829045729</mass>
+        <pose>0 0.03 0.13 0 -0 0</pose>
+        <mass>2.32937</mass>
         <inertia>
-          <ixx>0.0075496764161139774</ixx>
-          <ixy>-0.002432046451349223</ixy>
-          <ixz>-0.003250815048103007</ixz>
-          <iyy>0.0096806760801913978</iyy>
-          <iyz>-0.0021316282421730689</iyz>
-          <izz>0.0079445574220080861</izz>
+          <ixx>0.00754968</ixx>
+          <ixy>-0.00243205</ixy>
+          <ixz>-0.00325082</ixz>
+          <iyy>0.00968068</iyy>
+          <iyz>-0.00213163</iyz>
+          <izz>0.00794456</izz>
         </inertia>
       </inertial>
       <collision name='fingrip_link3_collision'>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
@@ -261,37 +249,33 @@
           </contact>
           <friction>
             <ode>
-              <mu>0.84999999999999998</mu>
-              <mu2>0.84999999999999998</mu2>
+              <mu>0.85</mu>
+              <mu2>0.85</mu2>
             </ode>
           </friction>
         </surface>
       </collision>
       <visual name='fingrip_link3_visual'>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
             <uri>meshes/visual/arm/link3.stl</uri>
           </mesh>
         </geometry>
-        <material>
-          <diffuse>1 0.529411793 0.0490196086 1</diffuse>
-          <ambient>1 0.529411793 0.0490196086 1</ambient>
-        </material>
       </visual>
     </link>
     <joint name='fingrip_joint4' type='revolute'>
-      <pose relative_to='fingrip_link3'>0 0 0.2155 1.5707963267948959 0 0</pose>
+      <pose relative_to='fingrip_link3'>0 0 0.2155 1.5708 -0 0</pose>
       <parent>fingrip_link3</parent>
       <child>fingrip_link4</child>
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
-          <lower>-2.0943951023931948</lower>
-          <upper>2.0943951023931948</upper>
+          <lower>-2.0944</lower>
+          <upper>2.0944</upper>
           <effort>87</effort>
-          <velocity>1.308996938995747</velocity>
+          <velocity>1.309</velocity>
         </limit>
         <dynamics>
           <damping>21.75</damping>
@@ -304,27 +288,27 @@
         <ode>
           <limit>
             <cfm>0</cfm>
-            <erp>0.20000000000000001</erp>
+            <erp>0.2</erp>
           </limit>
         </ode>
       </physics>
     </joint>
     <link name='fingrip_link4'>
-      <pose relative_to='fingrip_joint4'>0 0 0 0 0 0</pose>
+      <pose relative_to='fingrip_joint4'>0 0 0 0 -0 0</pose>
       <inertial>
-        <pose>0 0.067000000000000004 0.034000000000000002 0 0 0</pose>
-        <mass>2.3104763646281512</mass>
+        <pose>0 0.067 0.034 0 -0 0</pose>
+        <mass>2.31048</mass>
         <inertia>
-          <ixx>0.0077645688148648279</ixx>
-          <ixy>0.0033714752040459352</ixy>
-          <ixz>-0.0023436211131682479</ixz>
-          <iyy>0.0080157769299801489</iyy>
-          <iyz>0.002291752616147062</iyz>
-          <izz>0.0099558823080710662</izz>
+          <ixx>0.00776457</ixx>
+          <ixy>0.00337148</ixy>
+          <ixz>-0.00234362</ixz>
+          <iyy>0.00801578</iyy>
+          <iyz>0.00229175</iyz>
+          <izz>0.00995588</izz>
         </inertia>
       </inertial>
       <collision name='fingrip_link4_collision'>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
@@ -337,41 +321,37 @@
           </contact>
           <friction>
             <ode>
-              <mu>0.84999999999999998</mu>
-              <mu2>0.84999999999999998</mu2>
+              <mu>0.85</mu>
+              <mu2>0.85</mu2>
             </ode>
           </friction>
         </surface>
       </collision>
       <visual name='fingrip_link4_visual'>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
             <uri>meshes/visual/arm/link4.stl</uri>
           </mesh>
         </geometry>
-        <material>
-          <diffuse>0.625 0.875 1 1</diffuse>
-          <ambient>0.625 0.875 1 1</ambient>
-        </material>
       </visual>
     </link>
     <joint name='fingrip_joint5' type='revolute'>
-      <pose relative_to='fingrip_link4'>0 0.1845 0 1.5707963267948959 0 3.1415926535897931</pose>
+      <pose relative_to='fingrip_link4'>0 0.1845 0 1.5708 -0 3.14159</pose>
       <parent>fingrip_link4</parent>
       <child>fingrip_link5</child>
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
-          <lower>-2.9670597283903599</lower>
-          <upper>2.9670597283903599</upper>
+          <lower>-2.96706</lower>
+          <upper>2.96706</upper>
           <effort>12</effort>
-          <velocity>2.268928027592628</velocity>
+          <velocity>2.26893</velocity>
         </limit>
         <dynamics>
           <damping>3</damping>
-          <friction>0.47999999999999998</friction>
+          <friction>0.48</friction>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
         </dynamics>
@@ -380,27 +360,27 @@
         <ode>
           <limit>
             <cfm>0</cfm>
-            <erp>0.20000000000000001</erp>
+            <erp>0.2</erp>
           </limit>
         </ode>
       </physics>
     </joint>
     <link name='fingrip_link5'>
-      <pose relative_to='fingrip_joint5'>0 0 0 0 0 0</pose>
+      <pose relative_to='fingrip_joint5'>0 0 0 0 -0 0</pose>
       <inertial>
-        <pose>0.0001 0.021000000000000001 0.075999999999999998 0 0 0</pose>
-        <mass>2.6226426154892</mass>
+        <pose>0.0001 0.021 0.076 0 -0 0</pose>
+        <mass>2.62264</mass>
         <inertia>
-          <ixx>0.029070538014399381</ixx>
-          <ixy>6.2087382687255679e-07</ixy>
-          <ixz>-1.005915192502339e-05</ixz>
-          <iyy>0.027638529986528791</iyy>
-          <iyz>-0.0074243064778508139</iyz>
-          <izz>0.0042511112344007368</izz>
+          <ixx>0.0290705</ixx>
+          <ixy>6.20874e-07</ixy>
+          <ixz>-1.00592e-05</ixz>
+          <iyy>0.0276385</iyy>
+          <iyz>-0.00742431</iyz>
+          <izz>0.00425111</izz>
         </inertia>
       </inertial>
       <collision name='fingrip_link5_collision'>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
@@ -413,41 +393,37 @@
           </contact>
           <friction>
             <ode>
-              <mu>0.84999999999999998</mu>
-              <mu2>0.84999999999999998</mu2>
+              <mu>0.85</mu>
+              <mu2>0.85</mu2>
             </ode>
           </friction>
         </surface>
       </collision>
       <visual name='fingrip_link5_visual'>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
             <uri>meshes/visual/arm/link5.stl</uri>
           </mesh>
         </geometry>
-        <material>
-          <diffuse>0.625 0.875 1 1</diffuse>
-          <ambient>0.625 0.875 1 1</ambient>
-        </material>
       </visual>
     </link>
     <joint name='fingrip_joint6' type='revolute'>
-      <pose relative_to='fingrip_link5'>0 0 0.2155 1.5707963267948959 0 0</pose>
+      <pose relative_to='fingrip_link5'>0 0 0.2155 1.5708 -0 0</pose>
       <parent>fingrip_link5</parent>
       <child>fingrip_link6</child>
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
-          <lower>-2.0943951023931948</lower>
-          <upper>2.0943951023931948</upper>
+          <lower>-2.0944</lower>
+          <upper>2.0944</upper>
           <effort>12</effort>
-          <velocity>2.3561944901923448</velocity>
+          <velocity>2.35619</velocity>
         </limit>
         <dynamics>
           <damping>3</damping>
-          <friction>0.47999999999999998</friction>
+          <friction>0.48</friction>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
         </dynamics>
@@ -456,27 +432,27 @@
         <ode>
           <limit>
             <cfm>0</cfm>
-            <erp>0.20000000000000001</erp>
+            <erp>0.2</erp>
           </limit>
         </ode>
       </physics>
     </joint>
     <link name='fingrip_link6'>
-      <pose relative_to='fingrip_joint6'>0 0 0 0 0 0</pose>
+      <pose relative_to='fingrip_joint6'>0 0 0 0 -0 0</pose>
       <inertial>
-        <pose>0 0.00059000000000000003 0.00040000000000000002 0 0 0</pose>
-        <mass>1.502580488662679</mass>
+        <pose>0 0.00059 0.0004 0 -0 0</pose>
+        <mass>1.50258</mass>
         <inertia>
-          <ixx>0.002940555801469018</ixx>
-          <ixy>-0.00042391108351381513</ixy>
-          <ixz>0.00061000773533871698</ixz>
-          <iyy>0.0039210520124867698</iyy>
-          <iyz>0.00012647545430836209</iyz>
-          <izz>0.0054115603870960186</izz>
+          <ixx>0.00294056</ixx>
+          <ixy>-0.000423911</ixy>
+          <ixz>0.000610008</ixz>
+          <iyy>0.00392105</iyy>
+          <iyz>0.000126475</iyz>
+          <izz>0.00541156</izz>
         </inertia>
       </inertial>
       <collision name='fingrip_link6_collision'>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
@@ -489,41 +465,37 @@
           </contact>
           <friction>
             <ode>
-              <mu>0.84999999999999998</mu>
-              <mu2>0.84999999999999998</mu2>
+              <mu>0.85</mu>
+              <mu2>0.85</mu2>
             </ode>
           </friction>
         </surface>
       </collision>
       <visual name='fingrip_link6_visual'>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
             <uri>meshes/visual/arm/link6.stl</uri>
           </mesh>
         </geometry>
-        <material>
-          <diffuse>1 0.529411793 0.0490196086 1</diffuse>
-          <ambient>1 0.529411793 0.0490196086 1</ambient>
-        </material>
       </visual>
     </link>
     <joint name='fingrip_joint7' type='revolute'>
-      <pose relative_to='fingrip_link6'>0 0.081000000000000003 0 1.5707963267948959 0 -3.1415926535897931</pose>
+      <pose relative_to='fingrip_link6'>0 0.081 0 1.5708 -0 -3.14159</pose>
       <parent>fingrip_link6</parent>
       <child>fingrip_link7</child>
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
-          <lower>-3.0543261909900759</lower>
-          <upper>3.0543261909900759</upper>
+          <lower>-3.05433</lower>
+          <upper>3.05433</upper>
           <effort>12</effort>
-          <velocity>2.3561944901923448</velocity>
+          <velocity>2.35619</velocity>
         </limit>
         <dynamics>
           <damping>3</damping>
-          <friction>0.47999999999999998</friction>
+          <friction>0.48</friction>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
         </dynamics>
@@ -532,27 +504,27 @@
         <ode>
           <limit>
             <cfm>0</cfm>
-            <erp>0.20000000000000001</erp>
+            <erp>0.2</erp>
           </limit>
         </ode>
       </physics>
     </joint>
     <link name='fingrip_link7'>
-      <pose relative_to='fingrip_joint7'>0 0 0 0 0 0</pose>
+      <pose relative_to='fingrip_joint7'>0 0 0 0 -0 0</pose>
       <inertial>
-        <pose>0 0 0.05327881502382277 0 0 0</pose>
-        <mass>0.80498211603839565</mass>
+        <pose>0 0 0.053279 0 -0 0</pose>
+        <mass>0.804982</mass>
         <inertia>
-          <ixx>0.0038602795137068291</ixx>
-          <ixy>-0.0001186748917983392</ixy>
-          <ixz>3.8619624606881357e-05</ixz>
-          <iyy>0.0029404550443006112</iyy>
-          <iyz>-9.0484793495320919e-05</iyz>
-          <izz>0.0016837493162008049</izz>
+          <ixx>0.00386028</ixx>
+          <ixy>-0.000118675</ixy>
+          <ixz>3.86196e-05</ixz>
+          <iyy>0.00294046</iyy>
+          <iyz>-9.04848e-05</iyz>
+          <izz>0.00168375</izz>
         </inertia>
       </inertial>
       <collision name='fingrip_link7_collision'>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
@@ -565,14 +537,14 @@
           </contact>
           <friction>
             <ode>
-              <mu>0.84999999999999998</mu>
-              <mu2>0.84999999999999998</mu2>
+              <mu>0.85</mu>
+              <mu2>0.85</mu2>
             </ode>
           </friction>
         </surface>
       </collision>
       <collision name='fingrip_link7_fixed_joint_lump__fingrip_hand_collision_1'>
-        <pose>0 0 0.132936 0 0 0</pose>
+        <pose>0 0 0.132936 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
@@ -585,14 +557,14 @@
           </contact>
           <friction>
             <ode>
-              <mu>0.84999999999999998</mu>
-              <mu2>0.84999999999999998</mu2>
+              <mu>0.85</mu>
+              <mu2>0.85</mu2>
             </ode>
           </friction>
         </surface>
       </collision>
       <collision name='fingrip_link7_fixed_joint_lump__fingrip_palm_collision_2'>
-        <pose>0 0 0.14593600000000001 0 0 0</pose>
+        <pose>0 0 0.145936 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
@@ -605,67 +577,55 @@
           </contact>
           <friction>
             <ode>
-              <mu>0.84999999999999998</mu>
-              <mu2>0.84999999999999998</mu2>
+              <mu>0.85</mu>
+              <mu2>0.85</mu2>
             </ode>
           </friction>
         </surface>
       </collision>
       <visual name='fingrip_link7_visual'>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
             <uri>meshes/visual/arm/link7.stl</uri>
           </mesh>
         </geometry>
-        <material>
-          <diffuse>0.25 0.25 0.25 1</diffuse>
-          <ambient>0.25 0.25 0.25 1</ambient>
-        </material>
       </visual>
       <visual name='fingrip_link7_fixed_joint_lump__fingrip_hand_visual_1'>
-        <pose>0 0 0.132936 0 0 0</pose>
+        <pose>0 0 0.132936 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
             <uri>meshes/visual/gripper/paume/base_hand_paume1.stl</uri>
           </mesh>
         </geometry>
-        <material>
-          <diffuse>0.25 0.25 0.25 1</diffuse>
-          <ambient>0.25 0.25 0.25 1</ambient>
-        </material>
       </visual>
       <visual name='fingrip_link7_fixed_joint_lump__fingrip_palm_visual_2'>
-        <pose>0 0 0.14593600000000001 0 0 0</pose>
+        <pose>0 0 0.145936 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
             <uri>meshes/visual/gripper/case/case_3d.stl</uri>
           </mesh>
         </geometry>
-        <material>
-          <diffuse>0.25 0.25 0.25 1</diffuse>
-          <ambient>0.25 0.25 0.25 1</ambient>
-        </material>
       </visual>
     </link>
     <joint name='fingrip_finger1_base_joint' type='revolute'>
-      <pose relative_to='fingrip_link7'>0.053999999999999999 0.053999999999999999 0.23178697000000001 -3.1415926535897931 -1.5707963267948966 0</pose>
+      <pose relative_to='fingrip_link7'>0.054 0.054 0.231787 -3.14159 -1.5708 0</pose>
       <parent>fingrip_link7</parent>
       <child>fingrip_finger1_base_link</child>
       <axis>
         <xyz>1 0 0</xyz>
         <limit>
-          <lower>-1.570796326794897</lower>
+          <lower>-1.5708</lower>
           <upper>0</upper>
           <effort>20</effort>
-          <velocity>0.20000000000000001</velocity>
+          <velocity>0.2</velocity>
         </limit>
         <dynamics>
           <damping>3</damping>
-          <friction>0.40000000000000002</friction>
+          <friction>0.4</friction>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
         </dynamics>
@@ -674,27 +634,27 @@
         <ode>
           <limit>
             <cfm>0</cfm>
-            <erp>0.20000000000000001</erp>
+            <erp>0.2</erp>
           </limit>
         </ode>
       </physics>
     </joint>
     <link name='fingrip_finger1_base_link'>
-      <pose relative_to='fingrip_finger1_base_joint'>0 0 0 0 0 0</pose>
+      <pose relative_to='fingrip_finger1_base_joint'>0 0 0 0 -0 0</pose>
       <inertial>
-        <pose>-0.0465 -0.047750000000000001 0 0 0 0</pose>
-        <mass>0.2238453537819424</mass>
+        <pose>-0.0465 -0.04775 0 0 -0 0</pose>
+        <mass>0.223845</mass>
         <inertia>
-          <ixx>0.00069999999999999999</ixx>
-          <ixy>-0.00020000000000000001</ixy>
+          <ixx>0.0007</ixx>
+          <ixy>-0.0002</ixy>
           <ixz>0</ixz>
-          <iyy>0.00059999999999999995</iyy>
+          <iyy>0.0006</iyy>
           <iyz>0</iyz>
-          <izz>0.0011000000000000001</izz>
+          <izz>0.0011</izz>
         </inertia>
       </inertial>
       <collision name='fingrip_finger1_base_link_collision'>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
@@ -707,41 +667,37 @@
           </contact>
           <friction>
             <ode>
-              <mu>1.1299999999999999</mu>
-              <mu2>1.1299999999999999</mu2>
+              <mu>1.13</mu>
+              <mu2>1.13</mu2>
             </ode>
           </friction>
         </surface>
       </collision>
       <visual name='fingrip_finger1_base_link_visual'>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
             <uri>meshes/visual/gripper/base_finger/base_finger.stl</uri>
           </mesh>
         </geometry>
-        <material>
-          <diffuse>0.25 0.25 0.25 1</diffuse>
-          <ambient>0.25 0.25 0.25 1</ambient>
-        </material>
       </visual>
     </link>
     <joint name='fingrip_finger1_proximal_joint' type='revolute'>
-      <pose relative_to='fingrip_finger1_base_link'>0 -0.032550000000000003 0 0 0 0</pose>
+      <pose relative_to='fingrip_finger1_base_link'>0 -0.03255 0 0 -0 0</pose>
       <parent>fingrip_finger1_base_link</parent>
       <child>fingrip_finger1_proximal_link</child>
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
           <lower>-1.3</lower>
-          <upper>0.31415999999999999</upper>
+          <upper>0.31416</upper>
           <effort>20</effort>
-          <velocity>0.20000000000000001</velocity>
+          <velocity>0.2</velocity>
         </limit>
         <dynamics>
           <damping>3</damping>
-          <friction>0.40000000000000002</friction>
+          <friction>0.4</friction>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
         </dynamics>
@@ -750,19 +706,19 @@
         <ode>
           <limit>
             <cfm>0</cfm>
-            <erp>0.20000000000000001</erp>
+            <erp>0.2</erp>
           </limit>
         </ode>
       </physics>
     </joint>
     <link name='fingrip_finger1_proximal_link'>
-      <pose relative_to='fingrip_finger1_proximal_joint'>0 0 0 0 0 0</pose>
+      <pose relative_to='fingrip_finger1_proximal_joint'>0 0 0 0 -0 0</pose>
       <inertial>
-        <pose>0.034110000000000001 -0.010120000000000001 0 0 0 0</pose>
-        <mass>0.2238453537819424</mass>
+        <pose>0.03411 -0.01012 0 0 -0 0</pose>
+        <mass>0.223845</mass>
         <inertia>
           <ixx>9.2e-05</ixx>
-          <ixy>-6.0999999999999999e-05</ixy>
+          <ixy>-6.1e-05</ixy>
           <ixz>0</ixz>
           <iyy>0.00031</iyy>
           <iyz>0</iyz>
@@ -770,7 +726,7 @@
         </inertia>
       </inertial>
       <collision name='fingrip_finger1_proximal_link_collision'>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
@@ -783,41 +739,37 @@
           </contact>
           <friction>
             <ode>
-              <mu>1.1299999999999999</mu>
-              <mu2>1.1299999999999999</mu2>
+              <mu>1.13</mu>
+              <mu2>1.13</mu2>
             </ode>
           </friction>
         </surface>
       </collision>
       <visual name='fingrip_finger1_proximal_link_visual'>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
             <uri>meshes/visual/gripper/proximal/short/proximal.stl</uri>
           </mesh>
         </geometry>
-        <material>
-          <diffuse>0.25 0.25 0.25 1</diffuse>
-          <ambient>0.25 0.25 0.25 1</ambient>
-        </material>
       </visual>
     </link>
     <joint name='fingrip_finger2_base_joint' type='revolute'>
-      <pose relative_to='fingrip_link7'>0.053999999999999999 -0.053999999999999999 0.23178697000000001 -2.4492935982947059e-16 -1.5707963267948966 0</pose>
+      <pose relative_to='fingrip_link7'>0.054 -0.054 0.231787 -0 -1.5708 0</pose>
       <parent>fingrip_link7</parent>
       <child>fingrip_finger2_base_link</child>
       <axis>
         <xyz>1 0 0</xyz>
         <limit>
           <lower>0</lower>
-          <upper>1.570796326794897</upper>
+          <upper>1.5708</upper>
           <effort>20</effort>
-          <velocity>0.20000000000000001</velocity>
+          <velocity>0.2</velocity>
         </limit>
         <dynamics>
           <damping>3</damping>
-          <friction>0.40000000000000002</friction>
+          <friction>0.4</friction>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
         </dynamics>
@@ -826,27 +778,27 @@
         <ode>
           <limit>
             <cfm>0</cfm>
-            <erp>0.20000000000000001</erp>
+            <erp>0.2</erp>
           </limit>
         </ode>
       </physics>
     </joint>
     <link name='fingrip_finger2_base_link'>
-      <pose relative_to='fingrip_finger2_base_joint'>0 0 0 0 0 0</pose>
+      <pose relative_to='fingrip_finger2_base_joint'>0 0 0 0 -0 0</pose>
       <inertial>
-        <pose>-0.0465 -0.047750000000000001 0 0 0 0</pose>
-        <mass>0.2238453537819424</mass>
+        <pose>-0.0465 -0.04775 0 0 -0 0</pose>
+        <mass>0.223845</mass>
         <inertia>
-          <ixx>0.00069999999999999999</ixx>
-          <ixy>-0.00020000000000000001</ixy>
+          <ixx>0.0007</ixx>
+          <ixy>-0.0002</ixy>
           <ixz>0</ixz>
-          <iyy>0.00059999999999999995</iyy>
+          <iyy>0.0006</iyy>
           <iyz>0</iyz>
-          <izz>0.0011000000000000001</izz>
+          <izz>0.0011</izz>
         </inertia>
       </inertial>
       <collision name='fingrip_finger2_base_link_collision'>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
@@ -859,41 +811,37 @@
           </contact>
           <friction>
             <ode>
-              <mu>1.1299999999999999</mu>
-              <mu2>1.1299999999999999</mu2>
+              <mu>1.13</mu>
+              <mu2>1.13</mu2>
             </ode>
           </friction>
         </surface>
       </collision>
       <visual name='fingrip_finger2_base_link_visual'>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
             <uri>meshes/visual/gripper/base_finger/base_finger.stl</uri>
           </mesh>
         </geometry>
-        <material>
-          <diffuse>0.25 0.25 0.25 1</diffuse>
-          <ambient>0.25 0.25 0.25 1</ambient>
-        </material>
       </visual>
     </link>
     <joint name='fingrip_finger2_proximal_joint' type='revolute'>
-      <pose relative_to='fingrip_finger2_base_link'>0 -0.032550000000000003 0 0 0 0</pose>
+      <pose relative_to='fingrip_finger2_base_link'>0 -0.03255 0 0 -0 0</pose>
       <parent>fingrip_finger2_base_link</parent>
       <child>fingrip_finger2_proximal_link</child>
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
           <lower>-1.3</lower>
-          <upper>0.31415999999999999</upper>
+          <upper>0.31416</upper>
           <effort>20</effort>
-          <velocity>0.20000000000000001</velocity>
+          <velocity>0.2</velocity>
         </limit>
         <dynamics>
           <damping>3</damping>
-          <friction>0.40000000000000002</friction>
+          <friction>0.4</friction>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
         </dynamics>
@@ -902,19 +850,19 @@
         <ode>
           <limit>
             <cfm>0</cfm>
-            <erp>0.20000000000000001</erp>
+            <erp>0.2</erp>
           </limit>
         </ode>
       </physics>
     </joint>
     <link name='fingrip_finger2_proximal_link'>
-      <pose relative_to='fingrip_finger2_proximal_joint'>0 0 0 0 0 0</pose>
+      <pose relative_to='fingrip_finger2_proximal_joint'>0 0 0 0 -0 0</pose>
       <inertial>
-        <pose>0.034110000000000001 -0.010120000000000001 0 0 0 0</pose>
-        <mass>0.2238453537819424</mass>
+        <pose>0.03411 -0.01012 0 0 -0 0</pose>
+        <mass>0.223845</mass>
         <inertia>
           <ixx>9.2e-05</ixx>
-          <ixy>-6.0999999999999999e-05</ixy>
+          <ixy>-6.1e-05</ixy>
           <ixz>0</ixz>
           <iyy>0.00031</iyy>
           <iyz>0</iyz>
@@ -922,7 +870,7 @@
         </inertia>
       </inertial>
       <collision name='fingrip_finger2_proximal_link_collision'>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
@@ -935,28 +883,24 @@
           </contact>
           <friction>
             <ode>
-              <mu>1.1299999999999999</mu>
-              <mu2>1.1299999999999999</mu2>
+              <mu>1.13</mu>
+              <mu2>1.13</mu2>
             </ode>
           </friction>
         </surface>
       </collision>
       <visual name='fingrip_finger2_proximal_link_visual'>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
             <uri>meshes/visual/gripper/proximal/short/proximal.stl</uri>
           </mesh>
         </geometry>
-        <material>
-          <diffuse>0.25 0.25 0.25 1</diffuse>
-          <ambient>0.25 0.25 0.25 1</ambient>
-        </material>
       </visual>
     </link>
     <joint name='fingrip_finger3_base_joint' type='fixed'>
-      <pose relative_to='fingrip_link7'>-0.043979999999999998 0 0.23178697000000001 -1.5707963267948957 -1.5707963267948966 0</pose>
+      <pose relative_to='fingrip_link7'>-0.04398 0 0.231787 -1.5708 -1.5708 0</pose>
       <parent>fingrip_link7</parent>
       <child>fingrip_finger3_base_link</child>
       <axis>
@@ -966,35 +910,35 @@
         </dynamics>
         <xyz>0 0 1</xyz>
         <limit>
-          <lower>-inf</lower>
-          <upper>inf</upper>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
         </limit>
       </axis>
       <physics>
         <ode>
           <limit>
             <cfm>0</cfm>
-            <erp>0.20000000000000001</erp>
+            <erp>0.2</erp>
           </limit>
         </ode>
       </physics>
     </joint>
     <link name='fingrip_finger3_base_link'>
-      <pose relative_to='fingrip_finger3_base_joint'>0 0 0 0 0 0</pose>
+      <pose relative_to='fingrip_finger3_base_joint'>0 0 0 0 -0 0</pose>
       <inertial>
-        <pose>-0.0465 -0.047750000000000001 0 0 0 0</pose>
-        <mass>0.2238453537819424</mass>
+        <pose>-0.0465 -0.04775 0 0 -0 0</pose>
+        <mass>0.223845</mass>
         <inertia>
-          <ixx>0.00069999999999999999</ixx>
-          <ixy>-0.00020000000000000001</ixy>
+          <ixx>0.0007</ixx>
+          <ixy>-0.0002</ixy>
           <ixz>0</ixz>
-          <iyy>0.00059999999999999995</iyy>
+          <iyy>0.0006</iyy>
           <iyz>0</iyz>
-          <izz>0.0011000000000000001</izz>
+          <izz>0.0011</izz>
         </inertia>
       </inertial>
       <collision name='fingrip_finger3_base_link_collision'>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
@@ -1007,41 +951,37 @@
           </contact>
           <friction>
             <ode>
-              <mu>1.1299999999999999</mu>
-              <mu2>1.1299999999999999</mu2>
+              <mu>1.13</mu>
+              <mu2>1.13</mu2>
             </ode>
           </friction>
         </surface>
       </collision>
       <visual name='fingrip_finger3_base_link_visual'>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
             <uri>meshes/visual/gripper/base_finger/base_finger.stl</uri>
           </mesh>
         </geometry>
-        <material>
-          <diffuse>0.25 0.25 0.25 1</diffuse>
-          <ambient>0.25 0.25 0.25 1</ambient>
-        </material>
       </visual>
     </link>
     <joint name='fingrip_finger3_proximal_joint' type='revolute'>
-      <pose relative_to='fingrip_finger3_base_link'>0 -0.032550000000000003 0 0 0 0</pose>
+      <pose relative_to='fingrip_finger3_base_link'>0 -0.03255 0 0 -0 0</pose>
       <parent>fingrip_finger3_base_link</parent>
       <child>fingrip_finger3_proximal_link</child>
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
           <lower>-1.3</lower>
-          <upper>0.31415999999999999</upper>
+          <upper>0.31416</upper>
           <effort>20</effort>
-          <velocity>0.20000000000000001</velocity>
+          <velocity>0.2</velocity>
         </limit>
         <dynamics>
           <damping>3</damping>
-          <friction>0.40000000000000002</friction>
+          <friction>0.4</friction>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
         </dynamics>
@@ -1050,19 +990,19 @@
         <ode>
           <limit>
             <cfm>0</cfm>
-            <erp>0.20000000000000001</erp>
+            <erp>0.2</erp>
           </limit>
         </ode>
       </physics>
     </joint>
     <link name='fingrip_finger3_proximal_link'>
-      <pose relative_to='fingrip_finger3_proximal_joint'>0 0 0 0 0 0</pose>
+      <pose relative_to='fingrip_finger3_proximal_joint'>0 0 0 0 -0 0</pose>
       <inertial>
-        <pose>0.034110000000000001 -0.010120000000000001 0 0 0 0</pose>
-        <mass>0.2238453537819424</mass>
+        <pose>0.03411 -0.01012 0 0 -0 0</pose>
+        <mass>0.223845</mass>
         <inertia>
           <ixx>9.2e-05</ixx>
-          <ixy>-6.0999999999999999e-05</ixy>
+          <ixy>-6.1e-05</ixy>
           <ixz>0</ixz>
           <iyy>0.00031</iyy>
           <iyz>0</iyz>
@@ -1070,7 +1010,7 @@
         </inertia>
       </inertial>
       <collision name='fingrip_finger3_proximal_link_collision'>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
@@ -1083,52 +1023,21 @@
           </contact>
           <friction>
             <ode>
-              <mu>1.1299999999999999</mu>
-              <mu2>1.1299999999999999</mu2>
+              <mu>1.13</mu>
+              <mu2>1.13</mu2>
             </ode>
           </friction>
         </surface>
       </collision>
       <visual name='fingrip_finger3_proximal_link_visual'>
-        <pose>0 0 0 0 0 0</pose>
+        <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
             <uri>meshes/visual/gripper/proximal/short/proximal.stl</uri>
           </mesh>
         </geometry>
-        <material>
-          <diffuse>0.25 0.25 0.25 1</diffuse>
-          <ambient>0.25 0.25 0.25 1</ambient>
-        </material>
       </visual>
     </link>
-    <plugin name='gz_ros2_control::GazeboSimROS2ControlPlugin' filename='libgz_ros2_control-system'>
-      <parameters>/home/alex/additive_manufacturing/Planner4grasping/install/share/fingrip_moveit_config/config/controllers_effort.yaml</parameters>
-    </plugin>
-    <frame name='fingrip_hand_tcp_virtual_joint' attached_to='fingrip_hand'>
-      <pose>0 0 0.12 0 0 0</pose>
-    </frame>
-    <frame name='fingrip_hand_tcp' attached_to='fingrip_hand_tcp_virtual_joint'>
-      <pose>0 0 0 0 0 0</pose>
-    </frame>
-    <frame name='fingrip_joint_palm' attached_to='fingrip_hand'>
-      <pose>0 0 0.012999999999999999 0 0 0</pose>
-    </frame>
-    <frame name='fingrip_palm' attached_to='fingrip_joint_palm'>
-      <pose>0 0 0 0 0 0</pose>
-    </frame>
-    <frame name='fingrip_joint_wrist' attached_to='fingrip_link8'>
-      <pose>0 0 0 0 0 0</pose>
-    </frame>
-    <frame name='fingrip_hand' attached_to='fingrip_joint_wrist'>
-      <pose>0 0 0 0 0 0</pose>
-    </frame>
-    <frame name='fingrip_link8_virtual_joint' attached_to='fingrip_link7'>
-      <pose>0 0 0.132936 0 0 0</pose>
-    </frame>
-    <frame name='fingrip_link8' attached_to='fingrip_link8_virtual_joint'>
-      <pose>0 0 0 0 0 0</pose>
-    </frame>
   </model>
 </sdf>
