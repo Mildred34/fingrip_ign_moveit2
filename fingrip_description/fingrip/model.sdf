@@ -661,7 +661,7 @@
           <lower>-1.570796326794897</lower>
           <upper>0</upper>
           <effort>20</effort>
-          <velocity>0.20000000000000001</velocity>
+          <velocity>3.1400000000000001</velocity>
         </limit>
         <dynamics>
           <damping>3</damping>
@@ -813,7 +813,7 @@
           <lower>0</lower>
           <upper>1.570796326794897</upper>
           <effort>20</effort>
-          <velocity>0.20000000000000001</velocity>
+          <velocity>3.1400000000000001</velocity>
         </limit>
         <dynamics>
           <damping>3</damping>

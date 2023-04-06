@@ -500,7 +500,7 @@
     <child link="fingrip_finger1_base_link"/>
     <origin rpy="0 -1.5707963267948966 -3.141592653589793" xyz="0.054 0.054 0.09885097"/>
     <axis xyz="1 0 0"/>
-    <limit effort="20" lower="-1.5707963267948966" upper="0" velocity="0.2"/>
+    <limit effort="20" lower="-1.5707963267948966" upper="0" velocity="3.14"/>
     <dynamics damping="3.0" friction="0.4"/>
   </joint>
   <transmission name="fingrip_finger1_base_joint_transmission">
@@ -641,7 +641,7 @@
     <child link="fingrip_finger2_base_link"/>
     <origin rpy="3.141592653589793 -1.5707963267948966 3.141592653589793" xyz="0.054 -0.054 0.09885097"/>
     <axis xyz="1 0 0"/>
-    <limit effort="20" lower="0" upper="1.5707963267948966" velocity="0.2"/>
+    <limit effort="20" lower="0" upper="1.5707963267948966" velocity="3.14"/>
     <dynamics damping="3.0" friction="0.4"/>
   </joint>
   <transmission name="fingrip_finger2_base_joint_transmission">

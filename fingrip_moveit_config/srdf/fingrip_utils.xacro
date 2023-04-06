@@ -21,9 +21,24 @@
   </xacro:macro>
 
 
-  <xacro:macro name="fingrip_gripper_group" params="
+  <xacro:macro name="sub_fingrip_gripper_group_1" params="
     prefix:=fingrip_
     nbFingers:=3
+  ">
+
+    <xacro:if value="${nbFingers >= 3}">
+      <link name="${prefix}finger${nbFingers}_base_link"/>
+      <link name="${prefix}finger${nbFingers}_proximal_link"/>
+      <passive_joint name="${prefix}finger${nbFingers}_base_joint"/>
+      <joint name="${prefix}finger${nbFingers}_proximal_joint"/>
+      <xacro:sub_fingrip_gripper_group_1 nbFingers="${nbFingers-1}" />
+    </xacro:if>
+
+  </xacro:macro>
+
+  <xacro:macro name="sub_fingrip_gripper_group_2" params="
+    prefix:=fingrip_
+    nbFingers:=2
   ">
 
     <xacro:if value="${nbFingers}">
@@ -31,9 +46,17 @@
       <link name="${prefix}finger${nbFingers}_proximal_link"/>
       <joint name="${prefix}finger${nbFingers}_base_joint"/>
       <joint name="${prefix}finger${nbFingers}_proximal_joint"/>
-      <xacro:fingrip_gripper_group nbFingers="${nbFingers-1}" />
+      <xacro:sub_fingrip_gripper_group_2 nbFingers="${nbFingers-1}" />
     </xacro:if>
 
+  </xacro:macro>
+
+  <xacro:macro name="fingrip_gripper_group" params="
+    prefix:=fingrip_
+    nbFingers:=3
+  ">
+    <xacro:sub_fingrip_gripper_group_1 nbFingers="${nbFingers}"/>
+    <xacro:sub_fingrip_gripper_group_2 nbFingers="2"/>
   </xacro:macro>
 
 

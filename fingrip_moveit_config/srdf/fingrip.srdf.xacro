@@ -46,6 +46,11 @@
     nb_abduction_finger="$(arg nb_abduction_finger)"
   />
 
+  <group name="arm_gripper">
+    <group name="arm"/>
+    <group name="gripper"/>
+  </group>
+
   <end_effector group="gripper" name="gripper" parent_group="arm" parent_link="${prefix_arm}hand_tcp"/>
 
   <!-- Palm And Hand -->
