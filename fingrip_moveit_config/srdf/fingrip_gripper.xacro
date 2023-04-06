@@ -5,23 +5,6 @@
   <!--       -->
   <!-- Macro -->
   <!--       -->
-  <xacro:macro name="noabductionjointtozero" params="
-    prefix:=fingrip_
-    nb_abduction_finger:=2
-    nbFingers:=3
-  ">
-
-    <xacro:if value="${nbFingers > nb_abduction_finger}">
-        <joint name="${prefix}finger${nbFingers}_proximal_joint" value="0"/> 
-        <xacro:noabductionjointtozero 
-          prefix="${prefix}"
-          nb_abduction_finger="${nb_abduction_finger}"
-          nbFingers="${nbFingers-1}" 
-          />
-    </xacro:if>
-
-  </xacro:macro>
-
   <xacro:macro name="fingrip_gripper" params="
     prefix:=fingrip_
     nbFingers:=3
@@ -40,26 +23,27 @@
     <group_state name="open_abduction" group="gripper">
       <joint name="${prefix}finger1_base_joint" value="-${pi/2}"/>
       <joint name="${prefix}finger2_base_joint" value="${pi/2}"/>
-      <joint name="${prefix}finger1_proximal_joint" value="0"/>
-      <joint name="${prefix}finger2_proximal_joint" value="0"/>
-      <xacro:noabductionjointtozero
-        prefix="${prefix}"
-        nbFingers="${nbFingers}"
-        nb_abduction_finger="${nb_abduction_finger}"
-      />
     </group_state>
 
     <group_state name="close_abduction" group="gripper">
       <joint name="${prefix}finger1_base_joint" value="0.0"/>
       <joint name="${prefix}finger2_base_joint" value="0.0"/>
-      <joint name="${prefix}finger1_proximal_joint" value="0"/>
-      <joint name="${prefix}finger2_proximal_joint" value="0"/>
-      <xacro:noabductionjointtozero
-        prefix="${prefix}"
-        nbFingers="${nbFingers}"
-        nb_abduction_finger="${nb_abduction_finger}"
-      />
     </group_state>
+
+    <!-- ADD dependencies if there are more fingers -->
+    <!-- The closing or opening of the proximal joint should have an impact onto the intermediaire and distal
+     through under-actuated joints -->
+    <group_state name="close" group="gripper">
+      <joint name="${prefix}finger1_proximal_joint" value="${18*pi/180}"/>
+      <joint name="${prefix}finger2_proximal_joint" value="${18*pi/180}"/>
+      <joint name="${prefix}finger3_proximal_joint" value="${18*pi/180}"/>
+    </group_state>
+
+    <group_state name="open" group="gripper">
+      <joint name="${prefix}finger1_proximal_joint" value="-${74*pi/180}"/>
+      <joint name="${prefix}finger2_proximal_joint" value="-${74*pi/180}"/>
+      <joint name="${prefix}finger3_proximal_joint" value="-${74*pi/180}"/>
+    </group_state> 
 
     <disable_collisions link1="${prefix}hand" link2="${prefix}palm" reason="Adjacent"/>
     <xacro:fingrip_gripper_gripper_collision

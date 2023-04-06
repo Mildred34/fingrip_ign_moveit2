@@ -75,16 +75,23 @@
   <group_state group="gripper" name="open_abduction">
     <joint name="fingrip_finger1_base_joint" value="-1.5707963267948966"/>
     <joint name="fingrip_finger2_base_joint" value="1.5707963267948966"/>
-    <joint name="fingrip_finger1_proximal_joint" value="0"/>
-    <joint name="fingrip_finger2_proximal_joint" value="0"/>
-    <joint name="fingrip_finger3_proximal_joint" value="0"/>
   </group_state>
   <group_state group="gripper" name="close_abduction">
     <joint name="fingrip_finger1_base_joint" value="0.0"/>
     <joint name="fingrip_finger2_base_joint" value="0.0"/>
-    <joint name="fingrip_finger1_proximal_joint" value="0"/>
-    <joint name="fingrip_finger2_proximal_joint" value="0"/>
-    <joint name="fingrip_finger3_proximal_joint" value="0"/>
+  </group_state>
+  <!-- ADD dependencies if there are more fingers -->
+  <!-- The closing or opening of the proximal joint should have an impact onto the intermediaire and distal
+     through under-actuated joints -->
+  <group_state group="gripper" name="close">
+    <joint name="fingrip_finger1_proximal_joint" value="0.3141592653589793"/>
+    <joint name="fingrip_finger2_proximal_joint" value="0.3141592653589793"/>
+    <joint name="fingrip_finger3_proximal_joint" value="0.3141592653589793"/>
+  </group_state>
+  <group_state group="gripper" name="open">
+    <joint name="fingrip_finger1_proximal_joint" value="-1.2915436464758039"/>
+    <joint name="fingrip_finger2_proximal_joint" value="-1.2915436464758039"/>
+    <joint name="fingrip_finger3_proximal_joint" value="-1.2915436464758039"/>
   </group_state>
   <disable_collisions link1="fingrip_hand" link2="fingrip_palm" reason="Adjacent"/>
   <disable_collisions link1="fingrip_hand" link2="fingrip_finger3_base_link" reason="Adjacent"/>
