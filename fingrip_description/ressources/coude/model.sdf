@@ -75,14 +75,8 @@
       </visual>
 
       <sensor name='object_contact_sensor' type='contact'>
-        <!-- <plugin name="gazebo_ros_contact" filename="libgazebo_ros_bumper.so">
-          <alwaysOn>true</alwaysOn>
-          <updateRate>50</updateRate>
-          <bumperTopicName>contact</bumperTopicName>
-          <frameName>coude</frameName>
-        </plugin> -->
         <contact>
-          <collision>collision</collision>
+          <collision>coude_collision</collision>
         </contact>
       </sensor>
       
@@ -94,6 +88,14 @@
         <publish_collision_pose>false</publish_collision_pose>
         <publish_visual_pose>false</publish_visual_pose>
     </plugin>
+    
+    <!-- <plugin filename="gz-sim-touchplugin-system"
+            name="gz::sim::systems::TouchPlugin">
+        <target>conveyor</target>
+        <namespace>coude_touch</namespace>
+        <time>0.001</time>
+        <enabled>true</enabled>
+    </plugin> -->
 
   </model>
 </sdf>
