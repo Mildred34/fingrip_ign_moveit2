@@ -211,6 +211,22 @@
       <state_interface name="effort"/>
     </joint>
 
+    <joint name="${prefix}${finger_name}_intermediaire_joint">
+      <param name="initial_position">${initial_positions['intermediaire_joint']}</param>
+      <xacro:if value="${'position' in command_interface}">
+        <command_interface name="position"/>
+      </xacro:if>
+      <xacro:if value="${'velocity' in command_interface}">
+        <command_interface name="velocity"/>
+      </xacro:if>
+      <xacro:if value="${'effort' in command_interface}">
+        <command_interface name="effort"/>
+      </xacro:if>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+
   </xacro:macro>
 
 </robot>

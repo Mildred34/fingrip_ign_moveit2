@@ -41,7 +41,7 @@
   <!-- Intermediaire -->
   <xacro:property name="joint_intermediaire_lower_limit" value="-0.5"/>
   <xacro:property name="joint_intermediaire_upper_limit" value="1.0472"/>
-  <xacro:property name="joint_intermediaire_origin_xyz" value="0 0 0.0584"/>
+  <xacro:property name="joint_intermediaire_origin_xyz" value="0.08 0 0"/>
   <xacro:property name="joint_intermediaire_origin_rpy" value="0 0 0"/>
   <xacro:property name="joint_intermediaire_axis_xyz" value="0 0 1"/>
 
@@ -126,17 +126,16 @@
         />
 
         <!-- INTERMEDIAIRE limb -->
-        <!--
         <xacro:fingrip_joint
         parent="${prefix}${finger_name}${proximal_prefix}${link_prefix}"
         child="${prefix}${finger_name}${intermediaire_prefix}${link_prefix}"
         joint_name="${prefix}${finger_name}${intermediaire_prefix}${joint_prefix}"
         joint_type="${joint_other_type}"
-        joint_origin_xyz="${joint_other_origin_xyz}"
-        joint_origin_rpy="${joint_other_origin_rpy}"
-        joint_axis_xyz="${joint_other_axis_xyz}"
-        joint_lower_limit="${joint_lower_limit}"
-        joint_upper_limit="${joint_upper_limit}"
+        joint_origin_xyz="${joint_intermediaire_origin_xyz}"
+        joint_origin_rpy="${joint_intermediaire_origin_rpy}"
+        joint_axis_xyz="${joint_intermediaire_axis_xyz}"
+        joint_lower_limit="${joint_intermediaire_lower_limit}"
+        joint_upper_limit="${joint_intermediaire_upper_limit}"
         joint_velocity_limit="${joint_velocity_limit}"
         joint_torque_limit="${joint_torque_limit}"
         joint_damping="${joint_damping}"
@@ -149,7 +148,6 @@
         collision="${collision}"
         mu="${link_mu}"
         />
-        -->
 
         <!-- DISTAL limb --> 
         <!--

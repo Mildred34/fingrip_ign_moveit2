@@ -36,6 +36,9 @@ gripper_trajectory_controller:
       - fingrip_finger2_base_joint
       - fingrip_finger2_proximal_joint
       - fingrip_finger3_proximal_joint
+      - fingrip_finger1_intermediaire_joint
+      - fingrip_finger2_intermediaire_joint
+      - fingrip_finger3_intermediaire_joint
     command_interfaces:
       - position
       - velocity

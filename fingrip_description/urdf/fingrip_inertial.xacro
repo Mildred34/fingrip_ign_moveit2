@@ -161,7 +161,7 @@
     <xacro:if value="${mesh == proximal_mesh_path+short_prefix+proximal_mesh_name}">
       <inertial>
         <origin xyz="0.03411 -0.01012 0.0" rpy="${mesh_offset_rpy}"/>
-        <mass value="0.2238453537819424"/>
+        <mass value="0.150"/>
         <inertia ixx="0.000092" ixy="-0.000061" ixz="0.0" iyy="0.00031" iyz="0.0" izz="0.00031"/>
       </inertial>
     </xacro:if>
@@ -170,7 +170,7 @@
     <xacro:if value="${mesh == intermediaire_mesh_path+short_prefix+intermediaire_mesh_name}">
       <inertial>
         <origin xyz="0.01791 -0.01023 0.0" rpy="${mesh_offset_rpy}"/>
-        <mass value="0.2238453537819424"/>
+        <mass value="0.150"/>
         <inertia ixx="0.000025" ixy="0.000013" ixz="0.0" iyy="0.000102" iyz="0.0" izz="0.000108"/>
       </inertial>
     </xacro:if>
@@ -179,7 +179,7 @@
     <xacro:if value="${mesh == distal_mesh_path+short_prefix+distal_mesh_name}">
       <inertial>
         <origin xyz="0.01217 -0.00732 0.0" rpy="${mesh_offset_rpy}"/>
-        <mass value="0.2238453537819424"/>
+        <mass value="0.1"/>
         <inertia ixx="0.000025" ixy="0.000013" ixz="0.0" iyy="0.000102" iyz="0.0" izz="0.000108"/>
       </inertial>
     </xacro:if>

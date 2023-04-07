@@ -11,17 +11,17 @@ initial_joint_positions:
     finger1:
       base_joint: 0.0
       proximal_joint: -1.29 # -74°
-      # intermediaire_joint: 0.0
+      intermediaire_joint: -0.5 # -29°
       # distal_joint: 0.0
     finger2:
       base_joint: 0.0
       proximal_joint: -1.29 # -74°
-      # intermediaire_joint: 0.0
+      intermediaire_joint: -0.5 # -29°
       # distal_joint: 0.0
     finger3:
       # base_joint: 0.0
       proximal_joint: -1.29 # -74°
-      # intermediaire_joint: 0.0
+      intermediaire_joint: -0.5 # -29°
       # distal_joint: 0.0
     # finger4:
     #   base_joint: 0.0

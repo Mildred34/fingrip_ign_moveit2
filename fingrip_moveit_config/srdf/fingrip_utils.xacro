@@ -2,6 +2,17 @@
 <!-- Macro for SRDF of Franka Emika fingrip arm -->
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
 
+  <!--            -->
+  <!-- Properties -->
+  <!-- GENERAL    -->
+  <xacro:property name="base_prefix" value="_base"/>
+  <xacro:property name="proximal_prefix" value="_proximal"/>
+  <xacro:property name="intermediaire_prefix" value="_intermediaire"/>  
+  <xacro:property name="distal_prefix" value="_distal"/>  
+
+  <xacro:property name="joint_prefix" value="_joint"/> 
+  <xacro:property name="link_prefix" value="_link"/> 
+
   <!--       -->
   <!-- Macro -->
   <!--       -->
@@ -12,9 +23,9 @@
   ">
 
     <xacro:if value="${nbFingers}">
-        <disable_collisions link1="${prefix_gripper}finger${nbFingers}_base_link" link2="${prefix_arm}link3" reason="Never"/>
-        <disable_collisions link1="${prefix_gripper}finger${nbFingers}_base_link" link2="${prefix_arm}link4" reason="Never"/>
-        <disable_collisions link1="${prefix_gripper}finger${nbFingers}_base_link" link2="${prefix_arm}link6" reason="Never"/>
+        <disable_collisions link1="${prefix_gripper}finger${nbFingers}${base_prefix}${link_prefix}" link2="${prefix_arm}link3" reason="Never"/>
+        <disable_collisions link1="${prefix_gripper}finger${nbFingers}${base_prefix}${link_prefix}" link2="${prefix_arm}link4" reason="Never"/>
+        <disable_collisions link1="${prefix_gripper}finger${nbFingers}${base_prefix}${link_prefix}" link2="${prefix_arm}link6" reason="Never"/>
         <xacro:fingrip_gripper_arm_collision nbFingers="${nbFingers-1}" />
     </xacro:if>
 
@@ -27,10 +38,12 @@
   ">
 
     <xacro:if value="${nbFingers >= 3}">
-      <link name="${prefix}finger${nbFingers}_base_link"/>
-      <link name="${prefix}finger${nbFingers}_proximal_link"/>
-      <passive_joint name="${prefix}finger${nbFingers}_base_joint"/>
-      <joint name="${prefix}finger${nbFingers}_proximal_joint"/>
+      <link name="${prefix}finger${nbFingers}${base_prefix}${link_prefix}"/>
+      <link name="${prefix}finger${nbFingers}${proximal_prefix}${link_prefix}"/>
+      <link name="${prefix}finger${nbFingers}${intermediaire_prefix}${link_prefix}"/>
+      <passive_joint name="${prefix}finger${nbFingers}${base_prefix}${joint_prefix}"/>
+      <joint name="${prefix}finger${nbFingers}${proximal_prefix}${joint_prefix}"/>
+      <joint name="${prefix}finger${nbFingers}${intermediaire_prefix}${joint_prefix}"/>
       <xacro:sub_fingrip_gripper_group_1 nbFingers="${nbFingers-1}" />
     </xacro:if>
 
@@ -42,10 +55,12 @@
   ">
 
     <xacro:if value="${nbFingers}">
-      <link name="${prefix}finger${nbFingers}_base_link"/>
-      <link name="${prefix}finger${nbFingers}_proximal_link"/>
-      <joint name="${prefix}finger${nbFingers}_base_joint"/>
-      <joint name="${prefix}finger${nbFingers}_proximal_joint"/>
+      <link name="${prefix}finger${nbFingers}${base_prefix}${link_prefix}"/>
+      <link name="${prefix}finger${nbFingers}${proximal_prefix}${link_prefix}"/>
+      <link name="${prefix}finger${nbFingers}${intermediaire_prefix}${link_prefix}"/>
+      <joint name="${prefix}finger${nbFingers}${base_prefix}${joint_prefix}"/>
+      <joint name="${prefix}finger${nbFingers}${proximal_prefix}${joint_prefix}"/>
+      <joint name="${prefix}finger${nbFingers}${intermediaire_prefix}${joint_prefix}"/>
       <xacro:sub_fingrip_gripper_group_2 nbFingers="${nbFingers-1}" />
     </xacro:if>
 
@@ -60,15 +75,27 @@
   </xacro:macro>
 
 
-  <xacro:macro name="fingrip_gripper_gripper_collision" params="
+  <xacro:macro name="fingrip_gripper_base_collision" params="
     prefix:=fingrip_
     nbFingers:=3
   ">
 
     <xacro:if value="${nbFingers}">
-        <disable_collisions link1="${prefix}hand" link2="${prefix}finger${nbFingers}_base_link" reason="Adjacent"/>
-        <disable_collisions link1="${prefix}palm" link2="${prefix}finger${nbFingers}_base_link" reason="Adjacent"/>
-        <xacro:fingrip_gripper_gripper_collision nbFingers="${nbFingers-1}" />
+        <disable_collisions link1="${prefix}hand" link2="${prefix}finger${nbFingers}${base_prefix}${link_prefix}" reason="Adjacent"/>
+        <disable_collisions link1="${prefix}palm" link2="${prefix}finger${nbFingers}${base_prefix}${link_prefix}" reason="Adjacent"/>
+        <xacro:fingrip_gripper_base_collision nbFingers="${nbFingers-1}" />
+    </xacro:if>
+
+  </xacro:macro>
+
+  <xacro:macro name="fingrip_gripper_finger_collision" params="
+    prefix:=fingrip_
+    nbFingers:=3
+  ">
+    <xacro:if value="${nbFingers}">
+        <disable_collisions link1="${prefix}finger${nbFingers}${base_prefix}${link_prefix}" link2="${prefix}finger${nbFingers}${proximal_prefix}${link_prefix}" reason="Adjacent"/>
+        <disable_collisions link1="${prefix}finger${nbFingers}${proximal_prefix}${link_prefix}" link2="${prefix}finger${nbFingers}${intermediaire_prefix}${link_prefix}" reason="Adjacent"/>
+        <xacro:fingrip_gripper_finger_collision nbFingers="${nbFingers-1}" />
     </xacro:if>
 
   </xacro:macro>

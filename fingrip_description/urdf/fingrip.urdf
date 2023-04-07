@@ -577,7 +577,7 @@
     </collision>
     <inertial>
       <origin rpy="0 0 0" xyz="0.03411 -0.01012 0.0"/>
-      <mass value="0.2238453537819424"/>
+      <mass value="0.150"/>
       <inertia ixx="0.000092" ixy="-0.000061" ixz="0.0" iyy="0.00031" iyz="0.0" izz="0.00031"/>
     </inertial>
   </link>
@@ -585,31 +585,51 @@
     <mu1 value="1.13"/>
     <mu2 value="1.13"/>
   </gazebo>
-  <!-- INTERMEDIAIRE limb -->
-  <!--
-        <xacro:fingrip_joint
-        parent="${prefix}${finger_name}${proximal_prefix}${link_prefix}"
-        child="${prefix}${finger_name}${intermediaire_prefix}${link_prefix}"
-        joint_name="${prefix}${finger_name}${intermediaire_prefix}${joint_prefix}"
-        joint_type="${joint_other_type}"
-        joint_origin_xyz="${joint_other_origin_xyz}"
-        joint_origin_rpy="${joint_other_origin_rpy}"
-        joint_axis_xyz="${joint_other_axis_xyz}"
-        joint_lower_limit="${joint_lower_limit}"
-        joint_upper_limit="${joint_upper_limit}"
-        joint_velocity_limit="${joint_velocity_limit}"
-        joint_torque_limit="${joint_torque_limit}"
-        joint_damping="${joint_damping}"
-        joint_friction="${joint_friction}"
-        gazebo_preserve_fixed_joint="${gazebo_preserve_fixed_joint}"
-        />
-        <xacro:fingrip_link
-        link_name="${prefix}${finger_name}${intermediaire_prefix}${link_prefix}"
-        mesh="${intermediaire_mesh_path}${short_prefix}${intermediaire_mesh_name}"
-        collision="${collision}"
-        mu="${link_mu}"
-        />
-        -->
+  <joint name="fingrip_finger1_intermediaire_joint" type="revolute">
+    <parent link="fingrip_finger1_proximal_link"/>
+    <child link="fingrip_finger1_intermediaire_link"/>
+    <origin rpy="0 0 0" xyz="0.08 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="20" lower="-0.5" upper="1.0472" velocity="1.57"/>
+    <dynamics damping="3.0" friction="0.4"/>
+  </joint>
+  <transmission name="fingrip_finger1_intermediaire_joint_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="fingrip_finger1_intermediaire_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="fingrip_finger1_intermediaire_joint_actuator">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <gazebo reference="fingrip_finger1_intermediaire_joint">
+    <springStiffness value="0.0"/>
+    <springReference value="0.0"/>
+  </gazebo>
+  <link name="fingrip_finger1_intermediaire_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://fingrip_description/meshes/visual/gripper/intermediaire/short/intermediaire.stl"/>
+      </geometry>
+      <material name="Grey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://fingrip_description/meshes/collision/gripper/intermediaire/short/intermediaire.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.01791 -0.01023 0.0"/>
+      <mass value="0.150"/>
+      <inertia ixx="0.000025" ixy="0.000013" ixz="0.0" iyy="0.000102" iyz="0.0" izz="0.000108"/>
+    </inertial>
+  </link>
+  <gazebo reference="fingrip_finger1_intermediaire_link">
+    <mu1 value="1.13"/>
+    <mu2 value="1.13"/>
+  </gazebo>
   <!-- DISTAL limb -->
   <!--
         <xacro:fingrip_joint
@@ -718,7 +738,7 @@
     </collision>
     <inertial>
       <origin rpy="0 0 0" xyz="0.03411 -0.01012 0.0"/>
-      <mass value="0.2238453537819424"/>
+      <mass value="0.150"/>
       <inertia ixx="0.000092" ixy="-0.000061" ixz="0.0" iyy="0.00031" iyz="0.0" izz="0.00031"/>
     </inertial>
   </link>
@@ -726,31 +746,51 @@
     <mu1 value="1.13"/>
     <mu2 value="1.13"/>
   </gazebo>
-  <!-- INTERMEDIAIRE limb -->
-  <!--
-        <xacro:fingrip_joint
-        parent="${prefix}${finger_name}${proximal_prefix}${link_prefix}"
-        child="${prefix}${finger_name}${intermediaire_prefix}${link_prefix}"
-        joint_name="${prefix}${finger_name}${intermediaire_prefix}${joint_prefix}"
-        joint_type="${joint_other_type}"
-        joint_origin_xyz="${joint_other_origin_xyz}"
-        joint_origin_rpy="${joint_other_origin_rpy}"
-        joint_axis_xyz="${joint_other_axis_xyz}"
-        joint_lower_limit="${joint_lower_limit}"
-        joint_upper_limit="${joint_upper_limit}"
-        joint_velocity_limit="${joint_velocity_limit}"
-        joint_torque_limit="${joint_torque_limit}"
-        joint_damping="${joint_damping}"
-        joint_friction="${joint_friction}"
-        gazebo_preserve_fixed_joint="${gazebo_preserve_fixed_joint}"
-        />
-        <xacro:fingrip_link
-        link_name="${prefix}${finger_name}${intermediaire_prefix}${link_prefix}"
-        mesh="${intermediaire_mesh_path}${short_prefix}${intermediaire_mesh_name}"
-        collision="${collision}"
-        mu="${link_mu}"
-        />
-        -->
+  <joint name="fingrip_finger2_intermediaire_joint" type="revolute">
+    <parent link="fingrip_finger2_proximal_link"/>
+    <child link="fingrip_finger2_intermediaire_link"/>
+    <origin rpy="0 0 0" xyz="0.08 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="20" lower="-0.5" upper="1.0472" velocity="1.57"/>
+    <dynamics damping="3.0" friction="0.4"/>
+  </joint>
+  <transmission name="fingrip_finger2_intermediaire_joint_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="fingrip_finger2_intermediaire_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="fingrip_finger2_intermediaire_joint_actuator">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <gazebo reference="fingrip_finger2_intermediaire_joint">
+    <springStiffness value="0.0"/>
+    <springReference value="0.0"/>
+  </gazebo>
+  <link name="fingrip_finger2_intermediaire_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://fingrip_description/meshes/visual/gripper/intermediaire/short/intermediaire.stl"/>
+      </geometry>
+      <material name="Grey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://fingrip_description/meshes/collision/gripper/intermediaire/short/intermediaire.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.01791 -0.01023 0.0"/>
+      <mass value="0.150"/>
+      <inertia ixx="0.000025" ixy="0.000013" ixz="0.0" iyy="0.000102" iyz="0.0" izz="0.000108"/>
+    </inertial>
+  </link>
+  <gazebo reference="fingrip_finger2_intermediaire_link">
+    <mu1 value="1.13"/>
+    <mu2 value="1.13"/>
+  </gazebo>
   <!-- DISTAL limb -->
   <!--
         <xacro:fingrip_joint
@@ -847,7 +887,7 @@
     </collision>
     <inertial>
       <origin rpy="0 0 0" xyz="0.03411 -0.01012 0.0"/>
-      <mass value="0.2238453537819424"/>
+      <mass value="0.150"/>
       <inertia ixx="0.000092" ixy="-0.000061" ixz="0.0" iyy="0.00031" iyz="0.0" izz="0.00031"/>
     </inertial>
   </link>
@@ -855,31 +895,51 @@
     <mu1 value="1.13"/>
     <mu2 value="1.13"/>
   </gazebo>
-  <!-- INTERMEDIAIRE limb -->
-  <!--
-        <xacro:fingrip_joint
-        parent="${prefix}${finger_name}${proximal_prefix}${link_prefix}"
-        child="${prefix}${finger_name}${intermediaire_prefix}${link_prefix}"
-        joint_name="${prefix}${finger_name}${intermediaire_prefix}${joint_prefix}"
-        joint_type="${joint_other_type}"
-        joint_origin_xyz="${joint_other_origin_xyz}"
-        joint_origin_rpy="${joint_other_origin_rpy}"
-        joint_axis_xyz="${joint_other_axis_xyz}"
-        joint_lower_limit="${joint_lower_limit}"
-        joint_upper_limit="${joint_upper_limit}"
-        joint_velocity_limit="${joint_velocity_limit}"
-        joint_torque_limit="${joint_torque_limit}"
-        joint_damping="${joint_damping}"
-        joint_friction="${joint_friction}"
-        gazebo_preserve_fixed_joint="${gazebo_preserve_fixed_joint}"
-        />
-        <xacro:fingrip_link
-        link_name="${prefix}${finger_name}${intermediaire_prefix}${link_prefix}"
-        mesh="${intermediaire_mesh_path}${short_prefix}${intermediaire_mesh_name}"
-        collision="${collision}"
-        mu="${link_mu}"
-        />
-        -->
+  <joint name="fingrip_finger3_intermediaire_joint" type="revolute">
+    <parent link="fingrip_finger3_proximal_link"/>
+    <child link="fingrip_finger3_intermediaire_link"/>
+    <origin rpy="0 0 0" xyz="0.08 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="20" lower="-0.5" upper="1.0472" velocity="1.57"/>
+    <dynamics damping="3.0" friction="0.4"/>
+  </joint>
+  <transmission name="fingrip_finger3_intermediaire_joint_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="fingrip_finger3_intermediaire_joint">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="fingrip_finger3_intermediaire_joint_actuator">
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <gazebo reference="fingrip_finger3_intermediaire_joint">
+    <springStiffness value="0.0"/>
+    <springReference value="0.0"/>
+  </gazebo>
+  <link name="fingrip_finger3_intermediaire_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://fingrip_description/meshes/visual/gripper/intermediaire/short/intermediaire.stl"/>
+      </geometry>
+      <material name="Grey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://fingrip_description/meshes/collision/gripper/intermediaire/short/intermediaire.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.01791 -0.01023 0.0"/>
+      <mass value="0.150"/>
+      <inertia ixx="0.000025" ixy="0.000013" ixz="0.0" iyy="0.000102" iyz="0.0" izz="0.000108"/>
+    </inertial>
+  </link>
+  <gazebo reference="fingrip_finger3_intermediaire_link">
+    <mu1 value="1.13"/>
+    <mu2 value="1.13"/>
+  </gazebo>
   <!-- DISTAL limb -->
   <!--
         <xacro:fingrip_joint
@@ -931,6 +991,13 @@
       <state_interface name="velocity"/>
       <state_interface name="effort"/>
     </joint>
+    <joint name="fingrip_finger1_intermediaire_joint">
+      <param name="initial_position">0.0</param>
+      <command_interface name="effort"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
     <hardware>
       <plugin>gz_ros2_control/GazeboSimSystem</plugin>
     </hardware>
@@ -948,11 +1015,25 @@
       <state_interface name="velocity"/>
       <state_interface name="effort"/>
     </joint>
+    <joint name="fingrip_finger2_intermediaire_joint">
+      <param name="initial_position">0.0</param>
+      <command_interface name="effort"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
     <hardware>
       <plugin>gz_ros2_control/GazeboSimSystem</plugin>
     </hardware>
     <joint name="fingrip_finger3_proximal_joint">
       <param name="initial_position">-1.29</param>
+      <command_interface name="effort"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+    <joint name="fingrip_finger3_intermediaire_joint">
+      <param name="initial_position">0.0</param>
       <command_interface name="effort"/>
       <state_interface name="position"/>
       <state_interface name="velocity"/>
