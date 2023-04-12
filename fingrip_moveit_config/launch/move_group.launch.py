@@ -229,6 +229,7 @@ def generate_launch_description():
                 },
             ],
         ),
+        # simply listens to /joint_states messages from the joint_state_controller then publishes the transforms to /tf for rviz
         # ros2_control_node (only for fake controller)
         Node(
             package="controller_manager",
