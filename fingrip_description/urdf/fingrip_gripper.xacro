@@ -171,6 +171,21 @@
     <!-- ROS 2 control -->
     <xacro:if value="${ros2_control}">
       <ros2_control name="${ros2control_name}" type="system">
+          <hardware>
+            <xacro:if value="${ros2_control_plugin == 'fake'}">
+              <plugin>fake_components/GenericSystem</plugin>
+            </xacro:if>
+            <xacro:if value="${ros2_control_plugin == 'ign'}">
+              <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+            </xacro:if>
+            <xacro:if value="${ros2_control_plugin == 'real'}">
+              <xacro:ERROR_ros2_control_for_real_robot_unimplemented/>
+            </xacro:if>
+            <xacro:unless value="${ros2_control_plugin == 'fake' or ros2_control_plugin == 'ign' or ros2_control_plugin == 'real'}">
+              <plugin>${ros2_control_plugin}</plugin>
+            </xacro:unless>
+          </hardware>
+
         <xacro:ros2_control_fingrip_gripper 
         prefix="${prefix}" 
         plugin="${ros2_control_plugin}" 
