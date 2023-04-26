@@ -16,19 +16,26 @@ joint_trajectory_controller:
     - fingrip_joint6
     - fingrip_joint7
 
+# gripper_trajectory_controller:
+#   action_ns: follow_joint_trajectory # name of the action server
+#   type: FollowJointTrajectory
+#   default: true
+#   joints:
+#     - fingrip_finger1_base_joint
+#     - fingrip_finger1_proximal_joint
+#     - fingrip_finger2_base_joint
+#     - fingrip_finger2_proximal_joint
+#     - fingrip_finger3_proximal_joint
+#     - fingrip_finger1_intermediaire_joint
+#     - fingrip_finger2_intermediaire_joint
+#     - fingrip_finger3_intermediaire_joint
+
 gripper_trajectory_controller:
-  action_ns: follow_joint_trajectory
-  type: FollowJointTrajectory
+  action_ns: follow_actuator_trajectory # name of the action server
+  type: FollowJointTrajectory # Type de msg
   default: true
-  joints:
-    - fingrip_finger1_base_joint
-    - fingrip_finger1_proximal_joint
-    - fingrip_finger2_base_joint
-    - fingrip_finger2_proximal_joint
-    - fingrip_finger3_proximal_joint
-    - fingrip_finger1_intermediaire_joint
-    - fingrip_finger2_intermediaire_joint
-    - fingrip_finger3_intermediaire_joint
+  actuators:
+    - abduction_actuator
 
 # ----- Gripper action controller (not yet functional)
 # gripper_action_controller:

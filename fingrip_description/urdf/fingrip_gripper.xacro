@@ -8,6 +8,7 @@
   <xacro:include filename="$(find fingrip_description)/urdf/fingrip.ros2_control"/>
   <xacro:include filename="$(find fingrip_description)/urdf/fingrip_finger.xacro"/>
   <xacro:include filename="$(find fingrip_description)/urdf/fingrip_palm.xacro"/>
+  <xacro:include filename="$(find fingrip_description)/urdf/fingrip_transmission.xacro"/>
 
   <!--            -->
   <!-- Properties -->
@@ -78,7 +79,8 @@
     ros2_control_plugin:=fake
     ros2_control_command_interface:=effort
     gazebo_preserve_fixed_joint:=false
-    underactuation:=true
+    underactuated_fingers:=true
+    abduction:=true
     longFingertip:=false
     nbFingers:=3
     hand_type:=1
@@ -167,6 +169,26 @@
     joint_origin_rpy="${ee_origin_rpy}"
     gazebo_preserve_fixed_joint="${gazebo_preserve_fixed_joint}"
     />
+
+
+    <!-- Transmission gripper -->
+    <!-- Abduction -->
+    <xacro:fingrip_transmission 
+      joint1_name="${prefix}${finger1_name}${base_prefix}${joint_prefix}"
+      joint2_name="${prefix}${finger2_name}${base_prefix}${joint_prefix}"
+      underactuation="${abduction}"
+      abduction="true"
+    />
+
+    <!-- Fingers -->
+    <!--
+    <xacro:fingrip_transmission 
+      joint1_name="${prefix}${finger1_name}${base_prefix}${joint_prefix}"
+      joint2_name="${prefix}${finger2_name}${base_prefix}${joint_prefix}"
+      underactuation="${underactuated_fingers}"
+      abduction="false"
+    />
+    -->
 
     <!-- ROS 2 control -->
     <xacro:if value="${ros2_control}">

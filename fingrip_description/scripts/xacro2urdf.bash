@@ -17,6 +17,7 @@ XACRO_ARGS=(
     ros2_control_command_interface:=effort
     gazebo_preserve_fixed_joint:=false
     underactuation:=true
+    abduction:=true
     longFingertip:=false
     nbFingers:=3
     hand_type:=1

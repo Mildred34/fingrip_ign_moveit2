@@ -503,15 +503,6 @@
     <limit effort="20" lower="-1.5707963267948966" upper="0" velocity="1.57"/>
     <dynamics damping="3.0" friction="0.4"/>
   </joint>
-  <transmission name="fingrip_finger1_base_joint_transmission">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="fingrip_finger1_base_joint">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="fingrip_finger1_base_joint_actuator">
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
   <gazebo reference="fingrip_finger1_base_joint">
     <springStiffness value="0.0"/>
     <springReference value="0.0"/>
@@ -548,15 +539,6 @@
     <limit effort="20" lower="-1.3" upper="0.31416" velocity="1.57"/>
     <dynamics damping="3.0" friction="0.4"/>
   </joint>
-  <transmission name="fingrip_finger1_proximal_joint_transmission">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="fingrip_finger1_proximal_joint">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="fingrip_finger1_proximal_joint_actuator">
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
   <gazebo reference="fingrip_finger1_proximal_joint">
     <springStiffness value="0.0"/>
     <springReference value="0.0"/>
@@ -593,15 +575,6 @@
     <limit effort="20" lower="-0.5" upper="1.0472" velocity="1.57"/>
     <dynamics damping="3.0" friction="0.4"/>
   </joint>
-  <transmission name="fingrip_finger1_intermediaire_joint_transmission">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="fingrip_finger1_intermediaire_joint">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="fingrip_finger1_intermediaire_joint_actuator">
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
   <gazebo reference="fingrip_finger1_intermediaire_joint">
     <springStiffness value="0.0"/>
     <springReference value="0.0"/>
@@ -664,15 +637,6 @@
     <limit effort="20" lower="0" upper="1.5707963267948966" velocity="1.57"/>
     <dynamics damping="3.0" friction="0.4"/>
   </joint>
-  <transmission name="fingrip_finger2_base_joint_transmission">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="fingrip_finger2_base_joint">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="fingrip_finger2_base_joint_actuator">
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
   <gazebo reference="fingrip_finger2_base_joint">
     <springStiffness value="0.0"/>
     <springReference value="0.0"/>
@@ -709,15 +673,6 @@
     <limit effort="20" lower="-1.3" upper="0.31416" velocity="1.57"/>
     <dynamics damping="3.0" friction="0.4"/>
   </joint>
-  <transmission name="fingrip_finger2_proximal_joint_transmission">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="fingrip_finger2_proximal_joint">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="fingrip_finger2_proximal_joint_actuator">
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
   <gazebo reference="fingrip_finger2_proximal_joint">
     <springStiffness value="0.0"/>
     <springReference value="0.0"/>
@@ -754,15 +709,6 @@
     <limit effort="20" lower="-0.5" upper="1.0472" velocity="1.57"/>
     <dynamics damping="3.0" friction="0.4"/>
   </joint>
-  <transmission name="fingrip_finger2_intermediaire_joint_transmission">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="fingrip_finger2_intermediaire_joint">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="fingrip_finger2_intermediaire_joint_actuator">
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
   <gazebo reference="fingrip_finger2_intermediaire_joint">
     <springStiffness value="0.0"/>
     <springReference value="0.0"/>
@@ -858,15 +804,6 @@
     <limit effort="20" lower="-1.3" upper="0.31416" velocity="1.57"/>
     <dynamics damping="3.0" friction="0.4"/>
   </joint>
-  <transmission name="fingrip_finger3_proximal_joint_transmission">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="fingrip_finger3_proximal_joint">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="fingrip_finger3_proximal_joint_actuator">
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
   <gazebo reference="fingrip_finger3_proximal_joint">
     <springStiffness value="0.0"/>
     <springReference value="0.0"/>
@@ -903,15 +840,6 @@
     <limit effort="20" lower="-0.5" upper="1.0472" velocity="1.57"/>
     <dynamics damping="3.0" friction="0.4"/>
   </joint>
-  <transmission name="fingrip_finger3_intermediaire_joint_transmission">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="fingrip_finger3_intermediaire_joint">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="fingrip_finger3_intermediaire_joint_actuator">
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
   <gazebo reference="fingrip_finger3_intermediaire_joint">
     <springStiffness value="0.0"/>
     <springReference value="0.0"/>
@@ -973,6 +901,26 @@
     <child link="fingrip_hand_tcp"/>
     <origin rpy="0 0 0" xyz="0 0 0.12"/>
   </joint>
+  <transmission name="abduction_transmission">
+    <type>transmission_interface/AbductionTransmission</type>
+    <joint name="fingrip_finger1_base_joint">
+        </joint>
+    <joint name="fingrip_finger2_base_joint">
+        </joint>
+    <actuator name="abduction_actuator">
+      <mechanicalReduction>1</mechanicalReduction>
+      <hardwareInterface>hardware_interface/PositionActuatorInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+  <!-- Fingers -->
+  <!--
+    <xacro:fingrip_transmission 
+      joint1_name="${prefix}${finger1_name}${base_prefix}${joint_prefix}"
+      joint2_name="${prefix}${finger2_name}${base_prefix}${joint_prefix}"
+      underactuation="${underactuated_fingers}"
+      abduction="false"
+    />
+    -->
   <ros2_control name="fingrip_gripper_system" type="system">
     <hardware>
       <plugin>gz_ros2_control/GazeboSimSystem</plugin>

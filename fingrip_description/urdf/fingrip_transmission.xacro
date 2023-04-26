@@ -1,0 +1,186 @@
+<?xml version="1.0"?>
+<!-- Xacro for Franka Emika fingrip gripper -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <!--       -->
+    <!-- Macro -->
+    <!--       -->
+    <xacro:macro name="fingrip_transmission_abduction_actuated" params=" 
+      joint1_name
+      joint2_name
+    ">
+
+          <transmission name="${joint1_name}_transmission">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${joint1_name}">
+              <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${joint1_name}_actuator">
+              <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+          </transmission>
+
+          <transmission name="${joint2_name}_transmission">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${joint2_name}">
+              <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${joint2_name}_actuator">
+              <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+          </transmission>
+
+    </xacro:macro>
+
+    <xacro:macro name="fingrip_transmission_abduction_underactuated" params=" 
+      joint1_name
+      joint2_name
+    ">
+
+      <transmission name="abduction_transmission">
+        <type>transmission_interface/AbductionTransmission</type>
+        <joint name="${joint1_name}">
+        </joint>
+        <joint name="${joint2_name}">
+        </joint>
+        <actuator name="abduction_actuator">
+          <mechanicalReduction>1</mechanicalReduction>
+          <hardwareInterface>hardware_interface/EffortActuatorInterface</hardwareInterface>
+        </actuator>
+      </transmission>
+
+    </xacro:macro>
+
+    <xacro:macro name="fingrip_transmission_finger_actuated" params=" 
+          joint1_name
+          joint2_name
+          joint3_name
+          ">
+
+          <transmission name="${joint1_name}_transmission">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${joint1_name}">
+              <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${joint1_name}_actuator">
+              <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+          </transmission>
+
+          <transmission name="${joint2_name}_transmission">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${joint2_name}">
+              <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${joint2_name}_actuator">
+              <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+          </transmission>
+
+          <transmission name="${joint3_name}_transmission">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="${joint3_name}">
+              <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${joint3_name}_actuator">
+              <mechanicalReduction>1</mechanicalReduction>
+            </actuator>
+          </transmission>
+
+    </xacro:macro>
+
+    <xacro:macro name="fingrip_transmission_finger_underactuated" params=" 
+          joint1_name
+          joint2_name
+          joint3_name
+          ">
+
+      <transmission name="${joint1_name}_transmission">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="${joint1_name}">
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="${joint1_name}_actuator">
+          <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+      </transmission>
+
+      <transmission name="${joint2_name}_transmission">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="${joint2_name}">
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="${joint2_name}_actuator">
+          <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+      </transmission>
+
+      <transmission name="${joint3_name}_transmission">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="${joint3_name}">
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="${joint3_name}_actuator">
+          <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+      </transmission>
+
+    </xacro:macro>
+
+    <xacro:macro name="fingrip_transmission" params=" 
+      joint1_name
+      joint2_name
+      joint3_name:=unset
+      underactuation:=false
+      abduction:=false
+      ">
+
+    <!-- Transmission -->
+    <!-- Transmission for underactuated joints -->
+    <xacro:if value="${underactuation}">
+
+      <!-- Transmission for abduction joints -->
+      <xacro:if value="${abduction}">
+
+          <xacro:fingrip_transmission_abduction_underactuated
+          joint1_name="${joint1_name}"
+          joint2_name="${joint2_name}"
+          />
+
+      </xacro:if>
+
+      <!-- Transmission for finger joints -->
+      <xacro:unless value="${abduction}">
+          <xacro:fingrip_transmission_finger_underactuated
+            joint1_name="${joint1_name}"
+            joint2_name="${joint2_name}"
+            joint3_name="${joint3_name}"
+          />
+      </xacro:unless>
+
+    </xacro:if>
+
+    <!-- Transmission for non-underactuated joints -->
+    <xacro:unless value="${underactuation}">
+
+      <xacro:if value="${abduction}">
+          <xacro:fingrip_transmission_abduction_actuated
+            joint1_name="${joint1_name}"
+            joint2_name="${joint2_name}"
+          />
+      </xacro:if>
+
+      <xacro:unless value="${abduction}">
+          <xacro:fingrip_transmission_finger_actuated
+            joint1_name="${joint1_name}"
+            joint2_name="${joint2_name}"
+            joint3_name="${joint3_name}"
+          />
+      </xacro:unless>
+
+    </xacro:unless>
+
+
+    </xacro:macro>
+  
+</robot>

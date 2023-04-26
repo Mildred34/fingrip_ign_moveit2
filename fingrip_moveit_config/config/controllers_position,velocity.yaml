@@ -8,8 +8,14 @@ controller_manager:
     joint_trajectory_controller:
       type: "joint_trajectory_controller/JointTrajectoryController"
 
+    # gripper_trajectory_controller:
+    #   type: "joint_trajectory_controller/JointTrajectoryController"
+
     gripper_trajectory_controller:
-      type: "joint_trajectory_controller/JointTrajectoryController"
+      type: "actuator_trajectory_controller/ActuatorTrajectoryController"
+
+    actuator_state_broadcaster:
+      type: "actuator_state_broadcaster/ActuatorStateBroadcaster"
 
 joint_trajectory_controller:
   ros__parameters:
@@ -28,17 +34,28 @@ joint_trajectory_controller:
       - position
       - velocity
 
+# gripper_trajectory_controller:
+#   ros__parameters:
+#     joints:
+#       - fingrip_finger1_base_joint
+#       - fingrip_finger1_proximal_joint
+#       - fingrip_finger2_base_joint
+#       - fingrip_finger2_proximal_joint
+#       - fingrip_finger3_proximal_joint
+#       - fingrip_finger1_intermediaire_joint
+#       - fingrip_finger2_intermediaire_joint
+#       - fingrip_finger3_intermediaire_joint
+#     command_interfaces:
+#       - position
+#       - velocity
+#     state_interfaces:
+#       - position
+#       - velocity
+
 gripper_trajectory_controller:
   ros__parameters:
-    joints:
-      - fingrip_finger1_base_joint
-      - fingrip_finger1_proximal_joint
-      - fingrip_finger2_base_joint
-      - fingrip_finger2_proximal_joint
-      - fingrip_finger3_proximal_joint
-      - fingrip_finger1_intermediaire_joint
-      - fingrip_finger2_intermediaire_joint
-      - fingrip_finger3_intermediaire_joint
+    actuators:
+      - abduction_actuator
     command_interfaces:
       - position
       - velocity

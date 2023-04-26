@@ -53,6 +53,7 @@ def generate_launch_description():
 
     # URDF
     # Turn fingrip.urdf.xacro into an urdf with all the parameters described as below
+    # TODO ADD here parameters for underactuation to avoid using default one
     _robot_description_xml = Command(
         [
             PathJoinSubstitution([FindExecutable(name="xacro")]),
@@ -322,7 +323,7 @@ def generate_launch_description():
     delayed_controller_manager_spawner = []
 
     for controller in moveit_controller_manager_yaml["controller_names"] + [
-        "joint_state_broadcaster"
+        "joint_state_broadcaster","actuator_state_broadcaster"
     ]:
 
         # delayed_controller_manager_spawner.append(TimerAction(
@@ -452,7 +453,7 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
         ),
         DeclareLaunchArgument(
             "ros2_control_command_interface",
-            default_value="effort", # before was effort
+            default_value="position,velocity", # before was effort
             description="The output control command interface provided by ros2_control ('position', 'velocity', 'effort' or certain combinations 'position,velocity').",
         ),
         # Gazebo
