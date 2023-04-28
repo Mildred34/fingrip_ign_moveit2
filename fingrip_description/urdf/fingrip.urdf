@@ -385,7 +385,8 @@
       <plugin>gz_ros2_control/GazeboSimSystem</plugin>
     </hardware>
     <joint name="fingrip_joint1">
-      <command_interface name="effort"/>
+      <command_interface name="position"/>
+      <command_interface name="velocity"/>
       <state_interface name="position">
         <param name="initial_position">1.884</param>
       </state_interface>
@@ -394,7 +395,8 @@
     </joint>
     <joint name="fingrip_joint2">
       <param name="initial_position">-0.6105</param>
-      <command_interface name="effort"/>
+      <command_interface name="position"/>
+      <command_interface name="velocity"/>
       <state_interface name="position">
         <param name="initial_position">-0.6105</param>
       </state_interface>
@@ -403,35 +405,40 @@
     </joint>
     <joint name="fingrip_joint3">
       <param name="initial_position">2.7038</param>
-      <command_interface name="effort"/>
+      <command_interface name="position"/>
+      <command_interface name="velocity"/>
       <state_interface name="position"/>
       <state_interface name="velocity"/>
       <state_interface name="effort"/>
     </joint>
     <joint name="fingrip_joint4">
       <param name="initial_position">1.535</param>
-      <command_interface name="effort"/>
+      <command_interface name="position"/>
+      <command_interface name="velocity"/>
       <state_interface name="position"/>
       <state_interface name="velocity"/>
       <state_interface name="effort"/>
     </joint>
     <joint name="fingrip_joint5">
       <param name="initial_position">-1.256</param>
-      <command_interface name="effort"/>
+      <command_interface name="position"/>
+      <command_interface name="velocity"/>
       <state_interface name="position"/>
       <state_interface name="velocity"/>
       <state_interface name="effort"/>
     </joint>
     <joint name="fingrip_joint6">
       <param name="initial_position">-1.744</param>
-      <command_interface name="effort"/>
+      <command_interface name="position"/>
+      <command_interface name="velocity"/>
       <state_interface name="position"/>
       <state_interface name="velocity"/>
       <state_interface name="effort"/>
     </joint>
     <joint name="fingrip_joint7">
       <param name="initial_position">-2.1816</param>
-      <command_interface name="effort"/>
+      <command_interface name="position"/>
+      <command_interface name="velocity"/>
       <state_interface name="position"/>
       <state_interface name="velocity"/>
       <state_interface name="effort"/>
@@ -909,7 +916,7 @@
         </joint>
     <actuator name="abduction_actuator">
       <mechanicalReduction>1</mechanicalReduction>
-      <hardwareInterface>hardware_interface/PositionActuatorInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </actuator>
   </transmission>
   <!-- Fingers -->
@@ -921,62 +928,61 @@
       abduction="false"
     />
     -->
-  <ros2_control name="fingrip_gripper_system" type="system">
+  <ros2_control name="fingrip_gripper_system" type="actuator">
     <hardware>
       <plugin>gz_ros2_control/GazeboSimSystem</plugin>
     </hardware>
-    <joint name="fingrip_finger1_base_joint">
+    <joint name="abduction_actuator">
       <param name="initial_position">0.0</param>
-      <command_interface name="effort"/>
+      <command_interface name="position"/>
+      <command_interface name="velocity"/>
       <state_interface name="position"/>
       <state_interface name="velocity"/>
       <state_interface name="effort"/>
     </joint>
-    <joint name="fingrip_finger1_proximal_joint">
-      <param name="initial_position">-1.29</param>
-      <command_interface name="effort"/>
-      <state_interface name="position"/>
-      <state_interface name="velocity"/>
-      <state_interface name="effort"/>
-    </joint>
-    <joint name="fingrip_finger1_intermediaire_joint">
-      <param name="initial_position">-0.5</param>
-      <command_interface name="effort"/>
-      <state_interface name="position"/>
-      <state_interface name="velocity"/>
-      <state_interface name="effort"/>
-    </joint>
-    <joint name="fingrip_finger2_base_joint">
-      <param name="initial_position">0.0</param>
-      <command_interface name="effort"/>
-      <state_interface name="position"/>
-      <state_interface name="velocity"/>
-      <state_interface name="effort"/>
-    </joint>
-    <joint name="fingrip_finger2_proximal_joint">
-      <param name="initial_position">-1.29</param>
-      <command_interface name="effort"/>
-      <state_interface name="position"/>
-      <state_interface name="velocity"/>
-      <state_interface name="effort"/>
-    </joint>
-    <joint name="fingrip_finger2_intermediaire_joint">
-      <param name="initial_position">-0.5</param>
-      <command_interface name="effort"/>
-      <state_interface name="position"/>
-      <state_interface name="velocity"/>
-      <state_interface name="effort"/>
-    </joint>
+    <!-- <joint name="${prefix}${finger_name}_proximal_joint">
+        <param name="initial_position">${initial_positions['proximal_joint']}</param>
+        <xacro:if value="${'position' in command_interface}">
+          <command_interface name="position"/>
+        </xacro:if>
+        <xacro:if value="${'velocity' in command_interface}">
+          <command_interface name="velocity"/>
+        </xacro:if>
+        <xacro:if value="${'effort' in command_interface}">
+          <command_interface name="effort"/>
+        </xacro:if>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+
+      <joint name="${prefix}${finger_name}_intermediaire_joint">
+        <param name="initial_position">${initial_positions['intermediaire_joint']}</param>
+        <xacro:if value="${'position' in command_interface}">
+          <command_interface name="position"/>
+        </xacro:if>
+        <xacro:if value="${'velocity' in command_interface}">
+          <command_interface name="velocity"/>
+        </xacro:if>
+        <xacro:if value="${'effort' in command_interface}">
+          <command_interface name="effort"/>
+        </xacro:if>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint> -->
     <joint name="fingrip_finger3_proximal_joint">
       <param name="initial_position">-1.29</param>
-      <command_interface name="effort"/>
+      <command_interface name="position"/>
+      <command_interface name="velocity"/>
       <state_interface name="position"/>
       <state_interface name="velocity"/>
       <state_interface name="effort"/>
     </joint>
     <joint name="fingrip_finger3_intermediaire_joint">
       <param name="initial_position">-0.5</param>
-      <command_interface name="effort"/>
+      <command_interface name="position"/>
+      <command_interface name="velocity"/>
       <state_interface name="position"/>
       <state_interface name="velocity"/>
       <state_interface name="effort"/>
@@ -984,7 +990,7 @@
   </ros2_control>
   <gazebo>
     <plugin filename="libgz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
-      <parameters>/home/alex/additive_manufacturing/Planner4grasping/install/share/fingrip_moveit_config/config/controllers_effort.yaml</parameters>
+      <parameters>/home/alex/additive_manufacturing/Planner4grasping/install/share/fingrip_moveit_config/config/controllers_position,velocity.yaml</parameters>
     </plugin>
   </gazebo>
 </robot>

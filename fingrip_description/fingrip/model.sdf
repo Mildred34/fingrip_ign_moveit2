@@ -1332,7 +1332,7 @@
       </visual>
     </link>
     <plugin name='gz_ros2_control::GazeboSimROS2ControlPlugin' filename='libgz_ros2_control-system'>
-      <parameters>/home/alex/additive_manufacturing/Planner4grasping/install/share/fingrip_moveit_config/config/controllers_effort.yaml</parameters>
+      <parameters>/home/alex/additive_manufacturing/Planner4grasping/install/share/fingrip_moveit_config/config/controllers_position,velocity.yaml</parameters>
     </plugin>
     <frame name='fingrip_hand_tcp_virtual_joint' attached_to='fingrip_hand'>
       <pose>0 0 0.12 0 0 0</pose>

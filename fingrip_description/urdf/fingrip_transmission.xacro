@@ -45,7 +45,7 @@
         </joint>
         <actuator name="abduction_actuator">
           <mechanicalReduction>1</mechanicalReduction>
-          <hardwareInterface>hardware_interface/EffortActuatorInterface</hardwareInterface>
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
         </actuator>
       </transmission>
 

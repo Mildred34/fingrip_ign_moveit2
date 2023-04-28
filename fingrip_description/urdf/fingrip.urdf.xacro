@@ -52,7 +52,7 @@
   <xacro:arg name="underactuation" default="true"/>
 
   <!-- Flag to use underactuated abduction model --> 
-  <xacro:arg name="abduction" default="true"/>
+  <xacro:arg name="underactuated_abduction" default="true"/>
 
   <!-- Flag to use long or short fingers model  -->
   <xacro:arg name="longFingertip" default="false"/>
@@ -129,7 +129,7 @@
       ros2_control_command_interface="$(arg ros2_control_command_interface)"
       gazebo_preserve_fixed_joint="$(arg gazebo_preserve_fixed_joint)"
       underactuated_fingers="$(arg underactuation)"
-      abduction="$(arg abduction)"
+      underactuated_abduction="$(arg underactuated_abduction)"
       longFingertip="$(arg longFingertip)"
       nbFingers="$(arg nbFingers)"
       hand_type="$(arg hand_type)"

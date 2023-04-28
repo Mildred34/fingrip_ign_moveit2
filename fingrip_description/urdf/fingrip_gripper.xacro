@@ -80,7 +80,7 @@
     ros2_control_command_interface:=effort
     gazebo_preserve_fixed_joint:=false
     underactuated_fingers:=true
-    abduction:=true
+    underactuated_abduction:=true
     longFingertip:=false
     nbFingers:=3
     hand_type:=1
@@ -176,7 +176,7 @@
     <xacro:fingrip_transmission 
       joint1_name="${prefix}${finger1_name}${base_prefix}${joint_prefix}"
       joint2_name="${prefix}${finger2_name}${base_prefix}${joint_prefix}"
-      underactuation="${abduction}"
+      underactuation="${underactuated_abduction}"
       abduction="true"
     />
 
@@ -192,7 +192,7 @@
 
     <!-- ROS 2 control -->
     <xacro:if value="${ros2_control}">
-      <ros2_control name="${ros2control_name}" type="system">
+      <ros2_control name="${ros2control_name}" type="actuator">
           <hardware>
             <xacro:if value="${ros2_control_plugin == 'fake'}">
               <plugin>fake_components/GenericSystem</plugin>
@@ -208,20 +208,33 @@
             </xacro:unless>
           </hardware>
 
-        <xacro:ros2_control_fingrip_gripper 
-        prefix="${prefix}" 
-        plugin="${ros2_control_plugin}" 
-        command_interface="${ros2_control_command_interface}"
-        finger_name="${finger1_name}"
-        abduction="true"
-        />
-        <xacro:ros2_control_fingrip_gripper 
-        prefix="${prefix}" 
-        plugin="${ros2_control_plugin}" 
-        command_interface="${ros2_control_command_interface}"
-        finger_name="${finger2_name}"
-        abduction="true"
-        />
+        <xacro:if value="${underactuated_abduction}">
+          <xacro:ros2_control_fingrip_gripper 
+          prefix="${prefix}" 
+          plugin="${ros2_control_plugin}" 
+          command_interface="${ros2_control_command_interface}"
+          finger_name="${finger1_name}"
+          abduction="true"
+          underactuation="${underactuated_abduction}"
+          />
+        </xacro:if>
+        <xacro:unless value="${underactuated_abduction}">
+          <xacro:ros2_control_fingrip_gripper 
+          prefix="${prefix}" 
+          plugin="${ros2_control_plugin}" 
+          command_interface="${ros2_control_command_interface}"
+          finger_name="${finger1_name}"
+          abduction="true"
+          />
+          <xacro:ros2_control_fingrip_gripper 
+          prefix="${prefix}" 
+          plugin="${ros2_control_plugin}" 
+          command_interface="${ros2_control_command_interface}"
+          finger_name="${finger2_name}"
+          abduction="true"
+          />
+        </xacro:unless>
+
         <xacro:ros2_control_fingrip_gripper 
         prefix="${prefix}" 
         plugin="${ros2_control_plugin}" 
@@ -235,6 +248,7 @@
           command_interface="${ros2_control_command_interface}"
           finger_name="${finger4_name}"/>
         </xacro:unless>
+
       </ros2_control>
     </xacro:if>
 

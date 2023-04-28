@@ -158,59 +158,117 @@
    mimic_joints:=false
    finger_name
    abduction:=false
+   underactuation:=false
   ">
     <xacro:arg name="finger_name" default="${finger_name}" />
     <xacro:property name="initial_positions" value="${xacro.load_yaml(initial_positions_file)['initial_joint_positions']['fingrip_gripper']['$(arg finger_name)']}"/>
 
-    <xacro:if value="${abduction}">
-    <joint name="${prefix}${finger_name}_base_joint">
-      <param name="initial_position">${initial_positions['base_joint']}</param>
-      <xacro:if value="${'position' in command_interface}">
-        <command_interface name="position"/>
+    <xacro:if value="${underactuation}">
+      <xacro:if value="${abduction}">
+          <joint name="abduction_actuator">
+            <param name="initial_position">${initial_positions['base_joint']}</param>
+            <xacro:if value="${'position' in command_interface}">
+              <command_interface name="position"/>
+            </xacro:if>
+            <xacro:if value="${'velocity' in command_interface}">
+              <command_interface name="velocity"/>
+            </xacro:if>
+            <xacro:if value="${'effort' in command_interface}">
+              <command_interface name="effort"/>
+            </xacro:if>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+          </joint>
       </xacro:if>
-      <xacro:if value="${'velocity' in command_interface}">
-        <command_interface name="velocity"/>
-      </xacro:if>
-      <xacro:if value="${'effort' in command_interface}">
-        <command_interface name="effort"/>
-      </xacro:if>
-      <state_interface name="position"/>
-      <state_interface name="velocity"/>
-      <state_interface name="effort"/>
-    </joint>
+
+      <!-- <joint name="${prefix}${finger_name}_proximal_joint">
+        <param name="initial_position">${initial_positions['proximal_joint']}</param>
+        <xacro:if value="${'position' in command_interface}">
+          <command_interface name="position"/>
+        </xacro:if>
+        <xacro:if value="${'velocity' in command_interface}">
+          <command_interface name="velocity"/>
+        </xacro:if>
+        <xacro:if value="${'effort' in command_interface}">
+          <command_interface name="effort"/>
+        </xacro:if>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+
+      <joint name="${prefix}${finger_name}_intermediaire_joint">
+        <param name="initial_position">${initial_positions['intermediaire_joint']}</param>
+        <xacro:if value="${'position' in command_interface}">
+          <command_interface name="position"/>
+        </xacro:if>
+        <xacro:if value="${'velocity' in command_interface}">
+          <command_interface name="velocity"/>
+        </xacro:if>
+        <xacro:if value="${'effort' in command_interface}">
+          <command_interface name="effort"/>
+        </xacro:if>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint> -->
+
     </xacro:if>
 
-    <joint name="${prefix}${finger_name}_proximal_joint">
-      <param name="initial_position">${initial_positions['proximal_joint']}</param>
-      <xacro:if value="${'position' in command_interface}">
-        <command_interface name="position"/>
+    <xacro:unless value="${underactuation}">
+      <xacro:if value="${abduction}">
+          <joint name="${prefix}${finger_name}_base_joint">
+            <param name="initial_position">${initial_positions['base_joint']}</param>
+            <xacro:if value="${'position' in command_interface}">
+              <command_interface name="position"/>
+            </xacro:if>
+            <xacro:if value="${'velocity' in command_interface}">
+              <command_interface name="velocity"/>
+            </xacro:if>
+            <xacro:if value="${'effort' in command_interface}">
+              <command_interface name="effort"/>
+            </xacro:if>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+          </joint>
       </xacro:if>
-      <xacro:if value="${'velocity' in command_interface}">
-        <command_interface name="velocity"/>
-      </xacro:if>
-      <xacro:if value="${'effort' in command_interface}">
-        <command_interface name="effort"/>
-      </xacro:if>
-      <state_interface name="position"/>
-      <state_interface name="velocity"/>
-      <state_interface name="effort"/>
-    </joint>
 
-    <joint name="${prefix}${finger_name}_intermediaire_joint">
-      <param name="initial_position">${initial_positions['intermediaire_joint']}</param>
-      <xacro:if value="${'position' in command_interface}">
-        <command_interface name="position"/>
-      </xacro:if>
-      <xacro:if value="${'velocity' in command_interface}">
-        <command_interface name="velocity"/>
-      </xacro:if>
-      <xacro:if value="${'effort' in command_interface}">
-        <command_interface name="effort"/>
-      </xacro:if>
-      <state_interface name="position"/>
-      <state_interface name="velocity"/>
-      <state_interface name="effort"/>
-    </joint>
+      <joint name="${prefix}${finger_name}_proximal_joint">
+        <param name="initial_position">${initial_positions['proximal_joint']}</param>
+        <xacro:if value="${'position' in command_interface}">
+          <command_interface name="position"/>
+        </xacro:if>
+        <xacro:if value="${'velocity' in command_interface}">
+          <command_interface name="velocity"/>
+        </xacro:if>
+        <xacro:if value="${'effort' in command_interface}">
+          <command_interface name="effort"/>
+        </xacro:if>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+
+      <joint name="${prefix}${finger_name}_intermediaire_joint">
+        <param name="initial_position">${initial_positions['intermediaire_joint']}</param>
+        <xacro:if value="${'position' in command_interface}">
+          <command_interface name="position"/>
+        </xacro:if>
+        <xacro:if value="${'velocity' in command_interface}">
+          <command_interface name="velocity"/>
+        </xacro:if>
+        <xacro:if value="${'effort' in command_interface}">
+          <command_interface name="effort"/>
+        </xacro:if>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+      
+    </xacro:unless>
+
 
   </xacro:macro>
 
