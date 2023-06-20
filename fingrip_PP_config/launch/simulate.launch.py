@@ -80,7 +80,7 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
         ),
         DeclareLaunchArgument(
             "scene",
-            default_value="robotiq-assembly-V4.ttt",
+            default_value="robotiq-assembly-V6.ttt",
             description="Name or filepath of model to load.",
         ),
         # Robot selection
