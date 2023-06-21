@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 import os
 from glob import glob
 
-main_package = 'fingrip_PP_config'
+main_package = 'fingrip_pp_config'
 
 setup(
     name=main_package,
@@ -34,7 +34,7 @@ setup(
     entry_points={
         # nom_executable = nom_folder.nomfufichiersource:main
         'console_scripts': [
-            'simulate_node = fingrip_PP_config.simulate:main',
+            'simulate_node = fingrip_pp_config.simulate:main',
         ],
     },
 )

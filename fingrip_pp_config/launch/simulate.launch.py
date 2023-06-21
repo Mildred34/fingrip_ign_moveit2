@@ -53,7 +53,7 @@ def generate_launch_description() -> LaunchDescription:
     # Launch simulation
     nodes = [
         Node(
-            package="fingrip_PP_config",
+            package="fingrip_pp_config",
             executable="simulate_node",
             output="both",
             arguments=["--ros-args", "--log-level", log_level],
