@@ -28,6 +28,7 @@ def generate_launch_description() -> LaunchDescription:
     robot_type = LaunchConfiguration("robot_type")
     use_sim_time = LaunchConfiguration("use_sim_time")
     package_name = LaunchConfiguration("description_package")
+    object_type = LaunchConfiguration("object_type")
 
     # List of included launch descriptions
     launch_descriptions = []
@@ -58,7 +59,7 @@ def generate_launch_description() -> LaunchDescription:
             output="both",
             arguments=["--ros-args", "--log-level", log_level],
             parameters=[
-                # {"object_type":object_type,
+                {"object_type":object_type},
                 # "use_sim_time":use_sim_time},
             ],
         ),
@@ -88,6 +89,12 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
             "robot_type",
             default_value="fingrip",
             description="Name of the robot type to use.",
+        ),
+        # Object selection
+        DeclareLaunchArgument(
+            "object_type",
+            default_value="renfort1",
+            description="Object that we will test it out",
         ),
         # Miscellaneous
         DeclareLaunchArgument(
