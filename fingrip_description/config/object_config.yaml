@@ -1,52 +1,47 @@
 renfort1: 
-  offset_pos:
-    x: 0
-    y: 0
-    z: 0
-  offset_rot:
-    r: 0
-    p: 0
-    y: 0
-#  model_file: "piece_burr_collision_with_plane.stl"
+  offset_pos: # (m)
+    x: 0.5
+    y: -0.07
+    z: 0.13
+  offset_rot: # (rad)
+    alpha: 0
+    beta: -0.46
+    gamma: 0
   model_file: "renfort_1.ttm"
   scale:
     - 0.001
     - 0.001
     - 0.001
   pose_type:
-    r:
+    alpha: # (rad)
       - 0.0
-    p:
-      - 0.0
-    z:
-#      - 0.70107
-      - 0.761
+    beta: #  (rad)
+      - 0.46
+    z: # m
+      - 0.13
     sym_ax_z:
       - false
 coude:
-  offset_pos:
-    x: -0.003996
-    y: -0.01787591
-    z: -0.00133297
-  offset_rot:
-    r: 0.00027054006212198913
-    p: -0.00873299329306388
-    y: -0.05011673865631564
+  offset_pos: # (m)
+    x: 0.6005
+    y: 0.08576
+    z: 0.20256
+  offset_rot: # (rad)
+    alpha: 2.3146 #132.62
+    beta: -0.74611 # -42.749
+    gamma: 2.16738 # +124.182
   model_file: "coude.ttm"
   scale:
     - 0.001
     - 0.001
     - 0.001
   pose_type:
-    r:
-      - 0.3358 # 19.24
-      - rad(-pi/2) # -90
-    p:
-      - 0.0
-      - 0.979 # 56.093
+    alpha:
+      - 2.3146
+    beta:
+      - -0.74611
     z:
-      - 0.692
-      - 0.733
+      - 0.20256
     sym_ax_z:
       - false
       - false
