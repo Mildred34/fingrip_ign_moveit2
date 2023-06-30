@@ -5,7 +5,7 @@ renfort1:
     z: 0.13
   offset_rot: # (rad)
     alpha: 0
-    beta: -0.46
+    beta: -0.46 # -26.35605
     gamma: 0
   model_file: "renfort_1.ttm"
   scale:
