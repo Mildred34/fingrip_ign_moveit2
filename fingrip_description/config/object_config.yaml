@@ -15,10 +15,13 @@ renfort1:
   pose_type:
     alpha: # (rad)
       - 0.0
+      - 3.14
     beta: #  (rad)
       - 0.46
+      - 0.79
     z: # m
       - 0.13
+      - 0.14
     sym_ax_z:
       - false
 coude:
