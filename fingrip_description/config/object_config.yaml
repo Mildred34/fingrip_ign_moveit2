@@ -4,19 +4,19 @@ renfort1:
     y: -0.07
     z: 0.13
   offset_rot: # (rad)
-    alpha: 0
-    beta: -0.46 # -26.35605
-    gamma: 0
+    r: 0
+    p: -0.46 # -26.35605
+    y: 0
   model_file: "renfort_1.ttm"
   scale:
     - 0.001
     - 0.001
     - 0.001
   pose_type:
-    alpha: # (rad)
+    r: # (rad)
       - 0.0
       - 3.14
-    beta: #  (rad)
+    p: #  (rad)
       - 0.46
       - 0.79
     z: # m
@@ -30,18 +30,18 @@ coude:
     y: 0.08576
     z: 0.20256
   offset_rot: # (rad)
-    alpha: 2.3146 #132.62
-    beta: -0.74611 # -42.749
-    gamma: 2.16738 # +124.182
+    r: 2.3146 #132.62
+    p: -0.74611 # -42.749
+    y: 2.16738 # +124.182
   model_file: "coude.ttm"
   scale:
     - 0.001
     - 0.001
     - 0.001
   pose_type:
-    alpha:
+    r:
       - 2.3146
-    beta:
+    p:
       - -0.74611
     z:
       - 0.20256

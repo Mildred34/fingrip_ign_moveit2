@@ -78,7 +78,6 @@ def generate_launch_description() -> LaunchDescription:
                 {"object_type":object_type},
                 {"object_config":object_config},
                 {"object_model_path":object_model_path},
-                # "use_sim_time":use_sim_time},
             ],
         ),
     ]
