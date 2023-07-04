@@ -28,9 +28,44 @@ def generate_launch_description() -> LaunchDescription:
     robot_type = LaunchConfiguration("robot_type")
     use_sim_time = LaunchConfiguration("use_sim_time")
     package_name = LaunchConfiguration("description_package")
+    object_type = LaunchConfiguration("object_type")
 
     # List of included launch descriptions
     launch_descriptions = []
+
+    # List of config files
+    object_config = PathJoinSubstitution(
+                [
+                    FindPackageShare("fingrip_description"),
+                    "config",
+                    "object_config.yaml",
+                ]
+            )
+    
+    object_model_path = PathJoinSubstitution(
+                [
+                    FindPackageShare("fingrip_description"),
+                    "resource",
+                ]
+            )
+
+    # Launch Coppelia
+    launch_descriptions.append(
+        IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            PathJoinSubstitution(
+                [
+                    FindPackageShare("fingrip_description"),
+                    "launch",
+                    "view_coppelia.launch.py",
+                ]
+            )
+        ),
+        launch_arguments=[
+            ("scene", scene),
+            ("description_package", package_name),
+        ],
+    ))
 
     # Launch simulation
     nodes = [
@@ -40,8 +75,9 @@ def generate_launch_description() -> LaunchDescription:
             output="both",
             arguments=["--ros-args", "--log-level", log_level],
             parameters=[
-                # {"object_type":object_type,
-                # "use_sim_time":use_sim_time},
+                {"object_type":object_type},
+                {"object_config":object_config},
+                {"object_model_path":object_model_path},
             ],
         ),
     ]
@@ -62,7 +98,7 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
         ),
         DeclareLaunchArgument(
             "scene",
-            default_value="robotiq-assembly-V6.ttt",
+            default_value="robotiq-assembly-V7.ttt",
             description="Name or filepath of model to load.",
         ),
         # Robot selection
@@ -70,6 +106,12 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
             "robot_type",
             default_value="fingrip",
             description="Name of the robot type to use.",
+        ),
+        # Object selection
+        DeclareLaunchArgument(
+            "object_type",
+            default_value="renfort1",
+            description="Object that we will test it out",
         ),
         # Miscellaneous
         DeclareLaunchArgument(

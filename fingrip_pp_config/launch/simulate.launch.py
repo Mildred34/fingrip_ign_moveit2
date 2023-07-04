@@ -67,22 +67,7 @@ def generate_launch_description() -> LaunchDescription:
         ],
     ))
 
-    # Launch simulation
-    nodes = [
-        Node(
-            package="fingrip_pp_config",
-            executable="simulate_node",
-            output="both",
-            arguments=["--ros-args", "--log-level", log_level],
-            parameters=[
-                {"object_type":object_type},
-                {"object_config":object_config},
-                {"object_model_path":object_model_path},
-            ],
-        ),
-    ]
-
-    return LaunchDescription(declared_arguments + launch_descriptions + nodes)
+    return LaunchDescription(declared_arguments + launch_descriptions)
 
 def generate_declared_arguments() -> List[DeclareLaunchArgument]:
     """
