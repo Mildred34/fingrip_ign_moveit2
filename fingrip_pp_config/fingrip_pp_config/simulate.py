@@ -3,7 +3,7 @@
 # scenes/messaging/.ttt
 #
 # Do not launch simulation, then run this script
-from utilities.simulation import Simulation as simx
+from sim.simulation import Simulation as simx
 import sys, os
 from threading import Thread
 from rclpy.executors import MultiThreadedExecutor
