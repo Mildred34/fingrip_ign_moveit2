@@ -1,9 +1,9 @@
 #!/usr/bin/env -S ros2 launch
-"""Visualisation of SDF model for fingrip in Ignition Gazebo. Note that the generated model://fingrip/model.sdf descriptor is used."""
-
 from os import path, getcwd
+import os
 from typing import List
 
+from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, ExecuteProcess
 from launch.launch_description_sources import PythonLaunchDescriptionSource
@@ -15,6 +15,7 @@ from launch.substitutions import (
 )
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
+import yaml
 
 
 def generate_launch_description() -> LaunchDescription:
@@ -22,13 +23,23 @@ def generate_launch_description() -> LaunchDescription:
     # Declare all launch arguments
     declared_arguments = generate_declared_arguments()
 
+    config_path = os.path.join(
+        get_package_share_directory('fingrip_description'),
+        'config',
+        'config_global.yaml'
+        )
+    config = None
+    
+    with open(config_path,'r') as stream:
+            try:
+                config = yaml.safe_load(stream)
+            except yaml.YAMLError as exc:
+                print(exc)
+                
     # Get substitution for all arguments
-    scene = LaunchConfiguration("scene")
-    log_level = LaunchConfiguration("log_level")
-    robot_type = LaunchConfiguration("robot_type")
-    use_sim_time = LaunchConfiguration("use_sim_time")
-    package_name = LaunchConfiguration("description_package")
-
+    scene = config["scene"]
+    package_name = config["description_package"]
+        
     # List of included launch descriptions
     # Launch Coppelia
     model_path = PathJoinSubstitution(
@@ -56,7 +67,7 @@ def generate_launch_description() -> LaunchDescription:
     return LaunchDescription(declared_arguments + launch_descriptions)
     # return LaunchDescription()
 
-
+# Centralize all arguments in a config file. Doesn't use anyme the command pass arguments
 def generate_declared_arguments() -> List[DeclareLaunchArgument]:
     """
     Generate list of all launch arguments that are declared for this launch script.

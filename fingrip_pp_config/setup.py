@@ -18,7 +18,7 @@ setup(
         # Include all launch files.
         (os.path.join('share', main_package, 'launch'), glob(os.path.join('launch', '*.launch.py'))),
         # Include all config files
-        (os.path.join('share', main_package, 'config'), glob('config/*.yaml'))
+        (os.path.join('share', main_package, 'config'), glob('*.yaml'))
     ],
     # Dependencies needed to use package
     install_requires=['setuptools'],
