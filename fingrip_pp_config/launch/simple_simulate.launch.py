@@ -18,7 +18,7 @@ import yaml
 def generate_launch_description() -> LaunchDescription:
 
     # Declare all launch arguments
-    declared_arguments = generate_declared_arguments()
+    #declared_arguments = generate_declared_arguments()
 
     # Get Config
     config_path = os.path.join(
@@ -89,7 +89,7 @@ def generate_launch_description() -> LaunchDescription:
         ),
     ]
 
-    return LaunchDescription(declared_arguments + launch_descriptions + nodes)
+    return LaunchDescription(launch_descriptions + nodes)
 
 # Centralize all arguments in a config file. Doesn't use anyme the command pass arguments
 def generate_declared_arguments() -> List[DeclareLaunchArgument]:
