@@ -16,12 +16,16 @@ from launch.substitutions import (
 )
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
+from launch.conditions import IfCondition,UnlessCondition
 
 
 def generate_launch_description() -> LaunchDescription:
 
     # Declare all launch arguments
-    # declared_arguments = generate_declared_arguments()
+    declared_arguments = generate_declared_arguments()
+    
+    # Parameters that doesn't depend of config files
+    namespace = LaunchConfiguration("namespace")
 
     # Get Config
     config_path = os.path.join(
@@ -40,6 +44,7 @@ def generate_launch_description() -> LaunchDescription:
                 
     # Get substitution for all arguments
     package_name = config["description_package"]
+    headless_mode = config["headless_mode"]
 
     # List of included launch descriptions
     launch_descriptions = []
@@ -61,62 +66,51 @@ def generate_launch_description() -> LaunchDescription:
             )
 
     # Launch Coppelia
-    launch_descriptions.append(
-        IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            PathJoinSubstitution(
-                [
-                    FindPackageShare(package_name),
-                    "launch",
-                    "view_coppelia.launch.py",
-                ]
-            )
-        ),
-        launch_arguments=[
-        ],
-    ))
+    if( not headless_mode):
+        launch_descriptions.append(
+            IncludeLaunchDescription(
+            PythonLaunchDescriptionSource(
+                PathJoinSubstitution(
+                    [
+                        FindPackageShare(package_name),
+                        "launch",
+                        "view_coppelia.launch.py",
+                    ]
+                )
+            ),
+            launch_arguments=[
+                ("namespace",namespace),
+            ],
+        ))
+    else:
+        launch_descriptions.append(
+            IncludeLaunchDescription(
+            PythonLaunchDescriptionSource(
+                PathJoinSubstitution(
+                    [
+                        FindPackageShare(package_name),
+                        "launch",
+                        "view_coppelia_headless.launch.py",
+                    ]
+                )
+            ),
+            launch_arguments=[
+                ("namespace",namespace),
+            ],
+        ))
 
-    return LaunchDescription(launch_descriptions)
+    return LaunchDescription(declared_arguments + launch_descriptions)
 
 # Centralize all arguments in a config file. Doesn't use anyme the command pass arguments
 def generate_declared_arguments() -> List[DeclareLaunchArgument]:
     """
     Generate list of all launch arguments that are declared for this launch script.
     """
-
     return [
-        # Locations of robot resources
+        # Simulation
         DeclareLaunchArgument(
-            "description_package",
-            default_value="fingrip_description",
-            description="Custom package with robot description.",
-        ),
-        DeclareLaunchArgument(
-            "scene",
-            default_value="robotiq-assembly-V7.ttt",
-            description="Name or filepath of model to load.",
-        ),
-        # Robot selection
-        DeclareLaunchArgument(
-            "robot_type",
-            default_value="fingrip",
-            description="Name of the robot type to use.",
-        ),
-        # Object selection
-        DeclareLaunchArgument(
-            "object_type",
-            default_value="renfort1",
-            description="Object that we will test it out",
-        ),
-        # Miscellaneous
-        DeclareLaunchArgument(
-            "use_sim_time",
-            default_value="true",
-            description="If true, use simulated clock.",
-        ),
-        DeclareLaunchArgument(
-            "log_level",
-            default_value="warn",
-            description="The level of logging that is applied to all ROS 2 nodes launched by this script.",
-        ),
+            "namespace",
+            default_value="",
+            description="Namespace use for simulation topics avoiding collision",
+        )
     ]

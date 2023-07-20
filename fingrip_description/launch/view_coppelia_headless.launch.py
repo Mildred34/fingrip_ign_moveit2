@@ -39,6 +39,9 @@ def generate_launch_description() -> LaunchDescription:
     # Get substitution for all arguments
     scene = config["scene"]
     package_name = config["description_package"]
+    
+    # Parameters that doesn't depend of config files
+    namespace = LaunchConfiguration("namespace")
         
     # List of included launch descriptions
     # Launch Coppelia
@@ -50,19 +53,18 @@ def generate_launch_description() -> LaunchDescription:
                     ]
                 )
     
-    # Parameters that doesn't depend of config files
-    namespace = LaunchConfiguration("namespace")
-    
     coppelia = ExecuteProcess(
             cmd=[[
                 FindExecutable(name='coppeliaSim.sh'),
                 ' '
                 ,
-                '-g'
-                ,
+                '-h',
+                ' ',
+                '-g',
                 namespace
                 ,
-                ' ',
+                ' '
+                ,
                 model_path
             ]],
             shell=True
@@ -86,5 +88,5 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
             "namespace",
             default_value="",
             description="Namespace use for simulation topics avoiding collision",
-        ), 
+        ),
     ]
