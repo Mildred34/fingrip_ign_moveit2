@@ -42,7 +42,8 @@ def generate_launch_description() -> LaunchDescription:
     
     # Parameters that doesn't depend of config files
     namespace = LaunchConfiguration("namespace")
-        
+    port = LaunchConfiguration("port")
+    
     # List of included launch descriptions
     # Launch Coppelia
     model_path = PathJoinSubstitution(
@@ -56,6 +57,12 @@ def generate_launch_description() -> LaunchDescription:
     coppelia = ExecuteProcess(
             cmd=[[
                 FindExecutable(name='coppeliaSim.sh'),
+                ' '
+                ,
+                '-GzmqRemoteApi.rpcPort='
+                ,
+                port
+                ,
                 ' '
                 ,
                 '-h',
@@ -89,4 +96,9 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
             default_value="",
             description="Namespace use for simulation topics avoiding collision",
         ),
+        DeclareLaunchArgument(
+            "port",
+            default_value="23000",
+            description="Simulator remote server will be launched on this port",
+        )
     ]

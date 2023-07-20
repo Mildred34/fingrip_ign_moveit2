@@ -43,6 +43,7 @@ def generate_launch_description() -> LaunchDescription:
     
     # Parameters that doesn't depend of config files
     namespace = LaunchConfiguration("namespace")
+    port = LaunchConfiguration("port")
 
     # List of included launch descriptions
     launch_descriptions = []
@@ -62,9 +63,6 @@ def generate_launch_description() -> LaunchDescription:
                     "resource",
                 ]
             )
-    
-    # Parameters that doesn't depend of config files
-    namespace = LaunchConfiguration("namespace")
     
     # Launch Coppelia
     if( not headless_mode):
@@ -112,6 +110,7 @@ def generate_launch_description() -> LaunchDescription:
                 {"object_type":object_type},
                 {"object_config":object_config},
                 {"object_model_path":object_model_path},
+                {"port":port},
             ],
         ),
     ]
@@ -128,7 +127,12 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
         # Simulation
         DeclareLaunchArgument(
             "namespace",
-            default_value="sim_2",
+            default_value="",
             description="Namespace use for simulation topics avoiding collision",
         ),
+        DeclareLaunchArgument(
+            "port",
+            default_value="23000",
+            description="Simulator remote server will be launched on this port",
+        )
     ]

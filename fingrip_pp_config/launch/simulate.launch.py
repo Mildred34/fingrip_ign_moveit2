@@ -26,6 +26,7 @@ def generate_launch_description() -> LaunchDescription:
     
     # Parameters that doesn't depend of config files
     namespace = LaunchConfiguration("namespace")
+    port = LaunchConfiguration("port")
 
     # Get Config
     config_path = os.path.join(
@@ -80,6 +81,7 @@ def generate_launch_description() -> LaunchDescription:
             ),
             launch_arguments=[
                 ("namespace",namespace),
+                ("port",port),
             ],
         ))
     else:
@@ -96,6 +98,7 @@ def generate_launch_description() -> LaunchDescription:
             ),
             launch_arguments=[
                 ("namespace",namespace),
+                ("port",port),
             ],
         ))
 
@@ -112,5 +115,10 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
             "namespace",
             default_value="",
             description="Namespace use for simulation topics avoiding collision",
+        ),
+        DeclareLaunchArgument(
+            "port",
+            default_value="23000",
+            description="Simulator remote server will be launched on this port",
         )
     ]
