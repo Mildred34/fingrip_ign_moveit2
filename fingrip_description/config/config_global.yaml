@@ -7,7 +7,10 @@ PP_package : fingrip_pp_config # Custom package that handle simulation
 result_file_path : /home/alex/additive_manufacturing/result # Folder the data from the grasp capture will be saved
 
 # Robot selection
-robot_type : fingrip # Name of the robot type to use.
+robot_type : IRB140 # Name of the robot type to use. {IRB140} #WIP
+
+# Gripper selection
+gripper_type: robotiq # {robotiq, finrip} #WIP
 
 # Object selection
 object_type : renfort1 # Object that we will test it out

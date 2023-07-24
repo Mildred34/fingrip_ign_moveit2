@@ -39,6 +39,8 @@ def generate_launch_description() -> LaunchDescription:
     log_level = config["simulator_log_level"]
     package_name = config["description_package"]
     object_type = config["object_type"]
+    targetArm = config["robot_type"]
+    targetGripper = config["gripper_type"]
     headless_mode = config["headless_mode"]
     
     # Parameters that doesn't depend of config files
@@ -111,6 +113,8 @@ def generate_launch_description() -> LaunchDescription:
                 {"object_config":object_config},
                 {"object_model_path":object_model_path},
                 {"port":port},
+                {"targetGripper":targetGripper},
+                {"targetArm":targetArm},
             ],
         ),
     ]
