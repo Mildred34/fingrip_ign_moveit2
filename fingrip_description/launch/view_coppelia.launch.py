@@ -45,7 +45,7 @@ def generate_launch_description() -> LaunchDescription:
     model_path = PathJoinSubstitution(
                     [
                         FindPackageShare([package_name]),
-                        "model",
+                        "scene",
                         scene,
                     ]
                 )
