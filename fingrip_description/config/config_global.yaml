@@ -1,6 +1,6 @@
 # Locations of robot resources
 description_package : fingrip_description # If true, use simulated clock.
-scene : robotiq-assembly-V7.ttt # Name or filepath of model to load
+scene : robotiq-assembly-V7_c.ttt # Name or filepath of model to load
 PP_package : fingrip_pp_config # Custom package that handle simulation
 
 # Locations of results files
@@ -23,7 +23,7 @@ ihm_log_level : warn
 # Simulation
 simulator_log_level : info # The level of logging that is applied to all ROS 2 nodes launched by this script.
 use_sim_time : true # If true, use simulated clock.
-number_of_parallel_node : 2
+number_of_parallel_node : 1
 headless_mode : false
 
 # Miscellaneous
