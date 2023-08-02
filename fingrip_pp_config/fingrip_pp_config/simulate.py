@@ -35,13 +35,3 @@ def main(args=None):
 
 if __name__ == '__main__':
     main()
-
-
-""" FUNCTIONS TO USE """
-# Wait until above movement sequence finished executing:
-# simulator.waitForMovementExecuted('up')
-
-# Calling script fron simulator
-# self.scriptHandle = self.sim.getScript(self.sim.scripttype_childscript,self.arm.handle)
-# Get initial pose:
-# initialPose = sim.callScriptFunction('remoteApi_getPoseAndConfig',scriptHandle)
