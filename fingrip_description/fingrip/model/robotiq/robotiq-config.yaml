@@ -1,4 +1,11 @@
 nb-fingers: 2
+finger_1:
+  - /right_spring_link_collision
+  - /right_follower_collision
+finger_2:
+  - /left_spring_link_collision
+  - /left_follower_collision
+palm: /robotiq
 joints:
   - /right_driver_j
   - /left_driver_j
