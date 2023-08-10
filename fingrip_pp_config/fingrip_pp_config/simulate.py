@@ -4,12 +4,13 @@
 #
 # Do not launch simulation, then run this script
 from sim.simulation import Simulation as simx
-import sys, os
+import sys
 from threading import Thread
 from rclpy.executors import MultiThreadedExecutor
 import rclpy
 
-print('Program started')
+print("Program started")
+
 
 def main(args=None):
     rclpy.init(args=args)
@@ -33,5 +34,5 @@ def main(args=None):
         executor.shutdown()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
