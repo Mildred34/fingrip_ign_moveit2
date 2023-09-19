@@ -1,13 +1,25 @@
 nb-fingers: 2
 finger_1:
-  - /right_spring_link_collision
-  - /right_follower_collision
+  links:
+    - /right_spring_link_collision
+    - /right_follower_collision
+  friction:
+    - 0.1
+    - 0.1
 
 finger_2:
-  - /left_spring_link_collision
-  - /left_follower_collision
+  links:
+    - /left_spring_link_collision
+    - /left_follower_collision
+  friction:
+    - 0.1
+    - 0.1
+    
 palm: 
-  - /robotiq
+  links:
+    - /robotiq
+  friction:
+    - 0.1
 joints:
   - /right_driver_j
   - /left_driver_j
