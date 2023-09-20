@@ -14,6 +14,7 @@ from launch.substitutions import (
     LaunchConfiguration,
     PathJoinSubstitution,
 )
+from launch.conditions import IfCondition, UnlessCondition
 from launch_ros.substitutions import FindPackageShare
 
 
@@ -24,6 +25,7 @@ def generate_launch_description() -> LaunchDescription:
     # Parameters that doesn't depend of config files
     namespace = LaunchConfiguration("namespace")
     port = LaunchConfiguration("port")
+    no_collision = LaunchConfiguration("no_collision")
 
     # Get Config
     config_path = os.path.join(
@@ -79,6 +81,25 @@ def generate_launch_description() -> LaunchDescription:
                     ("namespace", namespace),
                     ("port", port),
                 ],
+                condition=UnlessCondition(no_collision),
+            )
+        )
+        launch_descriptions.append(
+            IncludeLaunchDescription(
+                PythonLaunchDescriptionSource(
+                    PathJoinSubstitution(
+                        [
+                            FindPackageShare(package_name),
+                            "launch",
+                            "view_coppelia_nocollision.launch.py",
+                        ]
+                    )
+                ),
+                launch_arguments=[
+                    ("namespace", namespace),
+                    ("port", port),
+                ],
+                condition=IfCondition(no_collision),
             )
         )
     else:
@@ -96,6 +117,7 @@ def generate_launch_description() -> LaunchDescription:
                 launch_arguments=[
                     ("namespace", namespace),
                     ("port", port),
+                    ("no_collision", no_collision),
                 ],
             )
         )
@@ -123,5 +145,11 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
             default_value="23000",
             description="Simulator remote server will be launched \
                 on this port",
+        ),
+        DeclareLaunchArgument(
+            "no_collision",
+            default_value="False",
+            description="If True Simulator will be launched without \
+                collision between gripper and object",
         ),
     ]
