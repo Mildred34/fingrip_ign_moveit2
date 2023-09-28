@@ -31,4 +31,4 @@ headless_mode : false
 
 # Miscellaneous
 number_of_primitives : 80 # Using this parameter to compare primitive with generated grasps, only for analysis purpose
-training : QGG # HGG or QGG
+training : HGG # HGG or QGG
