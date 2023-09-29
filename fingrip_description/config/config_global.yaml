@@ -16,7 +16,7 @@ robot_type : IRB140 # Name of the robot type to use. {IRB140} #WIP
 gripper_type: robotiq # {robotiq, finrip} #WIP
 
 # Object selection
-object_type : renfort1 # Object that we will test it out
+object_type : coude # Object that we will test it out
 
 # IHM
 ihm_training_package : ihm_training
