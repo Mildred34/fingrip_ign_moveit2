@@ -2,18 +2,13 @@
 <package format="3">
   <name>fingrip_description</name>
   <version>3.0.0</version>
-  <description>URDF and SDF description of Franka Emika fingrip</description>
-  <maintainer email="orsula.andrej@gmail.com">Andrej Orsula</maintainer>
-  <author>Andrej Orsula</author>
+  <description>CoppeliaSim Model of RobotiQ attached to an ABB arm </description>
+  <maintainer email="orsula.andrej@gmail.com">Alexis Hou</maintainer>
+  <author>Alexis Hou</author>
   <license>BSD</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
-  <exec_depend>joint_state_publisher_gui</exec_depend>
-  <exec_depend>robot_state_publisher</exec_depend>
-  <exec_depend>ros_gz_sim</exec_depend>
-  <exec_depend>rviz2</exec_depend>
-  <exec_depend>urdf</exec_depend>
   <exec_depend>xacro</exec_depend>
 
   <export>
