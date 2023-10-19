@@ -30,7 +30,7 @@ setup(
     # Running python setup.py pytest will execute all tests stored in
     #  the tests folder
     zip_safe=True,
-    maintainer="alex",
+    maintainer="alexis",
     maintainer_email="alexis-h-34@hotmail.fr",
     description="TODO: Package description",
     license="TODO: License declaration",
