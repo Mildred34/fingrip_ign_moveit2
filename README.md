@@ -8,7 +8,7 @@ Software packages for fingrip that enable manipulation with OMPL inside ~~Coppel
 
 ## Overview
 
-This branch targets ROS 2 `humble` and CoppeliaSim V4.5.
+This branch targets ROS 2 `humble` and CoppeliaSim V4.6.
 
 Below is an overview of the included packages, with a short description of their purpose. For more information, please see README.md of each individual package.
 
@@ -25,8 +25,8 @@ These are the primary dependencies required to use this project.
 - Coppeliasim [4.5](https://www.coppeliarobotics.com/downloads)
 Add this to your bashrc file:
 ```
-export PATH="$HOME/CoppeliaSim_Edu_V4_5_1_rev4_Ubuntu22_04:$PATH"
-export COPPELIASIM_ROOT_DIR="$HOME/CoppeliaSim_Edu_V4_5_1_rev4_Ubuntu22_04"
+export PATH="$HOME/CoppeliaSim_Edu_V4_6_0_rev6_Ubuntu22_04:$PATH"
+export COPPELIASIM_ROOT_DIR="$HOME/CoppeliaSim_Edu_V4_6_0_rev6_Ubuntu22_04"
 alias coppelia="$COPPELIASIM_ROOT_DIR/coppeliaSim.sh"
 ```
 

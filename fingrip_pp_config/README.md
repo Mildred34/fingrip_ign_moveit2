@@ -25,8 +25,8 @@ These are the primary dependencies required to use this project.
 - Coppeliasim [4.5](https://www.coppeliarobotics.com/downloads)
 Add this to your bashrc file:
 ```
-export PATH="$HOME/CoppeliaSim_Edu_V4_5_1_rev4_Ubuntu22_04:$PATH"
-export COPPELIASIM_ROOT_DIR="$HOME/CoppeliaSim_Edu_V4_5_1_rev4_Ubuntu22_04"
+export PATH="$HOME/CoppeliaSim_Edu_V4_6_0_rev6_Ubuntu22_04:$PATH"
+export COPPELIASIM_ROOT_DIR="$HOME/CoppeliaSim_Edu_V4_6_0_rev6_Ubuntu22_04"
 alias coppelia="$COPPELIASIM_ROOT_DIR/coppeliaSim.sh"
 ```
 
