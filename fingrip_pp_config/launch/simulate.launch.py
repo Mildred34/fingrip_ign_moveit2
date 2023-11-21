@@ -25,6 +25,7 @@ def generate_launch_description() -> LaunchDescription:
     # Parameters that doesn't depend of config files
     namespace = LaunchConfiguration("namespace")
     port = LaunchConfiguration("port")
+    executable = LaunchConfiguration("executable")
     no_collision = LaunchConfiguration("no_collision")
 
     # Get Config
@@ -80,6 +81,7 @@ def generate_launch_description() -> LaunchDescription:
                 launch_arguments=[
                     ("namespace", namespace),
                     ("port", port),
+                    ("executable",executable),
                 ],
                 condition=UnlessCondition(no_collision),
             )
@@ -98,6 +100,7 @@ def generate_launch_description() -> LaunchDescription:
                 launch_arguments=[
                     ("namespace", namespace),
                     ("port", port),
+                    ("executable",executable),
                 ],
                 condition=IfCondition(no_collision),
             )
@@ -118,6 +121,7 @@ def generate_launch_description() -> LaunchDescription:
                     ("namespace", namespace),
                     ("port", port),
                     ("no_collision", no_collision),
+                    ("executable",executable),
                 ],
             )
         )
@@ -151,5 +155,11 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
             default_value="False",
             description="If True Simulator will be launched without \
                 collision between gripper and object",
+        ),
+        DeclareLaunchArgument(
+            "executable",
+            default_value="coppeliaSim_1.sh",
+            description="Has to launch simulator from different directory \
+                for multiple simulators launching",
         ),
     ]

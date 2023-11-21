@@ -41,6 +41,7 @@ def generate_launch_description() -> LaunchDescription:
     # Parameters that doesn't depend of config files
     namespace = LaunchConfiguration("namespace")
     port = LaunchConfiguration("port")
+    simulator_exe = LaunchConfiguration("executable")
 
     # List of included launch descriptions
     # Launch Coppelia
@@ -55,7 +56,7 @@ def generate_launch_description() -> LaunchDescription:
     coppelia = ExecuteProcess(
         cmd=[
             [
-                FindExecutable(name="coppeliaSim.sh"),
+                FindExecutable(name=simulator_exe),
                 " ",
                 "-GzmqRemoteApi.rpcPort=",
                 port,
@@ -102,5 +103,11 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
             default_value="23000",
             description="Simulator remote server will be launched on this \
                 port",
+        ),
+        DeclareLaunchArgument(
+            "executable",
+            default_value="coppeliaSim_1.sh",
+            description="Has to launch simulator from different directory \
+                for multiple simulators launching",
         ),
     ]
