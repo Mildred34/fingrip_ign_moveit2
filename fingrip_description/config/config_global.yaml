@@ -7,7 +7,7 @@ PP_package : fingrip_pp_config # Custom package that handle simulation
 # Locations of results files
 # ! need to have "contacts" and "datasets" folder within to save the result of grasp_capture, quality_capture
 # ! with object name folder within these 2 folders
-result_file_path : /home/alex/additive_manufacturing/result # Folder the data where results will be saved
+result_file_path : /home/user/additive_manufacturing/result # Folder the data where results will be saved
 
 # Robot selection
 robot_type : IRB140 # Name of the robot type to use. {IRB140} #WIP
@@ -24,12 +24,12 @@ ihm_explore_package : ihm_explore
 ihm_log_level : warn
 
 # Simulation
-simulator_log_level : info # The level of logging that is applied to all ROS 2 nodes launched by this script. [debug,info,warn]
+simulator_log_level : debug # The level of logging that is applied to all ROS 2 nodes launched by this script. [debug,info,warn]
 use_sim_time : true # If true, use simulated clock.
-number_of_parallel_node : 2
+number_of_parallel_node : 4
 headless_mode : false
 
 # Miscellaneous
 number_of_primitives : 80 # Using this parameter to compare primitive with generated grasps, only for analysis purpose
-training : HGG # HGG or QGG
+training : HGG # HGG or QGG for latent space exploration
 debug : false

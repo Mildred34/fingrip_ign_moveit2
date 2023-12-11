@@ -81,7 +81,7 @@ def generate_launch_description() -> LaunchDescription:
                 launch_arguments=[
                     ("namespace", namespace),
                     ("port", port),
-                    ("executable",executable),
+                    ("executable", executable),
                 ],
                 condition=UnlessCondition(no_collision),
             )
@@ -100,7 +100,7 @@ def generate_launch_description() -> LaunchDescription:
                 launch_arguments=[
                     ("namespace", namespace),
                     ("port", port),
-                    ("executable",executable),
+                    ("executable", executable),
                 ],
                 condition=IfCondition(no_collision),
             )
@@ -121,7 +121,7 @@ def generate_launch_description() -> LaunchDescription:
                     ("namespace", namespace),
                     ("port", port),
                     ("no_collision", no_collision),
-                    ("executable",executable),
+                    ("executable", executable),
                 ],
             )
         )
@@ -158,7 +158,7 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
         ),
         DeclareLaunchArgument(
             "executable",
-            default_value="coppeliaSim_1.sh",
+            default_value="coppeliaSim.sh",
             description="Has to launch simulator from different directory \
                 for multiple simulators launching",
         ),
