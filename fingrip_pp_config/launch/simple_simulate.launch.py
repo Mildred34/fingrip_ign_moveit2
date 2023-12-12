@@ -1,20 +1,15 @@
 #!/usr/bin/env -S ros2 launch
 import os
 from typing import List
+
+import yaml
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import (
-    DeclareLaunchArgument,
-    IncludeLaunchDescription,
-)
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.substitutions import (
-    LaunchConfiguration,
-    PathJoinSubstitution,
-)
+from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
-import yaml
 
 
 def generate_launch_description() -> LaunchDescription:
@@ -45,6 +40,7 @@ def generate_launch_description() -> LaunchDescription:
 
     # Parameters that doesn't depend of config files
     namespace = LaunchConfiguration("namespace")
+    nodename = LaunchConfiguration("nodename")
     port = LaunchConfiguration("port")
 
     # List of included launch descriptions
@@ -81,6 +77,7 @@ def generate_launch_description() -> LaunchDescription:
                 ),
                 launch_arguments=[
                     ("namespace", namespace),
+                    ("nodename", nodename),
                 ],
             )
         )
@@ -98,6 +95,7 @@ def generate_launch_description() -> LaunchDescription:
                 ),
                 launch_arguments=[
                     ("namespace", namespace),
+                    ("nodename", nodename),
                 ],
             )
         )
@@ -121,6 +119,16 @@ def generate_launch_description() -> LaunchDescription:
         ),
     ]
 
+    # Services Server checker node to launch first
+    nodes.append(
+        Node(
+            package="sim",
+            executable="SimChecker_service_node",
+            output="both",
+            arguments=["--ros-args", "--log-level", log_level],
+        )
+    )
+
     return LaunchDescription(declared_arguments + launch_descriptions + nodes)
 
 
@@ -136,9 +144,14 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
         # Simulation
         DeclareLaunchArgument(
             "namespace",
-            default_value="",
+            default_value="sim1",
             description="Namespace use for simulation topics avoiding \
                   collision",
+        ),
+        DeclareLaunchArgument(
+            "nodename",
+            default_value="sim1",
+            description="Node name within sim",
         ),
         DeclareLaunchArgument(
             "port",

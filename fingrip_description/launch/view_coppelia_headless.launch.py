@@ -2,19 +2,16 @@
 import os
 from typing import List
 
+import yaml
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import (
-    DeclareLaunchArgument,
-    ExecuteProcess,
-)
+from launch.actions import DeclareLaunchArgument, ExecuteProcess
 from launch.substitutions import (
     FindExecutable,
     LaunchConfiguration,
     PathJoinSubstitution,
 )
 from launch_ros.substitutions import FindPackageShare
-import yaml
 
 
 def generate_launch_description() -> LaunchDescription:
@@ -40,6 +37,7 @@ def generate_launch_description() -> LaunchDescription:
 
     # Parameters that doesn't depend of config files
     namespace = LaunchConfiguration("namespace")
+    nodename = LaunchConfiguration("nodename")
     port = LaunchConfiguration("port")
     simulator_exe = LaunchConfiguration("executable")
 
@@ -62,7 +60,7 @@ def generate_launch_description() -> LaunchDescription:
                 port,
                 " ",
                 "-GROS2Interface.nodeName=",
-                namespace,
+                nodename,
                 " ",
                 "-h",
                 " ",
@@ -94,9 +92,14 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
         # Simulation
         DeclareLaunchArgument(
             "namespace",
-            default_value="",
+            default_value="sim1",
             description="Namespace use for simulation topics avoiding \
                   collision",
+        ),
+        DeclareLaunchArgument(
+            "nodename",
+            default_value="sim1",
+            description="Node name within sim",
         ),
         DeclareLaunchArgument(
             "port",

@@ -1,20 +1,14 @@
 #!/usr/bin/env -S ros2 launch
 import os
 from typing import List
-import yaml
 
+import yaml
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import (
-    DeclareLaunchArgument,
-    IncludeLaunchDescription,
-)
-from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.substitutions import (
-    LaunchConfiguration,
-    PathJoinSubstitution,
-)
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
 from launch.conditions import IfCondition, UnlessCondition
+from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 from launch_ros.substitutions import FindPackageShare
 
 
@@ -24,6 +18,7 @@ def generate_launch_description() -> LaunchDescription:
 
     # Parameters that doesn't depend of config files
     namespace = LaunchConfiguration("namespace")
+    nodename = LaunchConfiguration("nodename")
     port = LaunchConfiguration("port")
     executable = LaunchConfiguration("executable")
     no_collision = LaunchConfiguration("no_collision")
@@ -49,22 +44,6 @@ def generate_launch_description() -> LaunchDescription:
     # List of included launch descriptions
     launch_descriptions = []
 
-    # List of config files
-    # object_config = PathJoinSubstitution(
-    #     [
-    #         FindPackageShare(package_name),
-    #         "config",
-    #         "object_config.yaml",
-    #     ]
-    # )
-
-    # object_model_path = PathJoinSubstitution(
-    #     [
-    #         FindPackageShare(package_name),
-    #         "resource",
-    #     ]
-    # )
-
     # Launch Coppelia
     if not headless_mode:
         launch_descriptions.append(
@@ -80,6 +59,7 @@ def generate_launch_description() -> LaunchDescription:
                 ),
                 launch_arguments=[
                     ("namespace", namespace),
+                    ("nodename", nodename),
                     ("port", port),
                     ("executable", executable),
                 ],
@@ -99,6 +79,7 @@ def generate_launch_description() -> LaunchDescription:
                 ),
                 launch_arguments=[
                     ("namespace", namespace),
+                    ("nodename", nodename),
                     ("port", port),
                     ("executable", executable),
                 ],
@@ -119,6 +100,7 @@ def generate_launch_description() -> LaunchDescription:
                 ),
                 launch_arguments=[
                     ("namespace", namespace),
+                    ("nodename", nodename),
                     ("port", port),
                     ("no_collision", no_collision),
                     ("executable", executable),
@@ -140,9 +122,14 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
         # Simulation
         DeclareLaunchArgument(
             "namespace",
-            default_value="",
+            default_value="sim1",
             description="Namespace use for simulation topics avoiding \
                 collision",
+        ),
+        DeclareLaunchArgument(
+            "nodename",
+            default_value="sim1",
+            description="Node name within sim",
         ),
         DeclareLaunchArgument(
             "port",
