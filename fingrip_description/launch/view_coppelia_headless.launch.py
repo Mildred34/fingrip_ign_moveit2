@@ -18,6 +18,12 @@ def generate_launch_description() -> LaunchDescription:
     # Declare all launch arguments
     declared_arguments = generate_declared_arguments()
 
+    # Parameters that doesn't depend of config files
+    namespace = LaunchConfiguration("namespace")
+    nodename = LaunchConfiguration("nodename")
+    port = LaunchConfiguration("port")
+    simulator_exe = LaunchConfiguration("executable")
+
     config_path = os.path.join(
         get_package_share_directory("fingrip_description"),
         "config",
@@ -34,12 +40,6 @@ def generate_launch_description() -> LaunchDescription:
     # Get substitution for all arguments
     scene = config["scene"]
     package_name = config["description_package"]
-
-    # Parameters that doesn't depend of config files
-    namespace = LaunchConfiguration("namespace")
-    nodename = LaunchConfiguration("nodename")
-    port = LaunchConfiguration("port")
-    simulator_exe = LaunchConfiguration("executable")
 
     # List of included launch descriptions
     # Launch Coppelia
