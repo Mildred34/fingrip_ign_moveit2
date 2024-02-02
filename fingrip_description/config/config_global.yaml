@@ -7,7 +7,7 @@ PP_package : fingrip_pp_config # Custom package that handle simulation
 # Locations of results files
 # ! need to have "contacts" and "datasets" folder within to save the result of grasp_capture, quality_capture
 # ! with object name folder within these 2 folders
-result_file_path : /home/user/additive_manufacturing/result # Folder the data where results will be saved
+result_file_path : /home/alex/additive_manufacturing/result # Folder the data where results will be saved
 
 # Robot selection
 robot_type : IRB140 # Name of the robot type to use. {IRB140} #WIP

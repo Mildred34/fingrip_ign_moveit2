@@ -123,7 +123,7 @@ def generate_launch_description() -> LaunchDescription:
     nodes.append(
         Node(
             package="sim",
-            executable="SimChecker_service_node",
+            executable="simchecker_service_node",
             output="both",
             arguments=["--ros-args", "--log-level", log_level],
         )
