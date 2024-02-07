@@ -5,8 +5,16 @@ from typing import List
 import yaml
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
+from launch.actions import (
+    DeclareLaunchArgument,
+    EmitEvent,
+    IncludeLaunchDescription,
+    RegisterEventHandler,
+)
 from launch.conditions import IfCondition, UnlessCondition
+from launch.event_handlers import OnShutdown
+from launch.events.matchers import matches_action
+from launch.events.process import ShutdownProcess
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 from launch_ros.substitutions import FindPackageShare
@@ -43,6 +51,9 @@ def generate_launch_description() -> LaunchDescription:
 
     # List of included launch descriptions
     launch_descriptions = []
+
+    # List of event handlers
+    event_handlers = []
 
     # Launch Coppelia
     if not headless_mode:
@@ -108,7 +119,25 @@ def generate_launch_description() -> LaunchDescription:
             )
         )
 
-    return LaunchDescription(declared_arguments + launch_descriptions)
+    event_handlers.append(
+        RegisterEventHandler(
+            event_handler=OnShutdown(
+                on_shutdown=[
+                    EmitEvent(
+                        event=ShutdownProcess(
+                            process_matcher=matches_action(
+                                launch_descriptions[-1]
+                            )
+                        )
+                    )
+                ],
+            )
+        )
+    )
+
+    return LaunchDescription(
+        declared_arguments + launch_descriptions + event_handlers
+    )
 
 
 # Centralize all arguments in a config file. Doesn't use anyme

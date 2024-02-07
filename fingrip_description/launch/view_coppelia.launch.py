@@ -5,7 +5,15 @@ from typing import List
 import yaml
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, ExecuteProcess
+from launch.actions import (
+    DeclareLaunchArgument,
+    EmitEvent,
+    ExecuteProcess,
+    RegisterEventHandler,
+)
+from launch.event_handlers import OnShutdown
+from launch.events.matchers import matches_action
+from launch.events.process import ShutdownProcess
 from launch.substitutions import (
     FindExecutable,
     LaunchConfiguration,
@@ -75,7 +83,25 @@ def generate_launch_description() -> LaunchDescription:
         coppelia,
     ]
 
-    return LaunchDescription(declared_arguments + launch_descriptions)
+    event_handlers = []
+    # Destroy simulator
+    event_handlers.append(
+        RegisterEventHandler(
+            event_handler=OnShutdown(
+                on_shutdown=[
+                    EmitEvent(
+                        event=ShutdownProcess(
+                            process_matcher=matches_action(coppelia)
+                        )
+                    ),
+                ],
+            )
+        )
+    )
+
+    return LaunchDescription(
+        declared_arguments + launch_descriptions + event_handlers
+    )
 
 
 # Centralize all arguments in a config file. Doesn't use anyme the command
