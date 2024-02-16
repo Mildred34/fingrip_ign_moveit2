@@ -174,7 +174,7 @@ def generate_declared_arguments() -> List[DeclareLaunchArgument]:
         ),
         DeclareLaunchArgument(
             "executable",
-            default_value="coppeliaSim.sh",
+            default_value="coppeliaSim",
             description="Has to launch simulator from different directory \
                 for multiple simulators launching",
         ),
