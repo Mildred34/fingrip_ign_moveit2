@@ -139,7 +139,7 @@ def generate_launch_description() -> LaunchDescription:
     cmd_port = TextFormatting("-GzmqRemoteApi.rpcPort={}", port)
     cmd_nodename = TextFormatting("-GROS2Interface.nodeName={}", nodename)
     cmd_namespace = TextFormatting("-g{}", namespace)
-    cmd_headless = TextFormatting("-h")
+    cmd_headless = "-h"
 
     coppelia = ExecuteProcess(
         cmd=[
