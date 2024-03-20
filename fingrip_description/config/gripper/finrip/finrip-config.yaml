@@ -1,0 +1,67 @@
+Finrip-V1:
+  nb-fingers: 3
+  finger_1:
+    links:
+      - /Finger_1/Proximal_Link_Collision
+      - /Finger_1/Intermediaire_Link_Collision
+      - /Finger_1/Distal_Link_Collision
+    friction:
+      - 0.1
+      - 0.1
+      - 0.1
+
+  finger_2:
+    links:
+      - /Finger_2/Proximal_Link_Collision
+      - /Finger_2/Intermediaire_Link_Collision
+      - /Finger_2/Distal_Link_Collision
+    friction:
+      - 0.1
+      - 0.1
+      - 0.1
+
+  finger_3:
+    links:
+      - /Finger_3/Proximal_Link_Collision
+      - /Finger_3/Intermediaire_Link_Collision
+      - /Finger_3/Distal_Link_Collision
+    friction:
+      - 0.1
+      - 0.1
+      - 0.1
+
+  palm:
+    links:
+      - /Finrip_Gripper
+    friction:
+      - 0.1
+
+  joints:
+    - /Finger_1/B2P_joint
+    - /Finger_2/B2P_joint
+    - /Finger_3/B2P_joint
+
+  limit:
+    lower:
+      - -32 # Degree
+      - -32
+      - -32
+    upper:
+      - 5.64
+      - 5.64
+      - 5.64
+
+  abduction:
+    activated:
+      - false
+      - false
+      - false
+    limit:
+      lower:
+        - null
+        - null
+        - null
+      upper:
+        - null
+        - null
+        - null

@@ -11,9 +11,11 @@ ament_environment_hooks(
 )
 
 # Install directories
-install(DIRECTORY config launch fingrip fingrip/meshes fingrip/model resource resource/scene
+install(DIRECTORY config launch resource resource/scene
   resource/renfort1
+  resource/meshes
   resource/coude
+  config/gripper
   DESTINATION share/${PROJECT_NAME})
 
 # Setup the project
