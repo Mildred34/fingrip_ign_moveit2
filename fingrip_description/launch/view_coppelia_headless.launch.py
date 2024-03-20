@@ -100,6 +100,29 @@ def on_terminate(_launch_context: LaunchContext, cmd: Substitution):
             os.kill(pid, signal.SIGKILL)
 
 
+def get_scene_path(gripper_type):
+    """Get the scene with the gripper wanted
+
+    Args:
+        gripper_type (string): gripper to use for simulation
+
+    Raises:
+        NameError: If the gripper type is wrong
+
+    Returns:
+        string: scene name
+    """
+    scene = None
+    if gripper_type == "robotiq":
+        scene = "robotiq-assembly-V7_c.ttt"
+    elif gripper_type == "finrip":
+        scene = "finrip-assembly-V1_c.ttt"
+    else:
+        raise NameError
+
+    return scene
+
+
 def generate_launch_description() -> LaunchDescription:
     # Declare all launch arguments
     declared_arguments = generate_declared_arguments()
@@ -124,7 +147,7 @@ def generate_launch_description() -> LaunchDescription:
             print(exc)
 
     # Get substitution for all arguments
-    scene = config["scene"]
+    scene = get_scene_path(config["gripper_type"])
     package_name = config["description_package"]
 
     # List of included launch descriptions

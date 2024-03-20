@@ -14,6 +14,29 @@ from launch.substitutions import (
 from launch_ros.substitutions import FindPackageShare
 
 
+def get_scene_path(gripper_type):
+    """Get the scene with the gripper wanted
+
+    Args:
+        gripper_type (string): gripper to use for simulation
+
+    Raises:
+        NameError: If the gripper type is wrong
+
+    Returns:
+        string: scene name
+    """
+    scene = None
+    if gripper_type == "robotiq":
+        scene = "robotiq-assembly-V7_noc.ttt"
+    elif gripper_type == "finrip":
+        scene = "finrip-assembly-V1_noc.ttt"
+    else:
+        raise NameError
+
+    return scene
+
+
 def generate_launch_description() -> LaunchDescription:
     # Declare all launch arguments
     declared_arguments = generate_declared_arguments()
@@ -37,7 +60,7 @@ def generate_launch_description() -> LaunchDescription:
             print(exc)
 
     # Get substitution for all arguments
-    scene = config["scene_nocollision"]
+    scene = get_scene_path(config["gripper_type"])
     package_name = config["description_package"]
 
     # List of included launch descriptions

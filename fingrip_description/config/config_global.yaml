@@ -1,7 +1,5 @@
 # Locations of robot resources
 description_package : fingrip_description # If true, use simulated clock.
-scene : robotiq-assembly-V7_c.ttt # Name or filepath of model to load
-scene_nocollision : robotiq-assembly-V7_noc.ttt # Name or filepath of model to load
 PP_package : fingrip_pp_config # Custom package that handle simulation
 
 # Locations of results files
