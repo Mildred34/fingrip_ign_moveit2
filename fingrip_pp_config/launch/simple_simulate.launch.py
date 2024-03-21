@@ -36,6 +36,7 @@ def generate_launch_description() -> LaunchDescription:
     object_type = config["object_type"]
     targetArm = config["robot_type"]
     targetGripper = config["gripper_type"]
+    targetGripperModel = config["gripper_model"]
     headless_mode = config["headless_mode"]
 
     # Parameters that doesn't depend of config files
@@ -114,6 +115,7 @@ def generate_launch_description() -> LaunchDescription:
                 {"object_model_path": object_model_path},
                 {"port": port},
                 {"targetGripper": targetGripper},
+                {"targetGripperModel": targetGripperModel},
                 {"targetArm": targetArm},
             ],
         ),
